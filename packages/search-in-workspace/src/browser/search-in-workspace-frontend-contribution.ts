@@ -121,7 +121,7 @@ export class SearchInWorkspaceFrontendContribution extends AbstractViewContribut
             isEnabled: () => this.workspaceService.tryGetRoots().length > 0,
             execute: async () => {
                 const widget = await this.openView({ activate: true });
-                widget.updateSearchTerm(this.getSearchTerm());
+                widget.updateSearchTerm(this.getSearchTerm(), true); // test purposes.
             }
         });
 

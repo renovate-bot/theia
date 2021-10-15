@@ -225,13 +225,24 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
      * Update the search term and input field.
      * @param term the search term.
      */
-    updateSearchTerm(term: string): void {
+    updateSearchTerm(term: string, showReplaceField?: boolean): void {
         this.searchTerm = term;
         const search = document.getElementById('search-input-field');
         if (search) {
             (search as HTMLInputElement).value = term;
         }
+        if (showReplaceField) {
+            this.showReplaceField = true;
+            this.resultTreeWidget.showReplaceButtons = true;
+        }
         this.refresh();
+
+        // Set the proper focus.
+        if (showReplaceField) {
+            this.focusReplaceField();
+        } else {
+            this.focusInputField();
+        }
     }
 
     hasResultList(): boolean {
@@ -313,7 +324,7 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
 
     protected onAfterShow(msg: Message): void {
         super.onAfterShow(msg);
-        this.focusInputField();
+        // this.focusInputField();
         this.contextKeyService.searchViewletVisible.set(true);
     }
 
@@ -329,6 +340,14 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
 
     protected focusInputField(): void {
         const f = document.getElementById('search-input-field');
+        if (f) {
+            (f as HTMLInputElement).focus();
+            (f as HTMLInputElement).select();
+        }
+    }
+
+    protected focusReplaceField(): void {
+        const f = document.getElementById('replace-input-field');
         if (f) {
             (f as HTMLInputElement).focus();
             (f as HTMLInputElement).select();
