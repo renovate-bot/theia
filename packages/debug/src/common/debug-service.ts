@@ -16,7 +16,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Disposable } from '@theia/core';
+import { Disposable, Event } from '@theia/core';
 import { ApplicationError } from '@theia/core/lib/common/application-error';
 import { IJSONSchema, IJSONSchemaSnippet } from '@theia/core/lib/common/json-schema';
 import { DebugConfiguration } from './debug-configuration';
@@ -103,6 +103,12 @@ export interface DebugService extends Disposable {
      * Stop a running session for the given session id.
      */
     terminateDebugSession(sessionId: string): Promise<void>;
+
+    /**
+     * Event handle to indicate when one or more dynamic debug configuration providers
+     * have been registered or unregistered.
+     */
+    onDidConfigurationProvidersChanged?: Event<void>;
 }
 
 /**

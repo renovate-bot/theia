@@ -14,7 +14,9 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
+import debounce = require('p-debounce');
 import { DebugService, DebuggerDescription, DebugPath } from '@theia/debug/lib/common/debug-service';
+import { Emitter, Event } from '@theia/core';
 import { Disposable, DisposableCollection } from '@theia/core/lib/common/disposable';
 import { DebugConfiguration } from '@theia/debug/lib/common/debug-configuration';
 import { IJSONSchema, IJSONSchemaSnippet } from '@theia/core/lib/common/json-schema';
@@ -25,6 +27,7 @@ import { WorkspaceService } from '@theia/workspace/lib/browser';
 import { DebuggerContribution } from '../../../common/plugin-protocol';
 import { DebugRequestTypes } from '@theia/debug/lib/browser/debug-session-connection';
 import * as theia from '@theia/plugin';
+import { DebugConfigurationProviderTriggerKind } from '../../../common';
 
 /**
  * Debug adapter contribution registrator.
@@ -44,14 +47,38 @@ export interface PluginDebugAdapterContributionRegistrator {
 }
 
 /**
+ * Debug configuration provider registrator.
+ */
+ export interface PluginDebugConfigurationProviderRegistrator {
+    /**
+     * Registers a debug configuration provider.
+     * @param debugType The provider's debug type
+     * @param trigger The provider's trigger type
+     */
+    registerDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Disposable;
+
+    /**
+     * Unregisters a debug configuration provider.
+     * @param debugType The provider's debug type
+     * @param trigger The provider's trigger type
+     */
+    unregisterDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): void;
+}
+
+/**
  * Debug service to work with plugin and extension contributions.
  */
 @injectable()
-export class PluginDebugService implements DebugService, PluginDebugAdapterContributionRegistrator {
+export class PluginDebugService implements DebugService, PluginDebugAdapterContributionRegistrator, PluginDebugConfigurationProviderRegistrator {
 
     protected readonly debuggers: DebuggerContribution[] = [];
     protected readonly contributors = new Map<string, PluginDebugAdapterContribution>();
     protected readonly toDispose = new DisposableCollection();
+
+    protected readonly onDidConfigurationProvidersChangedEmitter = new Emitter<void>();
+    get onDidConfigurationProvidersChanged(): Event<void> {
+        return this.onDidConfigurationProvidersChangedEmitter.event;
+    }
 
     // maps session and contribution
     protected readonly sessionId2contrib = new Map<string, PluginDebugAdapterContribution>();
@@ -92,6 +119,22 @@ export class PluginDebugService implements DebugService, PluginDebugAdapterContr
         this.contributors.delete(debugType);
     }
 
+    registerDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Disposable {
+        // The debug service does not currently need to keep track of the configuration providers
+        // however it's necessary to notify the availability of them, so the available configurations can be fetched
+        this.fireOnDidConfigurationProvidersChanged();
+        return Disposable.NULL;
+    }
+
+    // debouncing to send a single notification for multiple registrations at initialization time
+    fireOnDidConfigurationProvidersChanged = debounce(() => {
+        this.onDidConfigurationProvidersChangedEmitter.fire();
+    }, 100);
+
+    unregisterDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): void {
+        this.fireOnDidConfigurationProvidersChanged();
+    }
+
     async debugTypes(): Promise<string[]> {
         const debugTypes = new Set(await this.delegated.debugTypes());
         for (const contribution of this.debuggers) {
@@ -128,9 +171,6 @@ export class PluginDebugService implements DebugService, PluginDebugAdapterContr
         contributor: PluginDebugAdapterContribution): Promise<{ type: string, configurations: DebugConfiguration[] }> {
 
         const configurations = await contributor.provideDebugConfigurations(undefined, true);
-        for (const configuration of configurations) {
-            configuration.dynamic = true;
-        }
         return { type, configurations };
     }
 

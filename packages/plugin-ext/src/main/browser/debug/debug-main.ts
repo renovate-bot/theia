@@ -21,7 +21,8 @@ import { RPCProtocol } from '../../../common/rpc-protocol';
 import {
     DebugMain,
     DebugExt,
-    MAIN_RPC_CONTEXT
+    MAIN_RPC_CONTEXT,
+    DebugConfigurationProviderTriggerKind
 } from '../../../common/plugin-api-rpc';
 import { DebugSessionManager } from '@theia/debug/lib/browser/debug-session-manager';
 import { Breakpoint, WorkspaceFolder } from '../../../common/plugin-api-rpc-model';
@@ -45,7 +46,7 @@ import { PluginDebugSessionContributionRegistrator, PluginDebugSessionContributi
 import { Disposable, DisposableCollection } from '@theia/core/lib/common/disposable';
 import { PluginDebugSessionFactory } from './plugin-debug-session-factory';
 import { PluginWebSocketChannel } from '../../../common/connection';
-import { PluginDebugAdapterContributionRegistrator, PluginDebugService } from './plugin-debug-service';
+import { PluginDebugAdapterContributionRegistrator, PluginDebugConfigurationProviderRegistrator, PluginDebugService } from './plugin-debug-service';
 import { HostedPluginSupport } from '../../../hosted/browser/hosted-plugin';
 import { DebugFunctionBreakpoint } from '@theia/debug/lib/browser/model/debug-function-breakpoint';
 import { FileService } from '@theia/filesystem/lib/browser/file-service';
@@ -69,6 +70,7 @@ export class DebugMainImpl implements DebugMain, Disposable {
     private readonly debugPreferences: DebugPreferences;
     private readonly sessionContributionRegistrator: PluginDebugSessionContributionRegistrator;
     private readonly adapterContributionRegistrator: PluginDebugAdapterContributionRegistrator;
+    private readonly debugConfigurationProviderRegistrator: PluginDebugConfigurationProviderRegistrator;
     private readonly fileService: FileService;
     private readonly pluginService: HostedPluginSupport;
     private readonly debugContributionProvider: ContributionProvider<DebugContribution>;
@@ -89,6 +91,7 @@ export class DebugMainImpl implements DebugMain, Disposable {
         this.outputChannelManager = container.get(OutputChannelManager);
         this.debugPreferences = container.get(DebugPreferences);
         this.adapterContributionRegistrator = container.get(PluginDebugService);
+        this.debugConfigurationProviderRegistrator = container.get(PluginDebugService);
         this.sessionContributionRegistrator = container.get(PluginDebugSessionContributionRegistry);
         this.debugContributionProvider = container.getNamed(ContributionProvider, DebugContribution);
         this.fileService = container.get(FileService);
@@ -177,6 +180,14 @@ export class DebugMainImpl implements DebugMain, Disposable {
         if (disposable) {
             disposable.dispose();
         }
+    }
+
+    async $registerDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Promise<void> {
+        this.toDispose.push(this.debugConfigurationProviderRegistrator.registerDebugConfigurationProvider(debugType, trigger));
+    }
+
+    async $unregisterDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Promise<void> {
+        return Promise.resolve(this.debugConfigurationProviderRegistrator.unregisterDebugConfigurationProvider(debugType, trigger));
     }
 
     async $addBreakpoints(breakpoints: Breakpoint[]): Promise<void> {
