@@ -14,8 +14,8 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
-import debounce = require('p-debounce');
-import { injectable, inject, postConstruct, interfaces, Container } from '@theia/core/shared/inversify';
+ import debounce = require('@theia/core/shared/lodash.debounce');
+ import { injectable, inject, postConstruct, interfaces, Container } from '@theia/core/shared/inversify';
 import URI from '@theia/core/lib/common/uri';
 import { Disposable, DisposableCollection, MenuPath, isOSX } from '@theia/core';
 import { ContextMenuRenderer } from '@theia/core/lib/browser';

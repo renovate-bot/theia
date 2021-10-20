@@ -30,7 +30,7 @@ import { DebugStackFrame } from './model/debug-stack-frame';
 import { DebugSource } from './model/debug-source';
 import { DebugBreakpoint, DebugBreakpointOptions } from './model/debug-breakpoint';
 import { DebugSourceBreakpoint } from './model/debug-source-breakpoint';
-import debounce = require('p-debounce');
+import debounce = require('@theia/core/shared/lodash.debounce');
 import URI from '@theia/core/lib/common/uri';
 import { BreakpointManager } from './breakpoint/breakpoint-manager';
 import { DebugSessionOptions, InternalDebugSessionOptions } from './debug-session-options';

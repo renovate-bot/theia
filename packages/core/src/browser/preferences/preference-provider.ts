@@ -16,7 +16,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import debounce = require('p-debounce');
+import debounce = require('lodash.debounce');
 import { injectable, inject } from 'inversify';
 import { JSONExt, JSONValue } from '@phosphor/coreutils';
 import URI from '../../common/uri';
@@ -115,7 +115,7 @@ export abstract class PreferenceProvider implements Disposable {
         }
     }
 
-    protected fireDidPreferencesChanged = debounce(() => {
+    protected debouncedFire = debounce(() => {
         const changes = this.deferredChanges;
         this.deferredChanges = undefined;
         if (changes && Object.keys(changes).length) {
@@ -124,6 +124,10 @@ export abstract class PreferenceProvider implements Disposable {
         }
         return false;
     }, 0);
+
+    protected fireDidPreferencesChanged(): Promise<boolean> {
+        return new Promise(_resolve => this.debouncedFire());
+    }
 
     /**
      * Retrieve the stored value for the given preference and resource URI.

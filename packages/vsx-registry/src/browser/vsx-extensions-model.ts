@@ -15,7 +15,7 @@
  ********************************************************************************/
 
 import { injectable, inject, postConstruct } from '@theia/core/shared/inversify';
-import debounce from 'p-debounce';
+import debounce = require('@theia/core/shared/lodash.debounce');
 import * as showdown from 'showdown';
 import * as DOMPurify from '@theia/core/shared/dompurify';
 import { Emitter } from '@theia/core/lib/common/event';

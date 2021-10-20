@@ -21,7 +21,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as Ajv from 'ajv';
-import debounce = require('p-debounce');
+import debounce = require('@theia/core/shared/lodash.debounce');
 import { postConstruct, injectable, inject } from '@theia/core/shared/inversify';
 import { JsonSchemaContribution, JsonSchemaRegisterContext } from '@theia/core/lib/browser/json-schema-store';
 import { InMemoryResources, deepClone, Emitter } from '@theia/core/lib/common';
