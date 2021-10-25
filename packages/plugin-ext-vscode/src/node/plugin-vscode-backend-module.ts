@@ -26,6 +26,7 @@ import { CliContribution } from '@theia/core/lib/node';
 import { PluginHostEnvironmentVariable } from '@theia/plugin-ext/lib/common';
 import { PluginVSCodeEnvironment } from '../common/plugin-vscode-environment';
 import { PluginVSCodeDeployerParticipant } from './plugin-vscode-deployer-participant';
+import { PluginBackendApplicationConfig } from './plugin-backend-configuration';
 
 export default new ContainerModule(bind => {
     bind(PluginVSCodeEnvironment).toSelf().inSingletonScope();
@@ -40,4 +41,6 @@ export default new ContainerModule(bind => {
     bind(PluginVsCodeCliContribution).toSelf().inSingletonScope();
     bind(CliContribution).toService(PluginVsCodeCliContribution);
     bind(PluginHostEnvironmentVariable).toService(PluginVsCodeCliContribution);
+
+    bind(PluginBackendApplicationConfig).toSelf().inSingletonScope();
 });

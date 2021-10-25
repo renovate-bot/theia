@@ -15,15 +15,19 @@
  ********************************************************************************/
 
 import * as path from 'path';
-import { injectable } from '@theia/core/shared/inversify';
+import { inject, injectable } from '@theia/core/shared/inversify';
 import { PluginScanner, PluginEngine, PluginPackage, PluginModel, PluginLifecycle } from '@theia/plugin-ext';
 import { TheiaPluginScanner } from '@theia/plugin-ext/lib/hosted/node/scanners/scanner-theia';
+import { PluginBackendApplicationConfig } from './plugin-backend-configuration';
 
 @injectable()
 export class VsCodePluginScanner extends TheiaPluginScanner implements PluginScanner {
 
     private readonly VSCODE_TYPE: PluginEngine = 'vscode';
     private readonly VSCODE_PREFIX: string = 'vscode:extension/';
+
+    @inject(PluginBackendApplicationConfig)
+    protected pluginBackendApplicationConfig: PluginBackendApplicationConfig;
 
     get apiType(): PluginEngine {
         return this.VSCODE_TYPE;
@@ -65,10 +69,14 @@ export class VsCodePluginScanner extends TheiaPluginScanner implements PluginSca
         // Iterate through the list of dependencies from `extensionDependencies` and `extensionPack`.
         for (const dependency of [plugin.extensionDependencies, plugin.extensionPack]) {
             if (dependency !== undefined) {
+                const excludedIds = this.pluginBackendApplicationConfig.getExcludedIds();
                 // Iterate over the list of dependencies present, and add them to the collection.
                 dependency.forEach((dep: string) => {
                     const dependencyId = dep.toLowerCase();
-                    dependencies.set(dependencyId, this.VSCODE_PREFIX + dependencyId);
+                    // Add dependency if it is not excluded.
+                    if (!excludedIds.includes(dependencyId)) {
+                        dependencies.set(dependencyId, this.VSCODE_PREFIX + dependencyId);
+                    }
                 });
             }
         }

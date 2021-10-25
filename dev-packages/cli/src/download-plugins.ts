@@ -121,7 +121,7 @@ export default async function downloadPlugins(options: DownloadPluginsOptions = 
         if (extensionPacks.size > 0) {
             console.warn(`--- found ${extensionPacks.size} extension-packs ---`);
             // Move extension-packs to `.packs`
-            await cacheExtensionPacks(pluginsDir, extensionPacks);
+            // await cacheExtensionPacks(pluginsDir, extensionPacks);
             console.warn('--- resolving extension-packs ---');
             const client = new OVSXClient({ apiVersion, apiUrl });
             // De-duplicate extension ids to only download each once:
@@ -308,26 +308,26 @@ async function collectExtensionPacks(pluginDir: string, excludedIds: Set<string>
  *
  * @param extensionPacksPaths the list of extension-pack paths.
  */
-async function cacheExtensionPacks(pluginsDir: string, extensionPacks: Map<string, unknown>): Promise<void> {
-    const packsFolderPath = path.resolve(pluginsDir, extensionPackCacheName);
-    await fs.mkdir(packsFolderPath, { recursive: true });
-    await Promise.all(Array.from(extensionPacks.entries(), async ([extensionPackPath, value]) => {
-        extensionPackPath = path.resolve(extensionPackPath);
-        // Skip entries found in `.packs`
-        if (extensionPackPath.startsWith(packsFolderPath)) {
-            return; // skip
-        }
-        try {
-            const oldPath = getExtensionRoot(pluginsDir, extensionPackPath);
-            const newPath = path.resolve(packsFolderPath, path.basename(oldPath));
-            if (!existsSync(newPath)) {
-                await fs.rename(oldPath, newPath);
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }));
-}
+// async function cacheExtensionPacks(pluginsDir: string, extensionPacks: Map<string, unknown>): Promise<void> {
+//     const packsFolderPath = path.resolve(pluginsDir, extensionPackCacheName);
+//     await fs.mkdir(packsFolderPath, { recursive: true });
+//     await Promise.all(Array.from(extensionPacks.entries(), async ([extensionPackPath, value]) => {
+//         extensionPackPath = path.resolve(extensionPackPath);
+//         // Skip entries found in `.packs`
+//         if (extensionPackPath.startsWith(packsFolderPath)) {
+//             return; // skip
+//         }
+//         try {
+//             const oldPath = getExtensionRoot(pluginsDir, extensionPackPath);
+//             const newPath = path.resolve(packsFolderPath, path.basename(oldPath));
+//             if (!existsSync(newPath)) {
+//                 await fs.rename(oldPath, newPath);
+//             }
+//         } catch (error) {
+//             console.error(error);
+//         }
+//     }));
+// }
 
 /**
  * Walk back to the root of an extension starting from its `package.json`. e.g.
@@ -336,11 +336,11 @@ async function cacheExtensionPacks(pluginsDir: string, extensionPacks: Map<strin
  * getExtensionRoot('/a/b/c', '/a/b/c/EXT/d/e/f/package.json') === '/a/b/c/EXT'
  * ```
  */
-function getExtensionRoot(root: string, packageJsonPath: string): string {
-    root = path.resolve(root);
-    packageJsonPath = path.resolve(packageJsonPath);
-    if (!packageJsonPath.startsWith(root)) {
-        throw new Error(`unexpected paths:\n root: ${root}\n package.json: ${packageJsonPath}`);
-    }
-    return packageJsonPath.substr(0, packageJsonPath.indexOf(path.sep, root.length + 1));
-}
+// function getExtensionRoot(root: string, packageJsonPath: string): string {
+//     root = path.resolve(root);
+//     packageJsonPath = path.resolve(packageJsonPath);
+//     if (!packageJsonPath.startsWith(root)) {
+//         throw new Error(`unexpected paths:\n root: ${root}\n package.json: ${packageJsonPath}`);
+//     }
+//     return packageJsonPath.substr(0, packageJsonPath.indexOf(path.sep, root.length + 1));
+// }
