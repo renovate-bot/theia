@@ -23,13 +23,13 @@ import { injectable, inject } from '@theia/core/shared/inversify';
 import URI from '@theia/core/lib/common/uri';
 import { PluginDeployerResolver, PluginDeployerResolverContext } from '@theia/plugin-ext/lib/common/plugin-protocol';
 import { VSXExtensionUri } from '../common/vsx-extension-uri';
-import { OVSXClient } from '@theia/ovsx-client/lib/ovsx-client';
+import { OVSXAsyncClient } from '../common/ovsx-async-client';
 
 @injectable()
 export class VSXExtensionResolver implements PluginDeployerResolver {
 
-    @inject(OVSXClient)
-    protected client: OVSXClient;
+    @inject(OVSXAsyncClient)
+    protected client: OVSXAsyncClient;
 
     protected readonly downloadPath: string;
 

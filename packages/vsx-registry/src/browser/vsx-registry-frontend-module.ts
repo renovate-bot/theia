@@ -32,7 +32,7 @@ import { VSXEnvironment } from '../common/vsx-environment';
 import { VSXExtensionsSearchModel } from './vsx-extensions-search-model';
 import { bindExtensionPreferences } from './recommended-extensions/recommended-extensions-preference-contribution';
 import { bindPreferenceProviderOverrides } from './recommended-extensions/preference-provider-overrides';
-import { OVSXAsyncClient } from './ovsx-async-client';
+import { OVSXAsyncClient } from '../common/ovsx-async-client';
 
 export default new ContainerModule((bind, unbind) => {
     bind(VSXEnvironment).toSelf().inSingletonScope();
