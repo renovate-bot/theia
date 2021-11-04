@@ -157,7 +157,7 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
             for (const dynamicOption of recentDynamicOptions) {
                 options.push(
                     <option key={index++} value={InternalDebugSessionOptions.toValue(dynamicOption)}>
-                        {`${this.toName(dynamicOption, this.props.isMultiRoot)} (${dynamicOption.providerType})`}
+                        {this.toName(dynamicOption, this.props.isMultiRoot)} ({dynamicOption.providerType})
                     </option>
                 );
             }
@@ -173,7 +173,7 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
         if (types.length > 0) {
             options.push(<option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>);
             for (const type of types) {
-                options.push(<option key={index++} value={`${this.toPickValue(type)}` }>{type}...</option>);
+                options.push(<option key={index++} value={this.toPickValue(type)}>{type}...</option>);
             }
         }
 
@@ -197,6 +197,6 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
         if (!workspaceFolderUri || !multiRoot) {
             return configuration.name;
         }
-        return configuration.name + ' (' + new URI(workspaceFolderUri).path.base + ')';
+        return `${configuration.name} (${new URI(workspaceFolderUri).path.base})`;
     }
 }
