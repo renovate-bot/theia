@@ -109,7 +109,7 @@ export interface DebugService extends Disposable {
      * Event handle to indicate when one or more dynamic debug configuration providers
      * have been registered or unregistered.
      */
-    onDidConfigurationProvidersChanged: Event<void>;
+    onDidChangeDebugConfigurationProviders: Event<void>;
 }
 
 /**

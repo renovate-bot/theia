@@ -82,7 +82,7 @@ export class DebugConfigurationManager {
     }
 
     get onDidConfigurationProvidersChanged(): Event<void> {
-        return this.debug.onDidConfigurationProvidersChanged;
+        return this.debug.onDidChangeDebugConfigurationProviders;
     }
 
     protected debugConfigurationTypeKey: ContextKey<string>;

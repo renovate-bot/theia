@@ -35,7 +35,7 @@ export class DebugServiceImpl implements DebugService {
     @inject(DebugAdapterContributionRegistry)
     protected readonly registry: DebugAdapterContributionRegistry;
 
-    get onDidConfigurationProvidersChanged(): Event<void> {
+    get onDidChangeDebugConfigurationProviders(): Event<void> {
         return Event.None;
     }
 

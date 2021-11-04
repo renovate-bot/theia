@@ -76,7 +76,7 @@ export class PluginDebugService implements DebugService, PluginDebugAdapterContr
     protected readonly toDispose = new DisposableCollection();
 
     protected readonly onDidConfigurationProvidersChangedEmitter = new Emitter<void>();
-    get onDidConfigurationProvidersChanged(): Event<void> {
+    get onDidChangeDebugConfigurationProviders(): Event<void> {
         return this.onDidConfigurationProvidersChangedEmitter.event;
     }
 

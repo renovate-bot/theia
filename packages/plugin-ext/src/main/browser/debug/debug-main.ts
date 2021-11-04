@@ -179,7 +179,7 @@ export class DebugMainImpl implements DebugMain, Disposable {
         }
     }
 
-    async $onDidChangeDebugConfigurationProvider(): Promise<void> {
+    async $onDidChangeDebugConfigurationProviders(): Promise<void> {
         this.pluginDebugService.fireOnDidConfigurationProvidersChanged();
     }
 
