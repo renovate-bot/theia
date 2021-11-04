@@ -21,8 +21,7 @@ import { RPCProtocol } from '../../../common/rpc-protocol';
 import {
     DebugMain,
     DebugExt,
-    MAIN_RPC_CONTEXT,
-    DebugConfigurationProviderTriggerKind
+    MAIN_RPC_CONTEXT
 } from '../../../common/plugin-api-rpc';
 import { DebugSessionManager } from '@theia/debug/lib/browser/debug-session-manager';
 import { Breakpoint, WorkspaceFolder } from '../../../common/plugin-api-rpc-model';
@@ -46,7 +45,7 @@ import { PluginDebugSessionContributionRegistrator, PluginDebugSessionContributi
 import { Disposable, DisposableCollection } from '@theia/core/lib/common/disposable';
 import { PluginDebugSessionFactory } from './plugin-debug-session-factory';
 import { PluginWebSocketChannel } from '../../../common/connection';
-import { PluginDebugAdapterContributionRegistrator, PluginDebugConfigurationProviderRegistrator, PluginDebugService } from './plugin-debug-service';
+import { PluginDebugService } from './plugin-debug-service';
 import { HostedPluginSupport } from '../../../hosted/browser/hosted-plugin';
 import { DebugFunctionBreakpoint } from '@theia/debug/lib/browser/model/debug-function-breakpoint';
 import { FileService } from '@theia/filesystem/lib/browser/file-service';
@@ -69,8 +68,7 @@ export class DebugMainImpl implements DebugMain, Disposable {
     private readonly outputChannelManager: OutputChannelManager;
     private readonly debugPreferences: DebugPreferences;
     private readonly sessionContributionRegistrator: PluginDebugSessionContributionRegistrator;
-    private readonly adapterContributionRegistrator: PluginDebugAdapterContributionRegistrator;
-    private readonly debugConfigurationProviderRegistrator: PluginDebugConfigurationProviderRegistrator;
+    private readonly pluginDebugService: PluginDebugService;
     private readonly fileService: FileService;
     private readonly pluginService: HostedPluginSupport;
     private readonly debugContributionProvider: ContributionProvider<DebugContribution>;
@@ -90,8 +88,7 @@ export class DebugMainImpl implements DebugMain, Disposable {
         this.messages = container.get(MessageClient);
         this.outputChannelManager = container.get(OutputChannelManager);
         this.debugPreferences = container.get(DebugPreferences);
-        this.adapterContributionRegistrator = container.get(PluginDebugService);
-        this.debugConfigurationProviderRegistrator = container.get(PluginDebugService);
+        this.pluginDebugService = container.get(PluginDebugService);
         this.sessionContributionRegistrator = container.get(PluginDebugSessionContributionRegistry);
         this.debugContributionProvider = container.getNamed(ContributionProvider, DebugContribution);
         this.fileService = container.get(FileService);
@@ -164,7 +161,7 @@ export class DebugMainImpl implements DebugMain, Disposable {
         );
         this.debuggerContributions.set(debugType, toDispose);
         toDispose.pushAll([
-            this.adapterContributionRegistrator.registerDebugAdapterContribution(
+            this.pluginDebugService.registerDebugAdapterContribution(
                 new PluginDebugAdapterContribution(description, this.debugExt, this.pluginService)
             ),
             this.sessionContributionRegistrator.registerDebugSessionContribution({
@@ -182,12 +179,8 @@ export class DebugMainImpl implements DebugMain, Disposable {
         }
     }
 
-    async $registerDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Promise<void> {
-        this.toDispose.push(this.debugConfigurationProviderRegistrator.registerDebugConfigurationProvider(debugType, trigger));
-    }
-
-    async $unregisterDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Promise<void> {
-        return Promise.resolve(this.debugConfigurationProviderRegistrator.unregisterDebugConfigurationProvider(debugType, trigger));
+    async $onDidChangeDebugConfigurationProvider(): Promise<void> {
+        this.pluginDebugService.fireOnDidConfigurationProvidersChanged();
     }
 
     async $addBreakpoints(breakpoints: Breakpoint[]): Promise<void> {

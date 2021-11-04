@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
-import debounce = require('p-debounce');
+import debounce = require('@theia/core/shared/lodash.debounce');
 import { DebugService, DebuggerDescription, DebugPath } from '@theia/debug/lib/common/debug-service';
 import { Emitter, Event } from '@theia/core';
 import { Disposable, DisposableCollection } from '@theia/core/lib/common/disposable';
@@ -49,7 +49,7 @@ export interface PluginDebugAdapterContributionRegistrator {
 /**
  * Debug configuration provider registrator.
  */
- export interface PluginDebugConfigurationProviderRegistrator {
+export interface PluginDebugConfigurationProviderRegistrator {
     /**
      * Registers a debug configuration provider.
      * @param debugType The provider's debug type
@@ -69,7 +69,7 @@ export interface PluginDebugAdapterContributionRegistrator {
  * Debug service to work with plugin and extension contributions.
  */
 @injectable()
-export class PluginDebugService implements DebugService, PluginDebugAdapterContributionRegistrator, PluginDebugConfigurationProviderRegistrator {
+export class PluginDebugService implements DebugService, PluginDebugAdapterContributionRegistrator {
 
     protected readonly debuggers: DebuggerContribution[] = [];
     protected readonly contributors = new Map<string, PluginDebugAdapterContribution>();
@@ -119,21 +119,10 @@ export class PluginDebugService implements DebugService, PluginDebugAdapterContr
         this.contributors.delete(debugType);
     }
 
-    registerDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Disposable {
-        // The debug service does not currently need to keep track of the configuration providers
-        // however it's necessary to notify the availability of them, so the available configurations can be fetched
-        this.fireOnDidConfigurationProvidersChanged();
-        return Disposable.NULL;
-    }
-
     // debouncing to send a single notification for multiple registrations at initialization time
     fireOnDidConfigurationProvidersChanged = debounce(() => {
         this.onDidConfigurationProvidersChangedEmitter.fire();
     }, 100);
-
-    unregisterDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): void {
-        this.fireOnDidConfigurationProvidersChanged();
-    }
 
     async debugTypes(): Promise<string[]> {
         const debugTypes = new Set(await this.delegated.debugTypes());

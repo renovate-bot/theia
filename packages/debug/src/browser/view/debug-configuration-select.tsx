@@ -19,7 +19,6 @@ import * as React from '@theia/core/shared/react';
 import { DebugConfiguration } from '../../common/debug-common';
 import { DebugConfigurationManager } from '../debug-configuration-manager';
 import { DebugSessionOptions, InternalDebugSessionOptions } from '../debug-session-options';
-import { DisposableCollection } from '@theia/core/lib/common/disposable';
 import { QuickInputService } from '@theia/core/lib/browser';
 import { nls } from '@theia/core/lib/common/nls';
 
@@ -116,22 +115,19 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
         }
 
         const quickPick = this.quickInputService.createQuickPick<IDynamicPickItem>();
-        const disposables = new DisposableCollection(quickPick);
-        quickPick.busy = true;
+        quickPick.items = picks;
         quickPick.placeholder = 'Select Launch Configuration';
         quickPick.show();
 
-        const pickedItemPromise = new Promise<IDynamicPickItem | undefined>(resolve => {
-            disposables.push(quickPick.onDidAccept(() => {
+        const selected: IDynamicPickItem | undefined = await new Promise(resolve => {
+            // If the user presses `Escape` then `quickPick.onDidAccept` will fire
+            // and `quickPick.activeItems` will be empty.
+            quickPick.onDidAccept(() => {
                 resolve(quickPick.activeItems[0]);
-            }));
+            });
         });
 
-        quickPick.items = picks;
-        quickPick.busy = false;
-        const selected = await pickedItemPromise;
-
-        disposables.dispose();
+        quickPick.dispose();
 
         if (!selected) {
             return;
@@ -146,19 +142,16 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
     };
 
     protected renderOptions(): React.ReactNode {
-        // Add stored configurations
-        const storedConfigs = Array.from(this.manager.all);
-
         let index = 0;
 
-        const options: React.ReactNode[] = storedConfigs.map(config =>
+        const options: React.ReactNode[] = Array.from(this.manager.all, config =>
             <option key={index++} value={InternalDebugSessionOptions.toValue(config)}>
                 {this.toName(config, this.props.isMultiRoot)}
             </option>
         );
 
         // Add recently used dynamic debug configurations
-        const recentDynamicOptions = this.manager.recentDynamicOptions;
+        const { recentDynamicOptions } = this.manager;
         if (recentDynamicOptions.length > 0) {
             options.push(<option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>);
             for (const dynamicOption of recentDynamicOptions) {
@@ -170,30 +163,32 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
             }
         }
 
-        // Add Dynamic configuration types for quick pick selection
-        let dynamicConfigSeparatorPresent = false;
+        // Add dynamic configuration types for quick pick selection
+        const types: string[] = [];
         for (const { type, configurations } of this.state.configsPerType) {
-            if (configurations && configurations.length > 0) {
-                if (!dynamicConfigSeparatorPresent) {
-                    options.push(<option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>);
-                    dynamicConfigSeparatorPresent = true;
-                }
-                options.push(
-                    <option key={index++} value={`${this.toPickValue(type)}` }>{`${type}...`}</option>
-                );
+            if (configurations.length > 0) {
+                types.push(type);
             }
         }
-
-        // If No configurations
-        if (options.length === 0) {
-            options.push(<option key={index++} value='__NO_CONF__'>
-                {nls.localize('vscode/debugActionViewItems/noConfigurations', 'No Configurations')}</option>);
+        if (types.length > 0) {
+            options.push(<option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>);
+        }
+        for (const type of types) {
+            options.push(<option key={index++} value={`${this.toPickValue(type)}` }>{`${type}...`}</option>);
         }
 
-        // Add the option to open the configurations file
-        options.push(<option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>);
-        options.push(<option key={index++} value='__ADD_CONF__'>
-            {nls.localize('vscode/debugActionViewItems/addConfiguration', 'Add Configuration...')}</option>);
+        if (options.length === 0) {
+            options.push(<option key={index++} value='__NO_CONF__'>{
+                nls.localize('vscode/debugActionViewItems/noConfigurations', 'No Configurations')
+            }</option>);
+        }
+
+        options.push(
+            <option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>,
+            <option key={index++} value='__ADD_CONF__'>{
+                nls.localize('vscode/debugActionViewItems/addConfiguration', 'Add Configuration...')
+            }</option>
+        );
 
         return options;
     };

@@ -74,7 +74,8 @@ export interface DebugService extends Disposable {
      * Provides dynamic debug configurations by a provider debug type
      * @returns An Array of objects containing the debug type and corresponding dynamic debug configurations array
      */
-    provideDynamicDebugConfigurations?(): Promise<{ type: string, configurations: DebugConfiguration[] }[]>;
+    provideDynamicDebugConfigurations(): Promise<{ type: string, configurations: DebugConfiguration[] }[]>;
+    // provideDynamicDebugConfigurations(): Promise<{ [type: string]: DebugConfiguration[] }>;
 
     /**
      * Resolves a [debug configuration](#DebugConfiguration) by filling in missing values
@@ -108,7 +109,7 @@ export interface DebugService extends Disposable {
      * Event handle to indicate when one or more dynamic debug configuration providers
      * have been registered or unregistered.
      */
-    onDidConfigurationProvidersChanged?: Event<void>;
+    onDidConfigurationProvidersChanged: Event<void>;
 }
 
 /**

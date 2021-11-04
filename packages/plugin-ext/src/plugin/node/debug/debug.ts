@@ -196,14 +196,14 @@ export class DebugExtImpl implements DebugExt {
             providersByTriggerKind.set(debugType, providers = new Set());
         }
         providers.add(provider);
-        this.proxy.$registerDebugConfigurationProvider(debugType, trigger);
+        this.proxy.$onDidChangeDebugConfigurationProvider();
 
         return Disposable.create(() => {
             // eslint-disable-next-line @typescript-eslint/no-shadow
             const providers = providersByTriggerKind.get(debugType);
             if (providers) {
                 if (providers.delete(provider)) {
-                    this.proxy.$unregisterDebugConfigurationProvider(debugType, trigger);
+                    this.proxy.$onDidChangeDebugConfigurationProvider();
                 }
                 if (providers.size === 0) {
                     providersByTriggerKind.delete(debugType);

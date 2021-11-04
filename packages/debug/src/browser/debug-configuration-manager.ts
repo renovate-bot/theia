@@ -81,9 +81,8 @@ export class DebugConfigurationManager {
         return this.onWillProvideDynamicDebugConfigurationEmitter.event;
     }
 
-    protected readonly onDidConfigurationProvidersChangedEmitter = new Emitter<void>();
     get onDidConfigurationProvidersChanged(): Event<void> {
-        return this.onDidConfigurationProvidersChangedEmitter.event;
+        return this.debug.onDidConfigurationProvidersChanged;
     }
 
     protected debugConfigurationTypeKey: ContextKey<string>;
@@ -92,7 +91,7 @@ export class DebugConfigurationManager {
 
     protected dynamicDebugConfigurationsPerType?: { type: string, configurations: DebugConfiguration[] }[];
     protected recentDynamicOptionsTracker: DebugSessionOptions[] = [];
-    protected loadingDataCache: DebugConfigurationManager.Data = {current: undefined, recentDynamicOptions: []};
+    protected loadingDataCache: DebugConfigurationManager.Data = { current: undefined, recentDynamicOptions: [] };
     protected initialCurrentHasChanged = false;
 
     @postConstruct()
@@ -103,9 +102,6 @@ export class DebugConfigurationManager {
                 if (e.preferenceName === 'launch') {
                     this.updateModels();
                 }
-            });
-            this.debug.onDidConfigurationProvidersChanged!(() => {
-                this.onDidConfigurationProvidersChangedEmitter.fire();
             });
             return this.updateModels();
         });
@@ -134,6 +130,9 @@ export class DebugConfigurationManager {
         this.updateCurrent();
     }, 500);
 
+    /**
+     * All _non-dynamic_ debug configurations.
+     */
     get all(): IterableIterator<DebugSessionOptions> {
         return this.getAll();
     }
@@ -212,7 +211,7 @@ export class DebugConfigurationManager {
     }
 
     protected updateCurrent(options: DebugSessionOptions | undefined = this._currentOptions): void {
-        this._currentOptions = options && this.find(options.configuration.name, options.workspaceFolderUri,  options.providerType);
+        this._currentOptions = options && this.find(options.configuration.name, options.workspaceFolderUri, options.providerType);
 
         if (!this._currentOptions) {
             const { model } = this;

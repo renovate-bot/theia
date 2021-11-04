@@ -1636,8 +1636,8 @@ export interface DebugMain {
     $appendLineToDebugConsole(value: string): Promise<void>;
     $registerDebuggerContribution(description: DebuggerDescription): Promise<void>;
     $unregisterDebuggerConfiguration(debugType: string): Promise<void>;
-    $registerDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Promise<void>;
-    $unregisterDebugConfigurationProvider(debugType: string, trigger: DebugConfigurationProviderTriggerKind): Promise<void>;
+    /** Fired when a dynamic debug configuration provider is registered/unregistered. */
+    $onDidChangeDebugConfigurationProvider(): Promise<void>;
     $addBreakpoints(breakpoints: Breakpoint[]): Promise<void>;
     $removeBreakpoints(breakpoints: string[]): Promise<void>;
     $startDebugging(folder: theia.WorkspaceFolder | undefined, nameOrConfiguration: string | theia.DebugConfiguration, options: theia.DebugSessionOptions): Promise<boolean>;
