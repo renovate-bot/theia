@@ -172,9 +172,9 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
         }
         if (types.length > 0) {
             options.push(<option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>);
-        }
-        for (const type of types) {
-            options.push(<option key={index++} value={`${this.toPickValue(type)}` }>{`${type}...`}</option>);
+            for (const type of types) {
+                options.push(<option key={index++} value={`${this.toPickValue(type)}` }>{type}...</option>);
+            }
         }
 
         if (options.length === 0) {
