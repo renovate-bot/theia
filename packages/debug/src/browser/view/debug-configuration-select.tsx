@@ -155,11 +155,9 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
         if (recentDynamicOptions.length > 0) {
             options.push(<option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>);
             for (const dynamicOption of recentDynamicOptions) {
-                options.push(
-                    <option key={index++} value={InternalDebugSessionOptions.toValue(dynamicOption)}>
-                        {this.toName(dynamicOption, this.props.isMultiRoot)} ({dynamicOption.providerType})
-                    </option>
-                );
+                options.push(<option key={index++} value={InternalDebugSessionOptions.toValue(dynamicOption)}>
+                    {this.toName(dynamicOption, this.props.isMultiRoot)} ({dynamicOption.providerType})
+                </option>);
             }
         }
 
@@ -178,16 +176,16 @@ export class DebugConfigurationSelect extends React.Component<DebugConfiguration
         }
 
         if (options.length === 0) {
-            options.push(<option key={index++} value='__NO_CONF__'>{
-                nls.localize('vscode/debugActionViewItems/noConfigurations', 'No Configurations')
-            }</option>);
+            options.push(<option key={index++} value='__NO_CONF__'>
+                {nls.localize('vscode/debugActionViewItems/noConfigurations', 'No Configurations')}
+            </option>);
         }
 
         options.push(
             <option key={index++} disabled>{DebugConfigurationSelect.SEPARATOR}</option>,
-            <option key={index++} value='__ADD_CONF__'>{
-                nls.localize('vscode/debugActionViewItems/addConfiguration', 'Add Configuration...')
-            }</option>
+            <option key={index++} value='__ADD_CONF__'>
+                {nls.localize('vscode/debugActionViewItems/addConfiguration', 'Add Configuration...')}
+            </option>
         );
 
         return options;
