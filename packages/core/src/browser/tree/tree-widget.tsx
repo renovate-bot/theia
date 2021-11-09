@@ -155,8 +155,8 @@ export namespace TreeWidget {
 @injectable()
 export class TreeWidget extends ReactWidget implements StatefulWidget {
 
-    protected searchBox: SearchBox;
-    protected searchHighlights: Map<string, TreeDecoration.CaptionHighlight>;
+    protected searchBox!: SearchBox;
+    protected searchHighlights = new Map<string, TreeDecoration.CaptionHighlight>();
 
     @inject(TreeDecoratorService)
     protected readonly decoratorService!: TreeDecoratorService;

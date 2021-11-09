@@ -27,7 +27,7 @@ export class TreeSelectionServiceImpl implements TreeSelectionService {
     protected readonly tree!: Tree;
     protected readonly onSelectionChangedEmitter = new Emitter<ReadonlyArray<Readonly<SelectableTreeNode>>>();
 
-    protected state: TreeSelectionState;
+    protected state!: TreeSelectionState;
 
     @postConstruct()
     protected init(): void {

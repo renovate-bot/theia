@@ -219,12 +219,12 @@ export class DynamicMenuBarWidget extends MenuBarWidget {
 
 }
 
-export class MenuServices {
-    readonly commandRegistry: CommandRegistry;
-    readonly keybindingRegistry: KeybindingRegistry;
-    readonly contextKeyService: ContextKeyService;
-    readonly context: ContextMenuContext;
-    readonly menuWidgetFactory: MenuWidgetFactory;
+export abstract class MenuServices {
+    abstract readonly commandRegistry: CommandRegistry;
+    abstract readonly keybindingRegistry: KeybindingRegistry;
+    abstract readonly contextKeyService: ContextKeyService;
+    abstract readonly context: ContextMenuContext;
+    abstract readonly menuWidgetFactory: MenuWidgetFactory;
 }
 
 export interface MenuWidgetFactory {

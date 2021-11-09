@@ -79,8 +79,8 @@ export class VSXExtensionData {
 }
 
 @injectable()
-export class VSXExtensionOptions {
-    readonly id: string;
+export abstract class VSXExtensionOptions {
+    abstract readonly id: string;
 }
 
 export const VSXExtensionFactory = Symbol('VSXExtensionFactory');

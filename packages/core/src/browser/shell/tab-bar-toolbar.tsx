@@ -158,9 +158,9 @@ export namespace TabBarToolbarItem {
     /**
      * Compares the items by `priority` in ascending. Undefined priorities will be treated as `0`.
      */
-    export const PRIORITY_COMPARATOR = (left: TabBarToolbarItem, right: TabBarToolbarItem) => {
+    export const PRIORITY_COMPARATOR = (left: TabBarToolbarItem | ReactTabBarToolbarItem, right: TabBarToolbarItem | ReactTabBarToolbarItem) => {
         // The navigation group is special as it will always be sorted to the top/beginning of a menu.
-        const compareGroup = (leftGroup: string | undefined = 'navigation', rightGroup: string | undefined = 'navigation') => {
+        const compareGroup = (leftGroup: string = 'navigation', rightGroup: string = 'navigation') => {
             if (leftGroup === 'navigation') {
                 return rightGroup === 'navigation' ? 0 : -1;
             }
@@ -199,7 +199,7 @@ export class TabBarToolbarRegistry implements FrontendApplicationContribution {
 
     @inject(ContributionProvider)
     @named(TabBarToolbarContribution)
-    protected readonly contributionProvider: ContributionProvider<TabBarToolbarContribution>;
+    protected readonly contributionProvider!: ContributionProvider<TabBarToolbarContribution>;
 
     protected readonly onDidChangeEmitter = new Emitter<void>();
     readonly onDidChange: Event<void> = this.onDidChangeEmitter.event;

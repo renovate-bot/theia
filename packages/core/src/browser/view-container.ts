@@ -47,8 +47,8 @@ export interface ViewContainerTitleOptions {
 }
 
 @injectable()
-export class ViewContainerIdentifier {
-    id: string;
+export abstract class ViewContainerIdentifier {
+    abstract id: string;
     progressLocationId?: string;
 }
 
@@ -71,7 +71,7 @@ export namespace DescriptionWidget {
 @injectable()
 export class ViewContainer extends BaseWidget implements StatefulWidget, ApplicationShell.TrackableWidgetProvider, TabBarDelegator {
 
-    protected panel: SplitPanel;
+    protected panel!: SplitPanel;
 
     protected currentPart: ViewContainerPart | undefined;
 
@@ -907,7 +907,7 @@ export class ViewContainerPart extends BaseWidget {
 
     protected readonly toolbar: TabBarToolbar;
 
-    protected _collapsed: boolean;
+    protected _collapsed?: boolean;
 
     uncollapsedSize: number | undefined;
     animatedSize: number | undefined;
@@ -983,6 +983,9 @@ export class ViewContainerPart extends BaseWidget {
     }
 
     get collapsed(): boolean {
+        if (this._collapsed === undefined) {
+            throw new Error('ViewContainerPart._collapsed is not set');
+        }
         return this._collapsed;
     }
 

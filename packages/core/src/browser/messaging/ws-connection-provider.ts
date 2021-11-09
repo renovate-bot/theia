@@ -23,7 +23,7 @@ import { AbstractConnectionProvider } from '../../common/messaging/abstract-conn
 import { v4 as uuid } from 'uuid';
 
 decorate(injectable(), JsonRpcProxyFactory);
-decorate(unmanaged(), JsonRpcProxyFactory, 0);
+decorate(unmanaged() as ParameterDecorator, JsonRpcProxyFactory, 0);
 
 export interface WebSocketOptions {
     /**

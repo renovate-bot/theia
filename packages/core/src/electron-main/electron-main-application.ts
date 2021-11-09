@@ -163,7 +163,7 @@ export class ElectronMainApplication {
 
     @inject(ContributionProvider)
     @named(ElectronMainApplicationContribution)
-    protected readonly contributions: ContributionProvider<ElectronMainApplicationContribution>;
+    protected readonly contributions!: ContributionProvider<ElectronMainApplicationContribution>;
 
     @inject(ElectronMainApplicationGlobals)
     protected readonly globals!: ElectronMainApplicationGlobals;

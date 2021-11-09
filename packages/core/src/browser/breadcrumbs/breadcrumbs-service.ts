@@ -31,7 +31,7 @@ export class BreadcrumbsService {
 
     protected hasSubscribed = false;
 
-    protected popupsOverlayContainer: HTMLDivElement;
+    protected popupsOverlayContainer!: HTMLDivElement;
 
     protected readonly onDidChangeBreadcrumbsEmitter = new Emitter<URI>();
 

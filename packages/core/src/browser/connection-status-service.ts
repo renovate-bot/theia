@@ -57,7 +57,7 @@ export enum ConnectionStatus {
 }
 
 @injectable()
-export class ConnectionStatusOptions {
+export abstract class ConnectionStatusOptions {
 
     static DEFAULT: ConnectionStatusOptions = {
         offlineTimeout: 5000,
@@ -66,7 +66,7 @@ export class ConnectionStatusOptions {
     /**
      * Timeout in milliseconds before the application is considered offline. Must be a positive integer.
      */
-    readonly offlineTimeout: number;
+    abstract readonly offlineTimeout: number;
 
 }
 
