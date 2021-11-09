@@ -86,8 +86,8 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
     protected readonly onDidUpdateEmitter = new Emitter<void>();
     readonly onDidUpdate: Event<void> = this.onDidUpdateEmitter.event;
 
-    @inject(SearchInWorkspaceResultTreeWidget) protected readonly resultTreeWidget: SearchInWorkspaceResultTreeWidget;
-    @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService;
+    @inject(SearchInWorkspaceResultTreeWidget) protected readonly resultTreeWidget!: SearchInWorkspaceResultTreeWidget;
+    @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
 
     @inject(SearchInWorkspaceContextKeyService)
     protected readonly contextKeyService: SearchInWorkspaceContextKeyService;
@@ -95,7 +95,7 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
     @inject(ProgressBarFactory)
     protected readonly progressBarFactory: ProgressBarFactory;
 
-    @inject(EditorManager) protected readonly editorManager: EditorManager;
+    @inject(EditorManager) protected readonly editorManager!: EditorManager;
 
     @inject(SearchInWorkspacePreferences)
     protected readonly searchInWorkspacePreferences: SearchInWorkspacePreferences;

@@ -28,9 +28,9 @@ import { FileService } from '@theia/filesystem/lib/browser/file-service';
 @injectable()
 export class TerminalLinkmatcherFiles extends AbstractCmdClickTerminalContribution {
 
-    @inject(ApplicationServer) protected appServer: ApplicationServer;
-    @inject(OpenerService) protected openerService: OpenerService;
-    @inject(FileService) protected fileService: FileService;
+    @inject(ApplicationServer) protected appServer!: ApplicationServer;
+    @inject(OpenerService) protected openerService!: OpenerService;
+    @inject(FileService) protected fileService!: FileService;
 
     protected backendOs: Promise<OS.Type>;
 

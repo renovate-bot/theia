@@ -30,9 +30,9 @@ import { nls } from '@theia/core/lib/common/nls';
 @injectable()
 export class EditorContribution implements FrontendApplicationContribution, CommandContribution, KeybindingContribution {
 
-    @inject(StatusBar) protected readonly statusBar: StatusBar;
-    @inject(EditorManager) protected readonly editorManager: EditorManager;
-    @inject(LanguageService) protected readonly languages: LanguageService;
+    @inject(StatusBar) protected readonly statusBar!: StatusBar;
+    @inject(EditorManager) protected readonly editorManager!: EditorManager;
+    @inject(LanguageService) protected readonly languages!: LanguageService;
 
     @inject(ContextKeyService)
     protected readonly contextKeyService: ContextKeyService;

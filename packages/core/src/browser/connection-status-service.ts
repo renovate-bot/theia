@@ -119,8 +119,8 @@ export class FrontendConnectionStatusService extends AbstractConnectionStatusSer
 
     private scheduledPing: number | undefined;
 
-    @inject(WebSocketConnectionProvider) protected readonly wsConnectionProvider: WebSocketConnectionProvider;
-    @inject(PingService) protected readonly pingService: PingService;
+    @inject(WebSocketConnectionProvider) protected readonly wsConnectionProvider!: WebSocketConnectionProvider;
+    @inject(PingService) protected readonly pingService!: PingService;
 
     constructor(@inject(ConnectionStatusOptions) @optional() protected readonly options: ConnectionStatusOptions = ConnectionStatusOptions.DEFAULT) {
         super(options);

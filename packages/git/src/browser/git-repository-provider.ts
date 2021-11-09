@@ -44,10 +44,10 @@ export class GitRepositoryProvider {
     @inject(GitCommitMessageValidator)
     protected readonly commitMessageValidator: GitCommitMessageValidator;
 
-    @inject(Git) protected readonly git: Git;
-    @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService;
-    @inject(ScmService) protected readonly scmService: ScmService;
-    @inject(StorageService) protected readonly storageService: StorageService;
+    @inject(Git) protected readonly git!: Git;
+    @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
+    @inject(ScmService) protected readonly scmService!: ScmService;
+    @inject(StorageService) protected readonly storageService!: StorageService;
 
     @inject(FileService)
     protected readonly fileService: FileService;

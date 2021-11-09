@@ -121,7 +121,7 @@ export class DefaultUriLabelProviderContribution implements LabelProviderContrib
     protected formatters: ResourceLabelFormatter[] = [];
     protected readonly onDidChangeEmitter = new Emitter<DidChangeLabelEvent>();
     protected homePath: string | undefined;
-    @inject(EnvVariablesServer) protected readonly envVariablesServer: EnvVariablesServer;
+    @inject(EnvVariablesServer) protected readonly envVariablesServer!: EnvVariablesServer;
 
     @postConstruct()
     init(): void {

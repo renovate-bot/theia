@@ -32,9 +32,9 @@ export class MonacoCommandRegistry {
     @inject(MonacoEditorProvider)
     protected readonly monacoEditors: MonacoEditorProvider;
 
-    @inject(CommandRegistry) protected readonly commands: CommandRegistry;
+    @inject(CommandRegistry) protected readonly commands!: CommandRegistry;
 
-    @inject(SelectionService) protected readonly selectionService: SelectionService;
+    @inject(SelectionService) protected readonly selectionService!: SelectionService;
 
     validate(command: string): string | undefined {
         return this.commands.commandIds.indexOf(command) !== -1 ? command : undefined;

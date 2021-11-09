@@ -22,7 +22,7 @@ import URI from '@theia/core/lib/common/uri';
 
 @injectable()
 export class GitOpenerInSecondaryArea implements GitResourceOpener {
-    @inject(EditorManager) protected readonly editorManager: EditorManager;
+    @inject(EditorManager) protected readonly editorManager!: EditorManager;
 
     protected refWidget: Widget;
     setRefWidget(refWidget: Widget): void {

@@ -143,11 +143,11 @@ export namespace TerminalCommands {
 export class TerminalFrontendContribution implements FrontendApplicationContribution, TerminalService, CommandContribution, MenuContribution,
     KeybindingContribution, TabBarToolbarContribution, ColorContribution {
 
-    @inject(ApplicationShell) protected readonly shell: ApplicationShell;
-    @inject(ShellTerminalServerProxy) protected readonly shellTerminalServer: ShellTerminalServerProxy;
-    @inject(WidgetManager) protected readonly widgetManager: WidgetManager;
-    @inject(FileService) protected readonly fileService: FileService;
-    @inject(SelectionService) protected readonly selectionService: SelectionService;
+    @inject(ApplicationShell) protected readonly shell!: ApplicationShell;
+    @inject(ShellTerminalServerProxy) protected readonly shellTerminalServer!: ShellTerminalServerProxy;
+    @inject(WidgetManager) protected readonly widgetManager!: WidgetManager;
+    @inject(FileService) protected readonly fileService!: FileService;
+    @inject(SelectionService) protected readonly selectionService!: SelectionService;
 
     @inject(LabelProvider)
     protected readonly labelProvider: LabelProvider;

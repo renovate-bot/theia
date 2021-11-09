@@ -47,9 +47,9 @@ interface LocalStorage {
 export class LocalStorageService implements StorageService {
     private storage: LocalStorage;
 
-    @inject(ILogger) protected logger: ILogger;
-    @inject(MessageService) protected readonly messageService: MessageService;
-    @inject(WindowService) protected readonly windowService: WindowService;
+    @inject(ILogger) protected logger!: ILogger;
+    @inject(MessageService) protected readonly messageService!: MessageService;
+    @inject(WindowService) protected readonly windowService!: WindowService;
 
     @postConstruct()
     protected init(): void {

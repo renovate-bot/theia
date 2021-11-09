@@ -60,10 +60,10 @@ export class PreferencesEditorWidget extends BaseWidget implements StatefulWidge
     // The commonly used section will duplicate preference ID's, so we'll keep a separate list of them.
     protected commonlyUsedRenderers = new Map<string, GeneralPreferenceNodeRenderer>();
 
-    @inject(PreferenceService) protected readonly preferenceService: PreferenceService;
-    @inject(PreferenceTreeModel) protected readonly model: PreferenceTreeModel;
-    @inject(PreferenceNodeRendererFactory) protected readonly rendererFactory: PreferenceNodeRendererFactory;
-    @inject(PreferencesScopeTabBar) protected readonly tabbar: PreferencesScopeTabBar;
+    @inject(PreferenceService) protected readonly preferenceService!: PreferenceService;
+    @inject(PreferenceTreeModel) protected readonly model!: PreferenceTreeModel;
+    @inject(PreferenceNodeRendererFactory) protected readonly rendererFactory!: PreferenceNodeRendererFactory;
+    @inject(PreferencesScopeTabBar) protected readonly tabbar!: PreferencesScopeTabBar;
 
     @postConstruct()
     protected async init(): Promise<void> {

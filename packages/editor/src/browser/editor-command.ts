@@ -216,7 +216,7 @@ export class EditorCommandContribution implements CommandContribution {
     @inject(QuickInputService) @optional()
     protected readonly quickInputService: QuickInputService;
 
-    @inject(MessageService) protected readonly messageService: MessageService;
+    @inject(MessageService) protected readonly messageService!: MessageService;
 
     @inject(LabelProvider)
     protected readonly labelProvider: LabelProvider;

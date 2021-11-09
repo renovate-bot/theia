@@ -27,7 +27,7 @@ export class BreadcrumbsService {
     @inject(ContributionProvider) @named(BreadcrumbsContribution)
     protected readonly contributions: ContributionProvider<BreadcrumbsContribution>;
 
-    @inject(BreadcrumbPopupContainerFactory) protected readonly breadcrumbPopupContainerFactory: BreadcrumbPopupContainerFactory;
+    @inject(BreadcrumbPopupContainerFactory) protected readonly breadcrumbPopupContainerFactory!: BreadcrumbPopupContainerFactory;
 
     protected hasSubscribed = false;
 

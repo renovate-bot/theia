@@ -49,8 +49,8 @@ export interface GeneralPreferenceNodeRenderer extends Disposable {
 
 @injectable()
 export abstract class PreferenceNodeRenderer implements Disposable, GeneralPreferenceNodeRenderer {
-    @inject(Preference.Node) protected readonly preferenceNode: Preference.Node;
-    @inject(PreferenceTreeLabelProvider) protected readonly labelProvider: PreferenceTreeLabelProvider;
+    @inject(Preference.Node) protected readonly preferenceNode!: Preference.Node;
+    @inject(PreferenceTreeLabelProvider) protected readonly labelProvider!: PreferenceTreeLabelProvider;
 
     protected attached = false;
 
@@ -145,12 +145,12 @@ export class PreferenceHeaderRenderer extends PreferenceNodeRenderer {
 export abstract class PreferenceLeafNodeRenderer<ValueType extends JSONValue, InteractableType extends HTMLElement>
     extends PreferenceNodeRenderer
     implements Required<GeneralPreferenceNodeRenderer> {
-    @inject(Preference.Node) protected readonly preferenceNode: Preference.LeafNode;
-    @inject(PreferenceService) protected readonly preferenceService: PreferenceService;
-    @inject(ContextMenuRenderer) protected readonly menuRenderer: ContextMenuRenderer;
-    @inject(PreferencesScopeTabBar) protected readonly scopeTracker: PreferencesScopeTabBar;
-    @inject(PreferenceTreeModel) protected readonly model: PreferenceTreeModel;
-    @inject(PreferencesSearchbarWidget) protected readonly searchbar: PreferencesSearchbarWidget;
+    @inject(Preference.Node) protected readonly preferenceNode!: Preference.LeafNode;
+    @inject(PreferenceService) protected readonly preferenceService!: PreferenceService;
+    @inject(ContextMenuRenderer) protected readonly menuRenderer!: ContextMenuRenderer;
+    @inject(PreferencesScopeTabBar) protected readonly scopeTracker!: PreferencesScopeTabBar;
+    @inject(PreferenceTreeModel) protected readonly model!: PreferenceTreeModel;
+    @inject(PreferencesSearchbarWidget) protected readonly searchbar!: PreferencesSearchbarWidget;
 
     protected headlineWrapper: HTMLDivElement;
     protected gutter: HTMLDivElement;

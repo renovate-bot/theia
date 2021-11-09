@@ -51,12 +51,12 @@ export interface PreferencesScopeTabBarState {
 export class PreferencesScopeTabBar extends TabBar<Widget> implements StatefulWidget {
 
     static ID = 'preferences-scope-tab-bar';
-    @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService;
-    @inject(PreferenceScopeCommandManager) protected readonly preferencesMenuFactory: PreferenceScopeCommandManager;
-    @inject(ContextMenuRenderer) protected readonly contextMenuRenderer: ContextMenuRenderer;
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
-    @inject(CommandRegistry) protected readonly commandRegistry: CommandRegistry;
-    @inject(MenuModelRegistry) protected readonly menuModelRegistry: MenuModelRegistry;
+    @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
+    @inject(PreferenceScopeCommandManager) protected readonly preferencesMenuFactory!: PreferenceScopeCommandManager;
+    @inject(ContextMenuRenderer) protected readonly contextMenuRenderer!: ContextMenuRenderer;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
+    @inject(CommandRegistry) protected readonly commandRegistry!: CommandRegistry;
+    @inject(MenuModelRegistry) protected readonly menuModelRegistry!: MenuModelRegistry;
 
     protected readonly onScopeChangedEmitter = new Emitter<Preference.SelectedScopeDetails>();
     readonly onScopeChanged = this.onScopeChangedEmitter.event;

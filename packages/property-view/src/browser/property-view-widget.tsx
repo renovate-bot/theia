@@ -33,8 +33,8 @@ export class PropertyViewWidget extends BaseWidget {
 
     protected toDisposeOnDetach = new DisposableCollection();
 
-    @inject(PropertyViewService) protected readonly propertyViewService: PropertyViewService;
-    @inject(SelectionService) protected readonly selectionService: SelectionService;
+    @inject(PropertyViewService) protected readonly propertyViewService!: PropertyViewService;
+    @inject(SelectionService) protected readonly selectionService!: SelectionService;
 
     @postConstruct()
     init(): void {

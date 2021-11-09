@@ -112,13 +112,13 @@ export class SidePanelHandler {
      */
     protected options: SidePanel.Options;
 
-    @inject(TabBarToolbarRegistry) protected tabBarToolBarRegistry: TabBarToolbarRegistry;
-    @inject(TabBarToolbarFactory) protected tabBarToolBarFactory: () => TabBarToolbar;
-    @inject(TabBarRendererFactory) protected tabBarRendererFactory: () => TabBarRenderer;
-    @inject(SidebarTopMenuWidgetFactory) protected sidebarTopWidgetFactory: () => SidebarTopMenuWidget;
-    @inject(SidebarBottomMenuWidgetFactory) protected sidebarBottomWidgetFactory: () => SidebarBottomMenuWidget;
-    @inject(SplitPositionHandler) protected splitPositionHandler: SplitPositionHandler;
-    @inject(FrontendApplicationStateService) protected readonly applicationStateService: FrontendApplicationStateService;
+    @inject(TabBarToolbarRegistry) protected tabBarToolBarRegistry!: TabBarToolbarRegistry;
+    @inject(TabBarToolbarFactory) protected tabBarToolBarFactory!: () => TabBarToolbar;
+    @inject(TabBarRendererFactory) protected tabBarRendererFactory!: () => TabBarRenderer;
+    @inject(SidebarTopMenuWidgetFactory) protected sidebarTopWidgetFactory!: () => SidebarTopMenuWidget;
+    @inject(SidebarBottomMenuWidgetFactory) protected sidebarBottomWidgetFactory!: () => SidebarBottomMenuWidget;
+    @inject(SplitPositionHandler) protected splitPositionHandler!: SplitPositionHandler;
+    @inject(FrontendApplicationStateService) protected readonly applicationStateService!: FrontendApplicationStateService;
 
     @inject(ContextMenuRenderer)
     protected readonly contextMenuRenderer: ContextMenuRenderer;

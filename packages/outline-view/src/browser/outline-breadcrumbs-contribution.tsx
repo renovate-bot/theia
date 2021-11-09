@@ -29,7 +29,7 @@ export interface BreadcrumbPopupOutlineViewFactory {
     (): BreadcrumbPopupOutlineView;
 }
 export class BreadcrumbPopupOutlineView extends OutlineViewWidget {
-    @inject(OpenerService) protected readonly openerService: OpenerService;
+    @inject(OpenerService) protected readonly openerService!: OpenerService;
 
     protected handleClickEvent(node: TreeNode | undefined, event: React.MouseEvent<HTMLElement>): void {
         if (UriSelection.is(node) && OutlineSymbolInformationNode.hasRange(node)) {

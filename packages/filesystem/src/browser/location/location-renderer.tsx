@@ -80,8 +80,8 @@ export interface LocationListRendererOptions {
 @injectable()
 export class LocationListRenderer extends ReactRenderer {
 
-    @inject(FileService) protected readonly fileService: FileService;
-    @inject(EnvVariablesServer) protected readonly variablesServer: EnvVariablesServer;
+    @inject(FileService) protected readonly fileService!: FileService;
+    @inject(EnvVariablesServer) protected readonly variablesServer!: EnvVariablesServer;
 
     protected directoryCache: ResolvedDirectoryCache;
     protected service: LocationService;

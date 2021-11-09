@@ -38,9 +38,9 @@ export abstract class AbstractResourcePreferenceProvider extends PreferenceProvi
     protected readonly loading = new Deferred();
     protected modelInitialized = false;
 
-    @inject(MessageService) protected readonly messageService: MessageService;
-    @inject(PreferenceSchemaProvider) protected readonly schemaProvider: PreferenceSchemaProvider;
-    @inject(FileService) protected readonly fileService: FileService;
+    @inject(MessageService) protected readonly messageService!: MessageService;
+    @inject(PreferenceSchemaProvider) protected readonly schemaProvider!: PreferenceSchemaProvider;
+    @inject(FileService) protected readonly fileService!: FileService;
 
     @inject(PreferenceConfigurations)
     protected readonly configurations: PreferenceConfigurations;

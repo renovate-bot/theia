@@ -24,8 +24,8 @@ import * as React from '@theia/core/shared/react';
 @injectable()
 export class GitCommitDetailHeaderWidget extends ReactWidget {
 
-    @inject(KeybindingRegistry) protected readonly keybindings: KeybindingRegistry;
-    @inject(ScmAvatarService) protected readonly avatarService: ScmAvatarService;
+    @inject(KeybindingRegistry) protected readonly keybindings!: KeybindingRegistry;
+    @inject(ScmAvatarService) protected readonly avatarService!: ScmAvatarService;
 
     protected options: Git.Options.Diff;
 

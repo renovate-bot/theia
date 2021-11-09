@@ -55,18 +55,18 @@ export type WorkspaceState = keyof typeof WorkspaceStates;
 @injectable()
 export class WorkspaceFrontendContribution implements CommandContribution, KeybindingContribution, MenuContribution, FrontendApplicationContribution {
 
-    @inject(ApplicationShell) protected readonly applicationShell: ApplicationShell;
-    @inject(MessageService) protected readonly messageService: MessageService;
-    @inject(FileService) protected readonly fileService: FileService;
-    @inject(OpenerService) protected readonly openerService: OpenerService;
-    @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService;
-    @inject(StorageService) protected readonly workspaceStorage: StorageService;
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
-    @inject(QuickOpenWorkspace) protected readonly quickOpenWorkspace: QuickOpenWorkspace;
-    @inject(FileDialogService) protected readonly fileDialogService: FileDialogService;
-    @inject(WorkspacePreferences) protected preferences: WorkspacePreferences;
-    @inject(SelectionService) protected readonly selectionService: SelectionService;
-    @inject(CommandRegistry) protected readonly commandRegistry: CommandRegistry;
+    @inject(ApplicationShell) protected readonly applicationShell!: ApplicationShell;
+    @inject(MessageService) protected readonly messageService!: MessageService;
+    @inject(FileService) protected readonly fileService!: FileService;
+    @inject(OpenerService) protected readonly openerService!: OpenerService;
+    @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
+    @inject(StorageService) protected readonly workspaceStorage!: StorageService;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
+    @inject(QuickOpenWorkspace) protected readonly quickOpenWorkspace!: QuickOpenWorkspace;
+    @inject(FileDialogService) protected readonly fileDialogService!: FileDialogService;
+    @inject(WorkspacePreferences) protected preferences!: WorkspacePreferences;
+    @inject(SelectionService) protected readonly selectionService!: SelectionService;
+    @inject(CommandRegistry) protected readonly commandRegistry!: CommandRegistry;
 
     @inject(ContextKeyService)
     protected readonly contextKeyService: ContextKeyService;

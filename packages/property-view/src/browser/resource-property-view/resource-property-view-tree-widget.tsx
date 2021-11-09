@@ -45,7 +45,7 @@ export class ResourcePropertyViewTreeWidget extends TreeWidget implements Proper
     protected propertiesTree: Map<string, ResourcePropertiesCategoryNode>;
     protected currentSelection: Object | undefined;
 
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
 
     constructor(
         @inject(TreeProps) readonly props: TreeProps,

@@ -44,9 +44,9 @@ export class DefaultFileDialogService implements FileDialogService {
     @inject(FileService)
     protected readonly fileService: FileService;
 
-    @inject(OpenFileDialogFactory) protected readonly openFileDialogFactory: OpenFileDialogFactory;
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
-    @inject(SaveFileDialogFactory) protected readonly saveFileDialogFactory: SaveFileDialogFactory;
+    @inject(OpenFileDialogFactory) protected readonly openFileDialogFactory!: OpenFileDialogFactory;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
+    @inject(SaveFileDialogFactory) protected readonly saveFileDialogFactory!: SaveFileDialogFactory;
 
     async showOpenDialog(props: OpenFileDialogProps & { canSelectMany: true }, folder?: FileStat): Promise<MaybeArray<URI> | undefined>;
     async showOpenDialog(props: OpenFileDialogProps, folder?: FileStat): Promise<URI | undefined>;

@@ -122,9 +122,9 @@ export abstract class FileDialog<T> extends AbstractDialog<T> {
     protected treeFiltersRenderer: FileDialogTreeFiltersRenderer | undefined;
     protected treePanel: Panel;
 
-    @inject(FileDialogWidget) readonly widget: FileDialogWidget;
-    @inject(LocationListRendererFactory) readonly locationListFactory: LocationListRendererFactory;
-    @inject(FileDialogTreeFiltersRendererFactory) readonly treeFiltersFactory: FileDialogTreeFiltersRendererFactory;
+    @inject(FileDialogWidget) readonly widget!: FileDialogWidget;
+    @inject(LocationListRendererFactory) readonly locationListFactory!: LocationListRendererFactory;
+    @inject(FileDialogTreeFiltersRendererFactory) readonly treeFiltersFactory!: FileDialogTreeFiltersRendererFactory;
 
     constructor(
         @inject(FileDialogProps) readonly props: FileDialogProps

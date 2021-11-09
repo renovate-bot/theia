@@ -56,8 +56,8 @@ export function bindViewContribution<T extends AbstractViewContribution<any>>(bi
 @injectable()
 export abstract class AbstractViewContribution<T extends Widget> implements CommandContribution, MenuContribution, KeybindingContribution {
 
-    @inject(WidgetManager) protected readonly widgetManager: WidgetManager;
-    @inject(ApplicationShell) protected readonly shell: ApplicationShell;
+    @inject(WidgetManager) protected readonly widgetManager!: WidgetManager;
+    @inject(ApplicationShell) protected readonly shell!: ApplicationShell;
 
     @inject(QuickViewService) @optional()
     protected readonly quickView: QuickViewService;

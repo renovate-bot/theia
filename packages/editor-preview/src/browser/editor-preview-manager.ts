@@ -27,8 +27,8 @@ import { FrontendApplicationStateService } from '@theia/core/lib/browser/fronten
 export class EditorPreviewManager extends EditorManager {
     readonly id = EditorPreviewWidgetFactory.ID;
 
-    @inject(EditorPreviewPreferences) protected readonly preferences: EditorPreviewPreferences;
-    @inject(FrontendApplicationStateService) protected readonly stateService: FrontendApplicationStateService;
+    @inject(EditorPreviewPreferences) protected readonly preferences!: EditorPreviewPreferences;
+    @inject(FrontendApplicationStateService) protected readonly stateService!: FrontendApplicationStateService;
 
     protected currentPreview: EditorPreviewWidget | undefined;
     protected toDisposeOnPreviewChange = new DisposableCollection();

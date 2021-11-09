@@ -28,10 +28,10 @@ import * as React from '@theia/core/shared/react';
 @injectable()
 export class GitDiffHeaderWidget extends ReactWidget implements StatefulWidget {
 
-    @inject(KeybindingRegistry) protected readonly keybindings: KeybindingRegistry;
-    @inject(ScmService) protected readonly scmService: ScmService;
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
-    @inject(ScmFileChangeLabelProvider) protected readonly scmLabelProvider: ScmFileChangeLabelProvider;
+    @inject(KeybindingRegistry) protected readonly keybindings!: KeybindingRegistry;
+    @inject(ScmService) protected readonly scmService!: ScmService;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
+    @inject(ScmFileChangeLabelProvider) protected readonly scmLabelProvider!: ScmFileChangeLabelProvider;
 
     protected options: Git.Options.Diff;
 

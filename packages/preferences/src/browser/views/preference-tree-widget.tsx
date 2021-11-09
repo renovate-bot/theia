@@ -33,9 +33,9 @@ export class PreferencesTreeWidget extends TreeWidget {
     protected shouldFireSelectionEvents: boolean = true;
     protected firstVisibleLeafNodeID: string;
 
-    @inject(PreferenceTreeModel) readonly model: PreferenceTreeModel;
-    @inject(TreeProps) protected readonly treeProps: TreeProps;
-    @inject(ContextMenuRenderer) protected readonly contextMenuRenderer: ContextMenuRenderer;
+    @inject(PreferenceTreeModel) readonly model!: PreferenceTreeModel;
+    @inject(TreeProps) protected readonly treeProps!: TreeProps;
+    @inject(ContextMenuRenderer) protected readonly contextMenuRenderer!: ContextMenuRenderer;
 
     @postConstruct()
     init(): void {

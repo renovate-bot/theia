@@ -37,8 +37,8 @@ export class ProblemDecorator implements TreeDecorator {
 
     @inject(ProblemPreferences)
     protected problemPreferences: ProblemPreferences;
-    @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService;
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
+    @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
 
     readonly id = 'theia-problem-decorator';
 

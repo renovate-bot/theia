@@ -30,12 +30,12 @@ export class QuickOpenWorkspace {
     protected items: Array<QuickPickItem>;
     protected opened: boolean;
 
-    @inject(QuickInputService) @optional() protected readonly quickInputService: QuickInputService;
-    @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService;
-    @inject(FileService) protected readonly fileService: FileService;
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
-    @inject(WorkspacePreferences) protected preferences: WorkspacePreferences;
-    @inject(EnvVariablesServer) protected readonly envServer: EnvVariablesServer;
+    @inject(QuickInputService) @optional() protected readonly quickInputService!: QuickInputService;
+    @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
+    @inject(FileService) protected readonly fileService!: FileService;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
+    @inject(WorkspacePreferences) protected preferences!: WorkspacePreferences;
+    @inject(EnvVariablesServer) protected readonly envServer!: EnvVariablesServer;
 
     async open(workspaces: string[]): Promise<void> {
         this.items = [];

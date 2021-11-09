@@ -39,16 +39,16 @@ export enum GitAction {
 @injectable()
 export class GitQuickOpenService {
 
-    @inject(GitErrorHandler) protected readonly gitErrorHandler: GitErrorHandler;
-    @inject(ProgressService) protected readonly progressService: ProgressService;
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
+    @inject(GitErrorHandler) protected readonly gitErrorHandler!: GitErrorHandler;
+    @inject(ProgressService) protected readonly progressService!: ProgressService;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
 
-    @inject(Git) protected readonly git: Git;
-    @inject(GitRepositoryProvider) protected readonly repositoryProvider: GitRepositoryProvider;
-    @inject(QuickInputService) @optional() protected readonly quickInputService: QuickInputService;
-    @inject(MessageService) protected readonly messageService: MessageService;
-    @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService;
-    @inject(FileService) protected readonly fileService: FileService;
+    @inject(Git) protected readonly git!: Git;
+    @inject(GitRepositoryProvider) protected readonly repositoryProvider!: GitRepositoryProvider;
+    @inject(QuickInputService) @optional() protected readonly quickInputService!: QuickInputService;
+    @inject(MessageService) protected readonly messageService!: MessageService;
+    @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
+    @inject(FileService) protected readonly fileService!: FileService;
 
     async clone(url?: string, folder?: string, branch?: string): Promise<string | undefined> {
         return this.withProgress(async () => {

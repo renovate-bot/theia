@@ -85,11 +85,11 @@ export namespace SearchInWorkspaceCommands {
 @injectable()
 export class SearchInWorkspaceFrontendContribution extends AbstractViewContribution<SearchInWorkspaceWidget> implements FrontendApplicationContribution, TabBarToolbarContribution {
 
-    @inject(SelectionService) protected readonly selectionService: SelectionService;
-    @inject(LabelProvider) protected readonly labelProvider: LabelProvider;
-    @inject(WorkspaceService) protected readonly workspaceService: WorkspaceService;
-    @inject(FileService) protected readonly fileService: FileService;
-    @inject(EditorManager) protected readonly editorManager: EditorManager;
+    @inject(SelectionService) protected readonly selectionService!: SelectionService;
+    @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
+    @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
+    @inject(FileService) protected readonly fileService!: FileService;
+    @inject(EditorManager) protected readonly editorManager!: EditorManager;
 
     @inject(SearchInWorkspaceContextKeyService)
     protected readonly contextKeyService: SearchInWorkspaceContextKeyService;

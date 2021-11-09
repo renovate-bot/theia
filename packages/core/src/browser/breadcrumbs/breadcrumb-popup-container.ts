@@ -38,9 +38,9 @@ export const BreadcrumbID = Symbol('BreadcrumbID');
  */
 @injectable()
 export class BreadcrumbPopupContainer implements Disposable {
-    @inject(RendererHost) protected readonly parent: RendererHost;
-    @inject(BreadcrumbID) public readonly breadcrumbId: BreadcrumbID;
-    @inject(Coordinate) protected readonly position: Coordinate;
+    @inject(RendererHost) protected readonly parent!: RendererHost;
+    @inject(BreadcrumbID) public readonly breadcrumbId!: BreadcrumbID;
+    @inject(Coordinate) protected readonly position!: Coordinate;
 
     protected onDidDisposeEmitter = new Emitter<void>();
     protected toDispose: DisposableCollection = new DisposableCollection(this.onDidDisposeEmitter);

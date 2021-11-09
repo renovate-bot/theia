@@ -40,12 +40,12 @@ export class TimelineWidget extends BaseWidget {
 
     private readonly timelinesBySource = new Map<string, TimelineAggregate>();
 
-    @inject(TimelineTreeWidget) protected readonly resourceWidget: TimelineTreeWidget;
-    @inject(TimelineService) protected readonly timelineService: TimelineService;
-    @inject(CommandRegistry) protected readonly commandRegistry: CommandRegistry;
-    @inject(ApplicationShell) protected readonly applicationShell: ApplicationShell;
-    @inject(TimelineEmptyWidget) protected readonly timelineEmptyWidget: TimelineEmptyWidget;
-    @inject(SelectionService) protected readonly selectionService: SelectionService;
+    @inject(TimelineTreeWidget) protected readonly resourceWidget!: TimelineTreeWidget;
+    @inject(TimelineService) protected readonly timelineService!: TimelineService;
+    @inject(CommandRegistry) protected readonly commandRegistry!: CommandRegistry;
+    @inject(ApplicationShell) protected readonly applicationShell!: ApplicationShell;
+    @inject(TimelineEmptyWidget) protected readonly timelineEmptyWidget!: TimelineEmptyWidget;
+    @inject(SelectionService) protected readonly selectionService!: SelectionService;
 
     constructor() {
         super();
