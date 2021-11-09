@@ -56,13 +56,13 @@ export class FileUploadService {
     protected deferredUpload?: Deferred<FileUploadResult>;
 
     @inject(MessageService)
-    protected readonly messageService: MessageService;
+    protected readonly messageService!: MessageService;
 
     @inject(FileSystemPreferences)
-    protected fileSystemPreferences: FileSystemPreferences;
+    protected fileSystemPreferences!: FileSystemPreferences;
 
     @inject(FileService)
-    protected fileService: FileService;
+    protected fileService!: FileService;
 
     get maxConcurrentUploads(): number {
         const maxConcurrentUploads = this.fileSystemPreferences['files.maxConcurrentUploads'];

@@ -32,10 +32,10 @@ export type WorkspaceFilePreferenceProviderFactory = (options: WorkspaceFilePref
 export class WorkspaceFilePreferenceProvider extends AbstractResourcePreferenceProvider {
 
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly workspaceService!: WorkspaceService;
 
     @inject(WorkspaceFilePreferenceProviderOptions)
-    protected readonly options: WorkspaceFilePreferenceProviderOptions;
+    protected readonly options!: WorkspaceFilePreferenceProviderOptions;
 
     protected sectionsInsideSettings = new Set<string>();
 

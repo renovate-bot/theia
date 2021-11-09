@@ -129,7 +129,7 @@ export class LocationWithoutSchemeMapper implements LocationMapper {
 export class FileLocationMapper implements LocationMapper {
 
     @inject(MiniBrowserEnvironment)
-    protected miniBrowserEnvironment: MiniBrowserEnvironment;
+    protected miniBrowserEnvironment!: MiniBrowserEnvironment;
 
     canHandle(location: string): MaybePromise<number> {
         return location.startsWith('file://') ? 1 : 0;

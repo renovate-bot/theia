@@ -338,7 +338,7 @@ export class SaveFileDialog extends FileDialog<URI | undefined> {
     protected fileNameField: HTMLInputElement | undefined;
 
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     constructor(@inject(SaveFileDialogProps) readonly props: SaveFileDialogProps) {
         super(props);

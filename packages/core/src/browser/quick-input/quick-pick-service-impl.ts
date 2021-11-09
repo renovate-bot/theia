@@ -23,7 +23,7 @@ import { QuickInputService, QuickPickItem, QuickInputButtonHandle, QuickPick, Qu
 export class QuickPickServiceImpl implements QuickPickService {
 
     @inject(QuickInputService) @optional()
-    protected readonly quickInputService: QuickInputService;
+    protected readonly quickInputService!: QuickInputService;
 
     private readonly onDidHideEmitter = new Emitter<void>();
     readonly onDidHide = this.onDidHideEmitter.event;

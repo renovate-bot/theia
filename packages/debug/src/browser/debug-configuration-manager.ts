@@ -45,28 +45,28 @@ export interface WillProvideDebugConfiguration extends WaitUntilEvent {
 export class DebugConfigurationManager {
 
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
-    @inject(EditorManager)
-    protected readonly editorManager: EditorManager;
-    @inject(DebugService)
-    protected readonly debug: DebugService;
+    protected readonly workspaceService!: WorkspaceService; @inject(WorkspaceService)
+    protected readonly workspaceService!:    @inject(WorkspaceService)
+    protected readonly workspaceService!: Manager: Editor    @inject(WorkspaceService)
+    protected readonly workspaceService!:
+        protected readonly debug: DebugService;
     @inject(QuickPickService)
     protected readonly quickPickService: QuickPickService;
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     @inject(MonacoTextModelService)
-    protected readonly textModelService: MonacoTextModelService;
+    protected readonly textModelService!: MonacoTextModelService;
 
     @inject(PreferenceService)
-    protected readonly preferences: PreferenceService;
+    protected readonly preferences!: PreferenceService;
 
     @inject(PreferenceConfigurations)
-    protected readonly preferenceConfigurations: PreferenceConfigurations;
+    protected readonly preferenceConfigurations!: PreferenceConfigurations;
 
     @inject(WorkspaceVariableContribution)
-    protected readonly workspaceVariables: WorkspaceVariableContribution;
+    protected readonly workspaceVariables!: WorkspaceVariableContribution;
 
     protected readonly onDidChangeEmitter = new Emitter<void>();
     readonly onDidChange: Event<void> = this.onDidChangeEmitter.event;
@@ -347,7 +347,7 @@ export class DebugConfigurationManager {
     }
 
     @inject(StorageService)
-    protected readonly storage: StorageService;
+    protected readonly storage!: StorageService;
 
     async load(): Promise<void> {
         await this.initialized;

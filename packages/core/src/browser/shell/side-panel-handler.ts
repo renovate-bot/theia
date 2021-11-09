@@ -121,7 +121,7 @@ export class SidePanelHandler {
     @inject(FrontendApplicationStateService) protected readonly applicationStateService!: FrontendApplicationStateService;
 
     @inject(ContextMenuRenderer)
-    protected readonly contextMenuRenderer: ContextMenuRenderer;
+    protected readonly contextMenuRenderer!: ContextMenuRenderer;
 
     /**
      * Create the side bar and dock panel widgets.

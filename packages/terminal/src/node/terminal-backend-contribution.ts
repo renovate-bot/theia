@@ -24,10 +24,10 @@ import { MessagingService } from '@theia/core/lib/node/messaging/messaging-servi
 export class TerminalBackendContribution implements MessagingService.Contribution {
 
     @inject(ProcessManager)
-    protected readonly processManager: ProcessManager;
+    protected readonly processManager!: ProcessManager;
 
     @inject(ILogger) @named('terminal')
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     configure(service: MessagingService): void {
         service.listen(`${terminalsPath}/:id`, (params: { id: string }, connection) => {

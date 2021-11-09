@@ -117,10 +117,10 @@ export class WidgetManager {
     protected readonly pendingWidgetPromises = new Map<string, MaybePromise<Widget>>();
 
     @inject(ContributionProvider) @named(WidgetFactory)
-    protected readonly factoryProvider: ContributionProvider<WidgetFactory>;
+    protected readonly factoryProvider!: ContributionProvider<WidgetFactory>;
 
     @inject(ILogger)
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     protected readonly onWillCreateWidgetEmitter = new Emitter<WillCreateWidgetEvent>();
     /**

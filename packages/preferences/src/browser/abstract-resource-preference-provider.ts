@@ -43,13 +43,13 @@ export abstract class AbstractResourcePreferenceProvider extends PreferenceProvi
     @inject(FileService) protected readonly fileService!: FileService;
 
     @inject(PreferenceConfigurations)
-    protected readonly configurations: PreferenceConfigurations;
+    protected readonly configurations!: PreferenceConfigurations;
 
     @inject(MonacoTextModelService)
-    protected readonly textModelService: MonacoTextModelService;
+    protected readonly textModelService!: MonacoTextModelService;
 
     @inject(MonacoWorkspace)
-    protected readonly workspace: MonacoWorkspace;
+    protected readonly workspace!: MonacoWorkspace;
 
     @postConstruct()
     protected async init(): Promise<void> {

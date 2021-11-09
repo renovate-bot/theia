@@ -83,7 +83,7 @@ export class MiniBrowserEndpoint implements BackendApplicationContribution, Mini
     private attachRequestHandlerPromise: Promise<void>;
 
     @inject(ILogger)
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     @inject(ContributionProvider)
     @named(MiniBrowserEndpointHandler)

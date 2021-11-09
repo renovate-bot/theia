@@ -103,43 +103,43 @@ export class WebviewWidget extends BaseWidget implements StatefulWidget {
     protected transparentOverlay: HTMLElement;
 
     @inject(WebviewWidgetIdentifier)
-    readonly identifier: WebviewWidgetIdentifier;
+    readonly identifier!: WebviewWidgetIdentifier;
 
     @inject(WebviewWidgetExternalEndpoint)
-    readonly externalEndpoint: string;
+    readonly externalEndpoint!: string;
 
     @inject(ApplicationShellMouseTracker)
-    protected readonly mouseTracker: ApplicationShellMouseTracker;
+    protected readonly mouseTracker!: ApplicationShellMouseTracker;
 
     @inject(WebviewEnvironment)
-    protected readonly environment: WebviewEnvironment;
+    protected readonly environment!: WebviewEnvironment;
 
     @inject(OpenerService)
-    protected readonly openerService: OpenerService;
+    protected readonly openerService!: OpenerService;
 
     @inject(KeybindingRegistry)
-    protected readonly keybindings: KeybindingRegistry;
+    protected readonly keybindings!: KeybindingRegistry;
 
     @inject(PluginSharedStyle)
-    protected readonly sharedStyle: PluginSharedStyle;
+    protected readonly sharedStyle!: PluginSharedStyle;
 
     @inject(WebviewThemeDataProvider)
-    protected readonly themeDataProvider: WebviewThemeDataProvider;
+    protected readonly themeDataProvider!: WebviewThemeDataProvider;
 
     @inject(ExternalUriService)
-    protected readonly externalUriService: ExternalUriService;
+    protected readonly externalUriService!: ExternalUriService;
 
     @inject(OutputChannelManager)
-    protected readonly outputManager: OutputChannelManager;
+    protected readonly outputManager!: OutputChannelManager;
 
     @inject(WebviewPreferences)
-    protected readonly preferences: WebviewPreferences;
+    protected readonly preferences!: WebviewPreferences;
 
     @inject(FileService)
-    protected readonly fileService: FileService;
+    protected readonly fileService!: FileService;
 
     @inject(WebviewResourceCache)
-    protected readonly resourceCache: WebviewResourceCache;
+    protected readonly resourceCache!: WebviewResourceCache;
 
     viewState: WebviewPanelViewState = {
         visible: false,

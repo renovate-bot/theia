@@ -69,13 +69,13 @@ export class WorkspaceFrontendContribution implements CommandContribution, Keybi
     @inject(CommandRegistry) protected readonly commandRegistry!: CommandRegistry;
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     @inject(EncodingRegistry)
-    protected readonly encodingRegistry: EncodingRegistry;
+    protected readonly encodingRegistry!: EncodingRegistry;
 
     @inject(PreferenceConfigurations)
-    protected readonly preferenceConfigurations: PreferenceConfigurations;
+    protected readonly preferenceConfigurations!: PreferenceConfigurations;
 
     configure(): void {
         this.encodingRegistry.registerOverride({ encoding: UTF8, extension: THEIA_EXT });

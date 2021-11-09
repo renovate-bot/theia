@@ -31,10 +31,10 @@ export class DebugAdapterSessionManager implements MessagingService.Contribution
     protected readonly sessions = new Map<string, DebugAdapterSession>();
 
     @inject(DebugAdapterSessionFactory)
-    protected readonly debugAdapterSessionFactory: DebugAdapterSessionFactory;
+    protected readonly debugAdapterSessionFactory!: DebugAdapterSessionFactory;
 
     @inject(DebugAdapterFactory)
-    protected readonly debugAdapterFactory: DebugAdapterFactory;
+    protected readonly debugAdapterFactory!: DebugAdapterFactory;
 
     configure(service: MessagingService): void {
         service.wsChannel(`${DebugAdapterPath}/:id`, ({ id }: { id: string }, channel) => {

@@ -28,7 +28,7 @@ export const DEFAULT_HTTP_WEBSOCKET_ADAPTER_TIMEOUT = 4000;
 export class HttpWebsocketAdapter {
 
     @inject(HttpWebsocketAdapterTimeout)
-    protected readonly adapterTimeout: number;
+    protected readonly adapterTimeout!: number;
 
     readyState: number = ws.OPEN;
     alive: boolean = true;

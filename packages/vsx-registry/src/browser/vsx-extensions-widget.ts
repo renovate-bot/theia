@@ -45,10 +45,10 @@ export class VSXExtensionsWidget extends SourceTreeWidget {
     }
 
     @inject(VSXExtensionsWidgetOptions)
-    protected readonly options: VSXExtensionsWidgetOptions;
+    protected readonly options!: VSXExtensionsWidgetOptions;
 
     @inject(VSXExtensionsSource)
-    protected readonly extensionsSource: VSXExtensionsSource;
+    protected readonly extensionsSource!: VSXExtensionsSource;
 
     @postConstruct()
     protected init(): void {

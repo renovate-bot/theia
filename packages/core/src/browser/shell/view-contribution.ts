@@ -60,7 +60,7 @@ export abstract class AbstractViewContribution<T extends Widget> implements Comm
     @inject(ApplicationShell) protected readonly shell!: ApplicationShell;
 
     @inject(QuickViewService) @optional()
-    protected readonly quickView: QuickViewService;
+    protected readonly quickView!: QuickViewService;
 
     readonly toggleCommand?: Command;
 

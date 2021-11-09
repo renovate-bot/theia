@@ -21,7 +21,7 @@ import { ContextKeyService, ContextKey } from '@theia/core/lib/browser/context-k
 export class NavigatorContextKeyService {
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     protected _explorerViewletVisible: ContextKey<boolean>;
     get explorerViewletVisible(): ContextKey<boolean> {

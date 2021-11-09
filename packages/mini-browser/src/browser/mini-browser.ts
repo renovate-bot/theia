@@ -36,10 +36,10 @@ export class MiniBrowser extends BaseWidget implements NavigatableWidget, Statef
     static ICON = codicon('globe');
 
     @inject(MiniBrowserOptions)
-    protected readonly options: MiniBrowserOptions;
+    protected readonly options!: MiniBrowserOptions;
 
     @inject(MiniBrowserContentFactory)
-    protected readonly createContent: MiniBrowserContentFactory;
+    protected readonly createContent!: MiniBrowserContentFactory;
 
     @postConstruct()
     protected init(): void {

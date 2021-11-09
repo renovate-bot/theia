@@ -33,7 +33,7 @@ export class DefaultWindowService implements WindowService, FrontendApplicationC
     }
 
     @inject(CorePreferences)
-    protected readonly corePreferences: CorePreferences;
+    protected readonly corePreferences!: CorePreferences;
 
     @inject(ContributionProvider)
     @named(FrontendApplicationContribution)

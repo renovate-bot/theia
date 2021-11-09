@@ -34,7 +34,7 @@ export class FileNavigatorModel extends FileTreeModel {
     @inject(FrontendApplicationStateService) protected readonly applicationState!: FrontendApplicationStateService;
 
     @inject(ProgressService)
-    protected readonly progressService: ProgressService;
+    protected readonly progressService!: ProgressService;
 
     @postConstruct()
     protected init(): void {

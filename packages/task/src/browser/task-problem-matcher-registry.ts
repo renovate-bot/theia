@@ -36,7 +36,7 @@ export class ProblemMatcherRegistry {
     private readyPromise: Promise<void>;
 
     @inject(ProblemPatternRegistry)
-    protected readonly problemPatternRegistry: ProblemPatternRegistry;
+    protected readonly problemPatternRegistry!: ProblemPatternRegistry;
 
     protected readonly onDidChangeProblemMatcherEmitter = new Emitter<void>();
     get onDidChangeProblemMatcher(): Event<void> {

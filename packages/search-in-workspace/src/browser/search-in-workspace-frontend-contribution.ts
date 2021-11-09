@@ -92,7 +92,7 @@ export class SearchInWorkspaceFrontendContribution extends AbstractViewContribut
     @inject(EditorManager) protected readonly editorManager!: EditorManager;
 
     @inject(SearchInWorkspaceContextKeyService)
-    protected readonly contextKeyService: SearchInWorkspaceContextKeyService;
+    protected readonly contextKeyService!: SearchInWorkspaceContextKeyService;
 
     constructor() {
         super({

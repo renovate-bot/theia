@@ -39,10 +39,10 @@ export interface FileDialogService {
 export class DefaultFileDialogService implements FileDialogService {
 
     @inject(EnvVariablesServer)
-    protected readonly environments: EnvVariablesServer;
+    protected readonly environments!: EnvVariablesServer;
 
     @inject(FileService)
-    protected readonly fileService: FileService;
+    protected readonly fileService!: FileService;
 
     @inject(OpenFileDialogFactory) protected readonly openFileDialogFactory!: OpenFileDialogFactory;
     @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;

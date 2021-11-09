@@ -47,16 +47,16 @@ import { ShellProcess } from '@theia/terminal/lib/node/shell-process';
 export class ProcessTaskRunner implements TaskRunner {
 
     @inject(ILogger) @named('task')
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     @inject(RawProcessFactory)
-    protected readonly rawProcessFactory: RawProcessFactory;
+    protected readonly rawProcessFactory!: RawProcessFactory;
 
     @inject(TaskTerminalProcessFactory)
-    protected readonly taskTerminalProcessFactory: TaskTerminalProcessFactory;
+    protected readonly taskTerminalProcessFactory!: TaskTerminalProcessFactory;
 
     @inject(TaskFactory)
-    protected readonly taskFactory: TaskFactory;
+    protected readonly taskFactory!: TaskFactory;
 
     /**
      * Runs a task from the given task configuration.

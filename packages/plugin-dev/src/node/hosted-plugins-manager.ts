@@ -53,7 +53,7 @@ export interface HostedPluginsManager {
 export class HostedPluginsManagerImpl implements HostedPluginsManager {
 
     @inject(HostedPluginSupport)
-    protected readonly hostedPluginSupport: HostedPluginSupport;
+    protected readonly hostedPluginSupport!: HostedPluginSupport;
 
     protected watchCompilationRegistry: Map<string, cp.ChildProcess>;
 

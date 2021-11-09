@@ -31,10 +31,10 @@ export class VSXExtensionsSourceOptions {
 export class VSXExtensionsSource extends TreeSource {
 
     @inject(VSXExtensionsSourceOptions)
-    protected readonly options: VSXExtensionsSourceOptions;
+    protected readonly options!: VSXExtensionsSourceOptions;
 
     @inject(VSXExtensionsModel)
-    protected readonly model: VSXExtensionsModel;
+    protected readonly model!: VSXExtensionsModel;
 
     @postConstruct()
     protected async init(): Promise<void> {

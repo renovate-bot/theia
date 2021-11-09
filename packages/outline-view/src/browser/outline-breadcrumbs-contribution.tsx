@@ -49,16 +49,16 @@ export class BreadcrumbPopupOutlineView extends OutlineViewWidget {
 @injectable()
 export class OutlineBreadcrumbsContribution implements BreadcrumbsContribution {
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     @inject(OutlineViewService)
-    protected readonly outlineViewService: OutlineViewService;
+    protected readonly outlineViewService!: OutlineViewService;
 
     @inject(BreadcrumbsService)
-    protected readonly breadcrumbsService: BreadcrumbsService;
+    protected readonly breadcrumbsService!: BreadcrumbsService;
 
     @inject(BreadcrumbPopupOutlineViewFactory)
-    protected readonly outlineFactory: BreadcrumbPopupOutlineViewFactory;
+    protected readonly outlineFactory!: BreadcrumbPopupOutlineViewFactory;
 
     protected outlineView: BreadcrumbPopupOutlineView;
 

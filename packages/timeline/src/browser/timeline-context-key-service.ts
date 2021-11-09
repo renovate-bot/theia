@@ -21,7 +21,7 @@ import { ContextKeyService, ContextKey } from '@theia/core/lib/browser/context-k
 export class TimelineContextKeyService {
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     protected _timelineItem: ContextKey<string | undefined>;
     get timelineItem(): ContextKey<string | undefined> {

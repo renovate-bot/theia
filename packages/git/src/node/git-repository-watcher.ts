@@ -35,13 +35,13 @@ export class GitRepositoryWatcher implements Disposable {
     readonly onGitStatusChanged: Event<GitStatusChangeEvent> = this.onGitStatusChangedEmitter.event;
 
     @inject(Git)
-    protected readonly git: Git;
+    protected readonly git!: Git;
 
     @inject(ILogger)
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     @inject(GitRepositoryWatcherOptions)
-    protected readonly options: GitRepositoryWatcherOptions;
+    protected readonly options!: GitRepositoryWatcherOptions;
 
     @postConstruct()
     protected init(): void {

@@ -60,7 +60,7 @@ export class ViewContextKeyService {
     }
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     @postConstruct()
     protected init(): void {

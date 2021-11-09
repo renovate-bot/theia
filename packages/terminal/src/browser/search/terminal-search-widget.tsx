@@ -35,7 +35,7 @@ export class TerminalSearchWidget extends ReactWidget {
     private searchAddon: SearchAddon;
 
     @inject(Terminal)
-    protected terminal: Terminal;
+    protected terminal!: Terminal;
 
     @postConstruct()
     protected init(): void {

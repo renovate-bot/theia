@@ -35,7 +35,7 @@ export abstract class ScmNavigableListWidget<T extends { selected?: boolean }> e
     @inject(ScmService) protected readonly scmService!: ScmService;
     @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
     @inject(ScmFileChangeLabelProvider)
-    protected readonly scmLabelProvider: ScmFileChangeLabelProvider;
+    protected readonly scmLabelProvider!: ScmFileChangeLabelProvider;
 
     constructor() {
         super();

@@ -25,19 +25,19 @@ import { GitErrorHandler } from './git-error-handler';
 export class GitSyncService {
 
     @inject(Git)
-    protected readonly git: Git;
+    protected readonly git!: Git;
 
     @inject(GitRepositoryTracker)
-    protected readonly repositoryTracker: GitRepositoryTracker;
+    protected readonly repositoryTracker!: GitRepositoryTracker;
 
     @inject(MessageService)
-    protected readonly messageService: MessageService;
+    protected readonly messageService!: MessageService;
 
     @inject(GitErrorHandler)
-    protected readonly gitErrorHandler: GitErrorHandler;
+    protected readonly gitErrorHandler!: GitErrorHandler;
 
     @inject(QuickInputService) @optional()
-    protected readonly quickInputService: QuickInputService;
+    protected readonly quickInputService!: QuickInputService;
 
     protected readonly onDidChangeEmitter = new Emitter<void>();
     readonly onDidChange: Event<void> = this.onDidChangeEmitter.event;

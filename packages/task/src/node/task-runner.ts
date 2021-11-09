@@ -60,7 +60,7 @@ export class TaskRunnerRegistry {
     protected defaultRunner: TaskRunner;
 
     @inject(ProcessTaskRunner)
-    protected readonly processTaskRunner: ProcessTaskRunner;
+    protected readonly processTaskRunner!: ProcessTaskRunner;
 
     @postConstruct()
     protected init(): void {

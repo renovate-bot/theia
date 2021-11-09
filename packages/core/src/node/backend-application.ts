@@ -147,10 +147,10 @@ export class BackendApplication {
     protected readonly app: express.Application = express();
 
     @inject(ApplicationPackage)
-    protected readonly applicationPackage: ApplicationPackage;
+    protected readonly applicationPackage!: ApplicationPackage;
 
     @inject(ProcessUtils)
-    protected readonly processUtils: ProcessUtils;
+    protected readonly processUtils!: ProcessUtils;
 
     private readonly _performanceObserver: PerformanceObserver;
 

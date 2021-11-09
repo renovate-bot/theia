@@ -48,7 +48,7 @@ export class DebugExceptionMonacoEditorZoneWidget extends MonacoEditorZoneWidget
 export class DebugExceptionWidget implements Disposable {
 
     @inject(DebugEditor)
-    readonly editor: DebugEditor;
+    readonly editor!: DebugEditor;
 
     protected zone: MonacoEditorZoneWidget;
 

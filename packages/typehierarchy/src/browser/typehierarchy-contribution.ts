@@ -34,7 +34,7 @@ export class TypeHierarchyContribution extends AbstractViewContribution<TypeHier
     protected readonly editorAccess: EditorAccess;
 
     @inject(ApplicationShell)
-    protected readonly shell: ApplicationShell;
+    protected readonly shell!: ApplicationShell;
 
     constructor() {
         super({

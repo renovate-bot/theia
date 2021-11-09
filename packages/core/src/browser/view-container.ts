@@ -81,43 +81,43 @@ export class ViewContainer extends BaseWidget implements StatefulWidget, Applica
     disableDNDBetweenContainers = false;
 
     @inject(FrontendApplicationStateService)
-    protected readonly applicationStateService: FrontendApplicationStateService;
+    protected readonly applicationStateService!: FrontendApplicationStateService;
 
     @inject(ContextMenuRenderer)
-    protected readonly contextMenuRenderer: ContextMenuRenderer;
+    protected readonly contextMenuRenderer!: ContextMenuRenderer;
 
     @inject(CommandRegistry)
-    protected readonly commandRegistry: CommandRegistry;
+    protected readonly commandRegistry!: CommandRegistry;
 
     @inject(MenuModelRegistry)
-    protected readonly menuRegistry: MenuModelRegistry;
+    protected readonly menuRegistry!: MenuModelRegistry;
 
     @inject(WidgetManager)
-    protected readonly widgetManager: WidgetManager;
+    protected readonly widgetManager!: WidgetManager;
 
     @inject(SplitPositionHandler)
-    protected readonly splitPositionHandler: SplitPositionHandler;
+    protected readonly splitPositionHandler!: SplitPositionHandler;
 
     @inject(ViewContainerIdentifier)
-    readonly options: ViewContainerIdentifier;
+    readonly options!: ViewContainerIdentifier;
 
     @inject(TabBarToolbarRegistry)
-    protected readonly toolbarRegistry: TabBarToolbarRegistry;
+    protected readonly toolbarRegistry!: TabBarToolbarRegistry;
 
     @inject(TabBarToolbarFactory)
-    protected readonly toolbarFactory: TabBarToolbarFactory;
+    protected readonly toolbarFactory!: TabBarToolbarFactory;
 
     protected readonly onDidChangeTrackableWidgetsEmitter = new Emitter<Widget[]>();
     readonly onDidChangeTrackableWidgets = this.onDidChangeTrackableWidgetsEmitter.event;
 
     @inject(ProgressBarFactory)
-    protected readonly progressBarFactory: ProgressBarFactory;
+    protected readonly progressBarFactory!: ProgressBarFactory;
 
     @inject(ApplicationShell)
-    protected readonly shell: ApplicationShell;
+    protected readonly shell!: ApplicationShell;
 
     @inject(TabBarDecoratorService)
-    protected readonly decoratorService: TabBarDecoratorService;
+    protected readonly decoratorService!: TabBarDecoratorService;
 
     @postConstruct()
     protected init(): void {

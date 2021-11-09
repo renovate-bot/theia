@@ -34,7 +34,7 @@ export class FileNavigatorFilter {
     protected showHiddenFiles: boolean;
 
     @inject(FileSystemPreferences)
-    protected readonly filesPreferences: FileSystemPreferences;
+    protected readonly filesPreferences!: FileSystemPreferences;
 
     constructor(
         @inject(FileNavigatorPreferences) protected readonly preferences: FileNavigatorPreferences

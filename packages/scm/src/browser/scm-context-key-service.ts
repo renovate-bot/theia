@@ -21,7 +21,7 @@ import { ContextKeyService, ContextKey } from '@theia/core/lib/browser/context-k
 export class ScmContextKeyService {
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     protected _scmProvider: ContextKey<string | undefined>;
     get scmProvider(): ContextKey<string | undefined> {

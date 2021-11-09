@@ -39,22 +39,22 @@ export abstract class MenuBarWidget extends MenuBar {
 export class BrowserMainMenuFactory implements MenuWidgetFactory {
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     @inject(ContextMenuContext)
-    protected readonly context: ContextMenuContext;
+    protected readonly context!: ContextMenuContext;
 
     @inject(CommandRegistry)
-    protected readonly commandRegistry: CommandRegistry;
+    protected readonly commandRegistry!: CommandRegistry;
 
     @inject(CorePreferences)
-    protected readonly corePreferences: CorePreferences;
+    protected readonly corePreferences!: CorePreferences;
 
     @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry: KeybindingRegistry;
+    protected readonly keybindingRegistry!: KeybindingRegistry;
 
     @inject(MenuModelRegistry)
-    protected readonly menuProvider: MenuModelRegistry;
+    protected readonly menuProvider!: MenuModelRegistry;
 
     createMenuBar(): MenuBarWidget {
         const menuBar = new DynamicMenuBarWidget();
@@ -370,10 +370,10 @@ export class DynamicMenuWidget extends MenuWidget {
 export class BrowserMenuBarContribution implements FrontendApplicationContribution {
 
     @inject(ApplicationShell)
-    protected readonly shell: ApplicationShell;
+    protected readonly shell!: ApplicationShell;
 
     @inject(PreferenceService)
-    protected readonly preferenceService: PreferenceService;
+    protected readonly preferenceService!: PreferenceService;
 
     constructor(
         @inject(BrowserMainMenuFactory) protected readonly factory: BrowserMainMenuFactory

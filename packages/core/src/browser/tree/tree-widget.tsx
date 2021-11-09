@@ -159,22 +159,22 @@ export class TreeWidget extends ReactWidget implements StatefulWidget {
     protected searchHighlights: Map<string, TreeDecoration.CaptionHighlight>;
 
     @inject(TreeDecoratorService)
-    protected readonly decoratorService: TreeDecoratorService;
+    protected readonly decoratorService!: TreeDecoratorService;
     @inject(TreeSearch)
-    protected readonly treeSearch: TreeSearch;
+    protected readonly treeSearch!: TreeSearch;
     @inject(SearchBoxFactory)
-    protected readonly searchBoxFactory: SearchBoxFactory;
+    protected readonly searchBoxFactory!: SearchBoxFactory;
 
     protected decorations: Map<string, TreeDecoration.Data[]> = new Map();
 
     @inject(SelectionService)
-    protected readonly selectionService: SelectionService;
+    protected readonly selectionService!: SelectionService;
 
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     @inject(CorePreferences)
-    protected readonly corePreferences: CorePreferences;
+    protected readonly corePreferences!: CorePreferences;
 
     protected shouldScrollToRow = true;
 

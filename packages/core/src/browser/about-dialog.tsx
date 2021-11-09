@@ -36,7 +36,7 @@ export class AboutDialog extends ReactDialog<void> {
     protected readonly okButton: HTMLButtonElement;
 
     @inject(ApplicationServer)
-    protected readonly appServer: ApplicationServer;
+    protected readonly appServer!: ApplicationServer;
 
     constructor(
         @inject(AboutDialogProps) protected readonly props: AboutDialogProps

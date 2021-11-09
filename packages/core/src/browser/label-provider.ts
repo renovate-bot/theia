@@ -282,7 +282,7 @@ export class LabelProvider implements FrontendApplicationContribution {
     protected readonly onDidChangeEmitter = new Emitter<DidChangeLabelEvent>();
 
     @inject(ContributionProvider) @named(LabelProviderContribution)
-    protected readonly contributionProvider: ContributionProvider<LabelProviderContribution>;
+    protected readonly contributionProvider!: ContributionProvider<LabelProviderContribution>;
 
     /**
      * Start listening to contributions.

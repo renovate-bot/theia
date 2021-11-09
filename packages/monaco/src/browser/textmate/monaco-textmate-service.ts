@@ -40,25 +40,25 @@ export class MonacoTextmateService implements FrontendApplicationContribution {
     protected grammarRegistry: Registry;
 
     @inject(ContributionProvider) @named(LanguageGrammarDefinitionContribution)
-    protected readonly grammarProviders: ContributionProvider<LanguageGrammarDefinitionContribution>;
+    protected readonly grammarProviders!: ContributionProvider<LanguageGrammarDefinitionContribution>;
 
     @inject(TextmateRegistry)
-    protected readonly textmateRegistry: TextmateRegistry;
+    protected readonly textmateRegistry!: TextmateRegistry;
 
     @inject(ILogger)
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     @inject(OnigasmPromise)
-    protected readonly onigasmPromise: OnigasmPromise;
+    protected readonly onigasmPromise!: OnigasmPromise;
 
     @inject(ThemeService)
-    protected readonly themeService: ThemeService;
+    protected readonly themeService!: ThemeService;
 
     @inject(MonacoThemeRegistry)
-    protected readonly monacoThemeRegistry: MonacoThemeRegistry;
+    protected readonly monacoThemeRegistry!: MonacoThemeRegistry;
 
     @inject(EditorPreferences)
-    protected readonly preferences: EditorPreferences;
+    protected readonly preferences!: EditorPreferences;
 
     initialize(): void {
         if (!isBasicWasmSupported) {

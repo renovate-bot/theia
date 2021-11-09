@@ -108,25 +108,25 @@ export class HostedPluginManagerClient {
     }
 
     @inject(HostedPluginServer)
-    protected readonly hostedPluginServer: HostedPluginServer;
+    protected readonly hostedPluginServer!: HostedPluginServer;
     @inject(MessageService)
-    protected readonly messageService: MessageService;
+    protected readonly messageService!: MessageService;
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
     @inject(WindowService)
-    protected readonly windowService: WindowService;
+    protected readonly windowService!: WindowService;
     @inject(FileService)
-    protected readonly fileService: FileService;
+    protected readonly fileService!: FileService;
     @inject(EnvVariablesServer)
-    protected readonly environments: EnvVariablesServer;
+    protected readonly environments!: EnvVariablesServer;
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly workspaceService!: WorkspaceService;
     @inject(DebugSessionManager)
-    protected readonly debugSessionManager: DebugSessionManager;
+    protected readonly debugSessionManager!: DebugSessionManager;
     @inject(HostedPluginPreferences)
-    protected readonly hostedPluginPreferences: HostedPluginPreferences;
+    protected readonly hostedPluginPreferences!: HostedPluginPreferences;
     @inject(FileDialogService)
-    protected readonly fileDialogService: FileDialogService;
+    protected readonly fileDialogService!: FileDialogService;
 
     @postConstruct()
     protected async init(): Promise<void> {

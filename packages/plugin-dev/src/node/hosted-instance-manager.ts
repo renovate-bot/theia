@@ -105,13 +105,13 @@ export abstract class AbstractHostedInstanceManager implements HostedInstanceMan
     protected instanceOptions: object;
 
     @inject(HostedPluginSupport)
-    protected readonly hostedPluginSupport: HostedPluginSupport;
+    protected readonly hostedPluginSupport!: HostedPluginSupport;
 
     @inject(MetadataScanner)
-    protected readonly metadata: MetadataScanner;
+    protected readonly metadata!: MetadataScanner;
 
     @inject(HostedPluginProcess)
-    protected readonly hostedPluginProcess: HostedPluginProcess;
+    protected readonly hostedPluginProcess!: HostedPluginProcess;
 
     isRunning(): boolean {
         return this.isPluginRunning;
@@ -344,7 +344,7 @@ export abstract class AbstractHostedInstanceManager implements HostedInstanceMan
 @injectable()
 export class NodeHostedPluginRunner extends AbstractHostedInstanceManager {
     @inject(ContributionProvider) @named(Symbol.for(HostedPluginUriPostProcessorSymbolName))
-    protected readonly uriPostProcessors: ContributionProvider<HostedPluginUriPostProcessor>;
+    protected readonly uriPostProcessors!: ContributionProvider<HostedPluginUriPostProcessor>;
 
     protected async postProcessInstanceUri(uri: URI): Promise<URI> {
         for (const uriPostProcessor of this.uriPostProcessors.getContributions()) {

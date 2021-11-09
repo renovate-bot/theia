@@ -42,13 +42,13 @@ export class PluginDeployerImpl implements PluginDeployer {
     readonly onDidDeploy = this.onDidDeployEmitter.event;
 
     @inject(ILogger)
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     @inject(PluginDeployerHandler)
-    protected readonly pluginDeployerHandler: PluginDeployerHandler;
+    protected readonly pluginDeployerHandler!: PluginDeployerHandler;
 
     @inject(PluginCliContribution)
-    protected readonly cliContribution: PluginCliContribution;
+    protected readonly cliContribution!: PluginCliContribution;
 
     /**
      * Inject all plugin resolvers found at runtime.
@@ -69,7 +69,7 @@ export class PluginDeployerImpl implements PluginDeployer {
     private pluginDeployerDirectoryHandlers: PluginDeployerDirectoryHandler[];
 
     @inject(ContributionProvider) @named(PluginDeployerParticipant)
-    protected readonly participants: ContributionProvider<PluginDeployerParticipant>;
+    protected readonly participants!: ContributionProvider<PluginDeployerParticipant>;
 
     public start(): void {
         this.logger.debug('Starting the deployer with the list of resolvers', this.pluginResolvers);

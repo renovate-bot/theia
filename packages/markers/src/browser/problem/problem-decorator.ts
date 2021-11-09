@@ -36,7 +36,7 @@ import { WidgetDecoration } from '@theia/core/lib/browser/widget-decoration';
 export class ProblemDecorator implements TreeDecorator {
 
     @inject(ProblemPreferences)
-    protected problemPreferences: ProblemPreferences;
+    protected problemPreferences!: ProblemPreferences;
     @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
     @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
 

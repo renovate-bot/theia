@@ -33,10 +33,10 @@ export class HostedPluginSupport {
     private client: HostedPluginClient;
 
     @inject(ILogger)
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     @inject(HostedPluginProcess)
-    protected readonly hostedPluginProcess: HostedPluginProcess;
+    protected readonly hostedPluginProcess!: HostedPluginProcess;
 
     /**
      * Optional runners to delegate some work

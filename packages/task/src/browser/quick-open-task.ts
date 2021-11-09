@@ -40,34 +40,34 @@ export class QuickOpenTask implements QuickAccessProvider {
     protected items: Array<QuickPickItem> = [];
 
     @inject(TaskService)
-    protected readonly taskService: TaskService;
+    protected readonly taskService!: TaskService;
 
     @inject(QuickInputService) @optional()
-    protected readonly quickInputService: QuickInputService;
+    protected readonly quickInputService!: QuickInputService;
 
     @inject(QuickAccessRegistry)
-    protected readonly quickAccessRegistry: QuickAccessRegistry;
+    protected readonly quickAccessRegistry!: QuickAccessRegistry;
 
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly workspaceService!: WorkspaceService;
 
     @inject(TaskDefinitionRegistry)
-    protected readonly taskDefinitionRegistry: TaskDefinitionRegistry;
+    protected readonly taskDefinitionRegistry!: TaskDefinitionRegistry;
 
     @inject(TaskNameResolver)
-    protected readonly taskNameResolver: TaskNameResolver;
+    protected readonly taskNameResolver!: TaskNameResolver;
 
     @inject(TaskSourceResolver)
-    protected readonly taskSourceResolver: TaskSourceResolver;
+    protected readonly taskSourceResolver!: TaskSourceResolver;
 
     @inject(TaskConfigurationManager)
-    protected readonly taskConfigurationManager: TaskConfigurationManager;
+    protected readonly taskConfigurationManager!: TaskConfigurationManager;
 
     @inject(PreferenceService)
-    protected readonly preferences: PreferenceService;
+    protected readonly preferences!: PreferenceService;
 
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     init(): Promise<void> {
         return this.doInit(this.taskService.startUserAction());
@@ -495,25 +495,25 @@ export class TaskConfigureQuickOpenItem implements QuickPickItem {
 export class TaskTerminateQuickOpen {
 
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     @inject(QuickInputService) @optional()
-    protected readonly quickInputService: QuickInputService;
+    protected readonly quickInputService!: QuickInputService;
 
     @inject(TaskDefinitionRegistry)
-    protected readonly taskDefinitionRegistry: TaskDefinitionRegistry;
+    protected readonly taskDefinitionRegistry!: TaskDefinitionRegistry;
 
     @inject(TaskNameResolver)
-    protected readonly taskNameResolver: TaskNameResolver;
+    protected readonly taskNameResolver!: TaskNameResolver;
 
     @inject(TaskSourceResolver)
-    protected readonly taskSourceResolver: TaskSourceResolver;
+    protected readonly taskSourceResolver!: TaskSourceResolver;
 
     @inject(TaskService)
-    protected readonly taskService: TaskService;
+    protected readonly taskService!: TaskService;
 
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly workspaceService!: WorkspaceService;
 
     async getItems(): Promise<Array<QuickPickItem>> {
         const items: Array<QuickPickItem> = [];
@@ -559,28 +559,28 @@ export class TaskTerminateQuickOpen {
 @injectable()
 export class TaskRunningQuickOpen {
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     @inject(QuickInputService) @optional()
-    protected readonly quickInputService: QuickInputService;
+    protected readonly quickInputService!: QuickInputService;
 
     @inject(TaskDefinitionRegistry)
-    protected readonly taskDefinitionRegistry: TaskDefinitionRegistry;
+    protected readonly taskDefinitionRegistry!: TaskDefinitionRegistry;
 
     @inject(TaskNameResolver)
-    protected readonly taskNameResolver: TaskNameResolver;
+    protected readonly taskNameResolver!: TaskNameResolver;
 
     @inject(TaskSourceResolver)
-    protected readonly taskSourceResolver: TaskSourceResolver;
+    protected readonly taskSourceResolver!: TaskSourceResolver;
 
     @inject(TaskService)
-    protected readonly taskService: TaskService;
+    protected readonly taskService!: TaskService;
 
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly workspaceService!: WorkspaceService;
 
     @inject(TerminalService)
-    protected readonly terminalService: TerminalService;
+    protected readonly terminalService!: TerminalService;
 
     async getItems(): Promise<Array<QuickPickItem>> {
         const items: Array<QuickPickItem> = [];
@@ -648,25 +648,25 @@ export class RunningTaskQuickOpenItem implements QuickPickItem {
 @injectable()
 export class TaskRestartRunningQuickOpen {
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     @inject(QuickInputService) @optional()
-    protected readonly quickInputService: QuickInputService;
+    protected readonly quickInputService!: QuickInputService;
 
     @inject(TaskDefinitionRegistry)
-    protected readonly taskDefinitionRegistry: TaskDefinitionRegistry;
+    protected readonly taskDefinitionRegistry!: TaskDefinitionRegistry;
 
     @inject(TaskNameResolver)
-    protected readonly taskNameResolver: TaskNameResolver;
+    protected readonly taskNameResolver!: TaskNameResolver;
 
     @inject(TaskSourceResolver)
-    protected readonly taskSourceResolver: TaskSourceResolver;
+    protected readonly taskSourceResolver!: TaskSourceResolver;
 
     @inject(TaskService)
-    protected readonly taskService: TaskService;
+    protected readonly taskService!: TaskService;
 
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly workspaceService!: WorkspaceService;
 
     async getItems(): Promise<Array<QuickPickItem>> {
         const items: Array<QuickPickItem> = [];
@@ -698,4 +698,3 @@ export class TaskRestartRunningQuickOpen {
         this.quickInputService?.showQuickPick(items, { placeholder: 'Select task to restart' });
     }
 }
-

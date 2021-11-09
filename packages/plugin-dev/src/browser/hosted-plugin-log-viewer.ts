@@ -25,9 +25,9 @@ export class HostedPluginLogViewer {
     public static OUTPUT_CHANNEL_NAME = 'hosted-instance-log';
 
     @inject(HostedPluginWatcher)
-    protected readonly watcher: HostedPluginWatcher;
-    @inject(OutputChannelManager)
-    protected readonly outputChannelManager: OutputChannelManager;
+    protected readonly watcher!: HostedPluginWatcher; @inject(HostedPluginWatcher)
+    protected readonly watcher!:    @inject(HostedPluginWatcher)
+    protected readonly watcher!: r: OutputChannelManager;
     @inject(OutputContribution)
     protected readonly outputContribution: OutputContribution;
 

@@ -90,15 +90,15 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
     @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
 
     @inject(SearchInWorkspaceContextKeyService)
-    protected readonly contextKeyService: SearchInWorkspaceContextKeyService;
+    protected readonly contextKeyService!: SearchInWorkspaceContextKeyService;
 
     @inject(ProgressBarFactory)
-    protected readonly progressBarFactory: ProgressBarFactory;
+    protected readonly progressBarFactory!: ProgressBarFactory;
 
     @inject(EditorManager) protected readonly editorManager!: EditorManager;
 
     @inject(SearchInWorkspacePreferences)
-    protected readonly searchInWorkspacePreferences: SearchInWorkspacePreferences;
+    protected readonly searchInWorkspacePreferences!: SearchInWorkspacePreferences;
 
     @postConstruct()
     protected init(): void {

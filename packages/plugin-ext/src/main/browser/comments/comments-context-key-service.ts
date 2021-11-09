@@ -22,7 +22,7 @@ import { Emitter } from '@theia/core/lib/common';
 export class CommentsContextKeyService {
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
     protected readonly contextKeys: Set<string> = new Set();
     protected readonly onDidChangeEmitter = new Emitter<void>();
     readonly onDidChange = this.onDidChangeEmitter.event;

@@ -30,7 +30,7 @@ export class BulkEditContribution extends AbstractViewContribution<BulkEditTreeW
     private edits: monaco.editor.ResourceEdit[];
 
     @inject(QuickViewService) @optional()
-    protected readonly quickView: QuickViewService;
+    protected readonly quickView!: QuickViewService;
 
     constructor(private readonly bulkEditService: MonacoBulkEditService) {
         super({

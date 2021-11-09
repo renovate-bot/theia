@@ -21,7 +21,7 @@ import { ContextKeyService, ContextKey } from '@theia/core/lib/browser/context-k
 export class SearchInWorkspaceContextKeyService {
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     protected _searchViewletVisible: ContextKey<boolean>;
     get searchViewletVisible(): ContextKey<boolean> {

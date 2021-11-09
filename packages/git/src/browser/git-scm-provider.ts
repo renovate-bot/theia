@@ -64,25 +64,25 @@ export class GitScmProvider implements ScmProvider {
     );
 
     @inject(EditorManager)
-    protected readonly editorManager: EditorManager;
+    protected readonly editorManager!: EditorManager;
 
     @inject(GitErrorHandler)
-    protected readonly gitErrorHandler: GitErrorHandler;
+    protected readonly gitErrorHandler!: GitErrorHandler;
 
     @inject(FileService)
-    protected readonly fileService: FileService;
+    protected readonly fileService!: FileService;
 
     @inject(Git)
-    protected readonly git: Git;
+    protected readonly git!: Git;
 
     @inject(CommandService)
-    protected readonly commands: CommandService;
+    protected readonly commands!: CommandService;
 
     @inject(GitScmProviderOptions)
-    protected readonly options: GitScmProviderOptions;
+    protected readonly options!: GitScmProviderOptions;
 
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     readonly id = 'git';
     readonly label = nls.localize('vscode.git/package/displayName', 'Git');

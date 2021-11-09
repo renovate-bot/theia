@@ -30,7 +30,7 @@ export class MonacoQuickInputImplementation implements monaco.quickInput.IQuickI
     quickAccess: monaco.quickInput.IQuickAccessController;
 
     @inject(monaco.contextKeyService.ContextKeyService)
-    protected readonly contextKeyService: monaco.contextKeyService.ContextKeyService;
+    protected readonly contextKeyService!: monaco.contextKeyService.ContextKeyService;
 
     protected container: HTMLElement;
     private quickInputList: monaco.list.List<monaco.list.IListElement>;
@@ -161,10 +161,10 @@ export class MonacoQuickInputImplementation implements monaco.quickInput.IQuickI
 @injectable()
 export class MonacoQuickInputService implements QuickInputService {
     @inject(MonacoQuickInputImplementation)
-    private monacoService: MonacoQuickInputImplementation;
+    private monacoService!: MonacoQuickInputImplementation;
 
     @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry: KeybindingRegistry;
+    protected readonly keybindingRegistry!: KeybindingRegistry;
 
     get backButton(): QuickInputButton {
         return this.monacoService.backButton;
@@ -485,4 +485,3 @@ export class MonacoQuickPickItem<T extends QuickPickItem> implements monaco.quic
         }
     }
 }
-

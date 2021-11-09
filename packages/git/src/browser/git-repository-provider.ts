@@ -39,10 +39,10 @@ export class GitRepositoryProvider {
     protected readonly allRepoStorageKey = 'theia-git-all-repositories';
 
     @inject(GitScmProvider.Factory)
-    protected readonly scmProviderFactory: GitScmProvider.Factory;
+    protected readonly scmProviderFactory!: GitScmProvider.Factory;
 
     @inject(GitCommitMessageValidator)
-    protected readonly commitMessageValidator: GitCommitMessageValidator;
+    protected readonly commitMessageValidator!: GitCommitMessageValidator;
 
     @inject(Git) protected readonly git!: Git;
     @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
@@ -50,7 +50,7 @@ export class GitRepositoryProvider {
     @inject(StorageService) protected readonly storageService!: StorageService;
 
     @inject(FileService)
-    protected readonly fileService: FileService;
+    protected readonly fileService!: FileService;
 
     @postConstruct()
     protected async initialize(): Promise<void> {

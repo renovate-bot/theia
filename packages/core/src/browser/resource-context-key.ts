@@ -24,10 +24,10 @@ import { LanguageService } from './language-service';
 export class ResourceContextKey {
 
     @inject(LanguageService)
-    protected readonly languages: LanguageService;
+    protected readonly languages!: LanguageService;
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     protected resource: ContextKey<Uri>;
     protected resourceSchemeKey: ContextKey<string>;

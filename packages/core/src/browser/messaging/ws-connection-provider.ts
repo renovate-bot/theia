@@ -78,10 +78,10 @@ export class WebSocketConnectionProvider extends AbstractConnectionProvider<WebS
     }
 
     @inject(MessageServiceFactory)
-    protected readonly messageService: () => MessageService;
+    protected readonly messageService!: () => MessageService;
 
     @inject(HttpFallbackOptions) @optional()
-    protected readonly httpFallbackOptions: HttpFallbackOptions | undefined;
+    protected readonly httpFallbackOptions!: HttpFallbackOptions | undefined;
 
     protected readonly socket: ReconnectingWebSocket;
     protected useHttpFallback = false;

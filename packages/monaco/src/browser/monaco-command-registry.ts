@@ -30,7 +30,7 @@ export interface MonacoEditorCommandHandler {
 export class MonacoCommandRegistry {
 
     @inject(MonacoEditorProvider)
-    protected readonly monacoEditors: MonacoEditorProvider;
+    protected readonly monacoEditors!: MonacoEditorProvider;
 
     @inject(CommandRegistry) protected readonly commands!: CommandRegistry;
 

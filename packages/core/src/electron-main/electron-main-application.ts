@@ -166,16 +166,16 @@ export class ElectronMainApplication {
     protected readonly contributions: ContributionProvider<ElectronMainApplicationContribution>;
 
     @inject(ElectronMainApplicationGlobals)
-    protected readonly globals: ElectronMainApplicationGlobals;
+    protected readonly globals!: ElectronMainApplicationGlobals;
 
     @inject(ElectronMainProcessArgv)
-    protected processArgv: ElectronMainProcessArgv;
+    protected processArgv!: ElectronMainProcessArgv;
 
     @inject(ElectronSecurityTokenService)
-    protected electronSecurityTokenService: ElectronSecurityTokenService;
+    protected electronSecurityTokenService!: ElectronSecurityTokenService;
 
     @inject(ElectronSecurityToken)
-    protected readonly electronSecurityToken: ElectronSecurityToken;
+    protected readonly electronSecurityToken!: ElectronSecurityToken;
 
     protected readonly electronStore = new Storage();
 

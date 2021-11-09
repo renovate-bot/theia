@@ -52,16 +52,16 @@ export namespace Notification {
 export class NotificationManager extends MessageClient {
 
     @inject(NotificationPreferences)
-    protected readonly preferences: NotificationPreferences;
+    protected readonly preferences!: NotificationPreferences;
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     @inject(OpenerService)
-    protected readonly openerService: OpenerService;
+    protected readonly openerService!: OpenerService;
 
     @inject(NotificationContentRenderer)
-    protected readonly contentRenderer: NotificationContentRenderer;
+    protected readonly contentRenderer!: NotificationContentRenderer;
 
     protected readonly onUpdatedEmitter = new Emitter<NotificationUpdateEvent>();
     readonly onUpdated = this.onUpdatedEmitter.event;

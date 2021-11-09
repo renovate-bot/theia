@@ -39,19 +39,19 @@ export class DirtyDiffManager {
     readonly onDirtyDiffUpdate: Event<DirtyDiffUpdate> = this.onDirtyDiffUpdateEmitter.event;
 
     @inject(Git)
-    protected readonly git: Git;
+    protected readonly git!: Git;
 
     @inject(GitRepositoryTracker)
-    protected readonly repositoryTracker: GitRepositoryTracker;
+    protected readonly repositoryTracker!: GitRepositoryTracker;
 
     @inject(GitResourceResolver)
-    protected readonly gitResourceResolver: GitResourceResolver;
+    protected readonly gitResourceResolver!: GitResourceResolver;
 
     @inject(EditorManager)
-    protected readonly editorManager: EditorManager;
+    protected readonly editorManager!: EditorManager;
 
     @inject(GitPreferences)
-    protected readonly preferences: GitPreferences;
+    protected readonly preferences!: GitPreferences;
 
     @postConstruct()
     protected async initialize(): Promise<void> {

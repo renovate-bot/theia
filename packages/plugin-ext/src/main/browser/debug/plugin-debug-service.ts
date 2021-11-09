@@ -58,9 +58,9 @@ export class PluginDebugService implements DebugService, PluginDebugAdapterContr
     protected delegated: DebugService;
 
     @inject(WebSocketConnectionProvider)
-    protected readonly connectionProvider: WebSocketConnectionProvider;
-    @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly connectionProvider!: WebSocketConnectionProvider; @inject(WebSocketConnectionProvider)
+    protected readonly connectionProvider!:
+        protected readonly workspaceService: WorkspaceService;
 
     @postConstruct()
     protected init(): void {

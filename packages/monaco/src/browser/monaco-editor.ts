@@ -53,13 +53,13 @@ import IBoxSizing = ElementExt.IBoxSizing;
 export class MonacoEditorServices {
 
     @inject(MonacoToProtocolConverter)
-    protected readonly m2p: MonacoToProtocolConverter;
+    protected readonly m2p!: MonacoToProtocolConverter;
 
     @inject(ProtocolToMonacoConverter)
-    protected readonly p2m: ProtocolToMonacoConverter;
+    protected readonly p2m!: ProtocolToMonacoConverter;
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     constructor(@unmanaged() services: MonacoEditorServices) {
         Object.assign(this, services);

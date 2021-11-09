@@ -44,7 +44,7 @@ export class CustomEditorWidget extends WebviewWidget implements SaveableSource,
     }
 
     @inject(UndoRedoService)
-    protected readonly undoRedoService: UndoRedoService;
+    protected readonly undoRedoService!: UndoRedoService;
 
     @postConstruct()
     protected init(): void {

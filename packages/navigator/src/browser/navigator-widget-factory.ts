@@ -57,7 +57,7 @@ export class NavigatorWidgetFactory implements WidgetFactory {
     };
 
     @inject(ViewContainer.Factory)
-    protected readonly viewContainerFactory: ViewContainer.Factory;
+    protected readonly viewContainerFactory!: ViewContainer.Factory;
     @inject(WidgetManager) protected readonly widgetManager!: WidgetManager;
 
     async createWidget(): Promise<ViewContainer> {

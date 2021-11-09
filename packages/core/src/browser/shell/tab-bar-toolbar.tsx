@@ -192,10 +192,10 @@ export class TabBarToolbarRegistry implements FrontendApplicationContribution {
     protected items: Map<string, TabBarToolbarItem | ReactTabBarToolbarItem> = new Map();
 
     @inject(CommandRegistry)
-    protected readonly commandRegistry: CommandRegistry;
+    protected readonly commandRegistry!: CommandRegistry;
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     @inject(ContributionProvider)
     @named(TabBarToolbarContribution)
@@ -284,19 +284,19 @@ export class TabBarToolbar extends ReactWidget {
     protected more = new Map<string, TabBarToolbarItem>();
 
     @inject(CommandRegistry)
-    protected readonly commands: CommandRegistry;
+    protected readonly commands!: CommandRegistry;
 
     @inject(LabelParser)
-    protected readonly labelParser: LabelParser;
+    protected readonly labelParser!: LabelParser;
 
     @inject(MenuModelRegistry)
-    protected readonly menus: MenuModelRegistry;
+    protected readonly menus!: MenuModelRegistry;
 
     @inject(ContextMenuRenderer)
-    protected readonly contextMenuRenderer: ContextMenuRenderer;
+    protected readonly contextMenuRenderer!: ContextMenuRenderer;
 
     @inject(TabBarToolbarRegistry)
-    protected readonly toolbarRegistry: TabBarToolbarRegistry;
+    protected readonly toolbarRegistry!: TabBarToolbarRegistry;
 
     constructor() {
         super();

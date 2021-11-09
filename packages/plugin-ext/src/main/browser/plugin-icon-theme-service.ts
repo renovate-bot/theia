@@ -100,16 +100,16 @@ export class PluginIconThemeDefinition implements IconThemeDefinition, IconTheme
 export class PluginIconTheme extends PluginIconThemeDefinition implements IconTheme, Disposable {
 
     @inject(FileService)
-    protected readonly fileService: FileService;
+    protected readonly fileService!: FileService;
 
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
 
     @inject(PluginIconThemeDefinition)
-    protected readonly definition: PluginIconThemeDefinition;
+    protected readonly definition!: PluginIconThemeDefinition;
 
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly workspaceService!: WorkspaceService;
 
     protected readonly onDidChangeEmitter = new Emitter<DidChangeLabelEvent>();
     readonly onDidChange = this.onDidChangeEmitter.event;
@@ -531,10 +531,10 @@ export class PluginIconTheme extends PluginIconThemeDefinition implements IconTh
 export class PluginIconThemeService implements LabelProviderContribution {
 
     @inject(IconThemeService)
-    protected readonly iconThemeService: IconThemeService;
+    protected readonly iconThemeService!: IconThemeService;
 
     @inject(PluginIconThemeFactory)
-    protected readonly iconThemeFactory: PluginIconThemeFactory;
+    protected readonly iconThemeFactory!: PluginIconThemeFactory;
 
     protected readonly onDidChangeEmitter = new Emitter<DidChangeLabelEvent>();
     readonly onDidChange = this.onDidChangeEmitter.event;

@@ -32,7 +32,7 @@ export class MiniBrowserEnvironment implements FrontendApplicationContribution {
     protected _hostPattern?: string;
 
     @inject(EnvVariablesServer)
-    protected environment: EnvVariablesServer;
+    protected environment!: EnvVariablesServer;
 
     @postConstruct()
     protected postConstruct(): void {

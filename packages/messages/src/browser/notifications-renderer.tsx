@@ -26,13 +26,13 @@ import { NotificationToastsComponent } from './notification-toasts-component';
 export class NotificationsRenderer {
 
     @inject(ApplicationShell)
-    protected readonly shell: ApplicationShell;
+    protected readonly shell!: ApplicationShell;
 
     @inject(NotificationManager)
-    protected readonly manager: NotificationManager;
+    protected readonly manager!: NotificationManager;
 
     @inject(CorePreferences)
-    protected readonly corePreferences: CorePreferences;
+    protected readonly corePreferences!: CorePreferences;
 
     @postConstruct()
     protected init(): void {

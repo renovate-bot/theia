@@ -24,10 +24,10 @@ import { PluginMetricStringGenerator } from './metric-string-generator';
 export class PluginMetricsContribution implements MetricsContribution {
 
     @inject(PluginMetricsContributor)
-    protected readonly metricsContributor: PluginMetricsContributor;
+    protected readonly metricsContributor!: PluginMetricsContributor;
 
     @inject(PluginMetricStringGenerator)
-    protected readonly stringGenerator: PluginMetricStringGenerator;
+    protected readonly stringGenerator!: PluginMetricStringGenerator;
 
     private metrics: string;
 

@@ -34,7 +34,7 @@ export class ScmNavigatorDecorator implements TreeDecorator {
     @inject(ILogger) protected readonly logger!: ILogger;
 
     @inject(ColorRegistry)
-    protected readonly colors: ColorRegistry;
+    protected readonly colors!: ColorRegistry;
 
     constructor(@inject(DecorationsService) protected readonly decorationsService: DecorationsService) {
         this.decorationsService.onDidChangeDecorations(data => {

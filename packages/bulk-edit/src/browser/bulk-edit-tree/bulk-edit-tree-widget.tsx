@@ -37,13 +37,13 @@ export class BulkEditTreeWidget extends TreeWidget {
     private editorWidgets: EditorWidget[] = [];
 
     @inject(FileResourceResolver)
-    protected readonly fileResourceResolver: FileResourceResolver;
+    protected readonly fileResourceResolver!: FileResourceResolver;
 
     @inject(EditorManager)
-    protected readonly editorManager: EditorManager;
+    protected readonly editorManager!: EditorManager;
 
     @inject(QuickViewService) @optional()
-    protected readonly quickView: QuickViewService;
+    protected readonly quickView!: QuickViewService;
 
     constructor(
         @inject(TreeProps) readonly treeProps: TreeProps,

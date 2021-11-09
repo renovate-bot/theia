@@ -28,10 +28,10 @@ import { loadManifest } from './plugin-manifest-loader';
 export class HostedPluginReader implements BackendApplicationContribution {
 
     @inject(ILogger)
-    protected readonly logger: ILogger;
+    protected readonly logger!: ILogger;
 
     @inject(MetadataScanner)
-    protected readonly scanner: MetadataScanner;
+    protected readonly scanner!: MetadataScanner;
 
     @optional()
     @multiInject(MetadataProcessor) private readonly metadataProcessors: MetadataProcessor[];

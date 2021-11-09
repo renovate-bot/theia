@@ -25,7 +25,7 @@ import { BreadcrumbsContribution, Styles, Breadcrumb } from './breadcrumbs-const
 export class BreadcrumbsService {
 
     @inject(ContributionProvider) @named(BreadcrumbsContribution)
-    protected readonly contributions: ContributionProvider<BreadcrumbsContribution>;
+    protected readonly contributions!: ContributionProvider<BreadcrumbsContribution>;
 
     @inject(BreadcrumbPopupContainerFactory) protected readonly breadcrumbPopupContainerFactory!: BreadcrumbPopupContainerFactory;
 

@@ -39,10 +39,10 @@ export type ShowDebugBreakpointOptions = DebugSourceBreakpoint | {
 export class DebugBreakpointWidget implements Disposable {
 
     @inject(DebugEditor)
-    readonly editor: DebugEditor;
+    readonly editor!: DebugEditor;
 
     @inject(MonacoEditorProvider)
-    protected readonly editorProvider: MonacoEditorProvider;
+    protected readonly editorProvider!: MonacoEditorProvider;
 
     protected selectNode: HTMLDivElement;
 

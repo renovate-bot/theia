@@ -104,39 +104,39 @@ export namespace VscodeCommands {
 @injectable()
 export class PluginVscodeCommandsContribution implements CommandContribution {
     @inject(CommandService)
-    protected readonly commandService: CommandService;
+    protected readonly commandService!: CommandService;
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
     @inject(EditorManager)
-    protected readonly editorManager: EditorManager;
+    protected readonly editorManager!: EditorManager;
     @inject(ApplicationShell)
-    protected readonly shell: ApplicationShell;
+    protected readonly shell!: ApplicationShell;
     @inject(DiffService)
-    protected readonly diffService: DiffService;
+    protected readonly diffService!: DiffService;
     @inject(OpenerService)
-    protected readonly openerService: OpenerService;
+    protected readonly openerService!: OpenerService;
     @inject(ApplicationShellMouseTracker)
-    protected readonly mouseTracker: ApplicationShellMouseTracker;
+    protected readonly mouseTracker!: ApplicationShellMouseTracker;
     @inject(QuickInputService) @optional()
-    protected readonly quickInput: QuickInputService;
+    protected readonly quickInput!: QuickInputService;
     @inject(WorkspaceService)
-    protected readonly workspaceService: WorkspaceService;
+    protected readonly workspaceService!: WorkspaceService;
     @inject(TerminalFrontendContribution)
-    protected readonly terminalContribution: TerminalFrontendContribution;
+    protected readonly terminalContribution!: TerminalFrontendContribution;
     @inject(QuickOpenWorkspace)
-    protected readonly quickOpenWorkspace: QuickOpenWorkspace;
+    protected readonly quickOpenWorkspace!: QuickOpenWorkspace;
     @inject(TerminalService)
-    protected readonly terminalService: TerminalService;
+    protected readonly terminalService!: TerminalService;
     @inject(CodeEditorWidgetUtil)
-    protected readonly codeEditorWidgetUtil: CodeEditorWidgetUtil;
+    protected readonly codeEditorWidgetUtil!: CodeEditorWidgetUtil;
     @inject(PluginServer)
-    protected readonly pluginServer: PluginServer;
+    protected readonly pluginServer!: PluginServer;
     @inject(FileService)
-    protected readonly fileService: FileService;
+    protected readonly fileService!: FileService;
     @inject(CallHierarchyServiceProvider)
-    protected readonly callHierarchyProvider: CallHierarchyServiceProvider;
+    protected readonly callHierarchyProvider!: CallHierarchyServiceProvider;
     @inject(MonacoTextModelService)
-    protected readonly textModelService: MonacoTextModelService;
+    protected readonly textModelService!: MonacoTextModelService;
 
     private async openWith(commandId: string, resource: URI, columnOrOptions?: ViewColumn | TextDocumentShowOptions, openerId?: string): Promise<boolean> {
         if (!resource) {

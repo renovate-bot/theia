@@ -43,22 +43,22 @@ export const MessagingContainer = Symbol('MessagingContainer');
 export class MessagingContribution implements BackendApplicationContribution, MessagingService {
 
     @inject(MessagingContainer)
-    protected readonly container: interfaces.Container;
+    protected readonly container!: interfaces.Container;
 
     @inject(ContributionProvider) @named(ConnectionContainerModule)
-    protected readonly connectionModules: ContributionProvider<interfaces.ContainerModule>;
+    protected readonly connectionModules!: ContributionProvider<interfaces.ContainerModule>;
 
     @inject(ContributionProvider) @named(MessagingService.Contribution)
-    protected readonly contributions: ContributionProvider<MessagingService.Contribution>;
+    protected readonly contributions!: ContributionProvider<MessagingService.Contribution>;
 
     @inject(WsRequestValidator)
-    protected readonly wsRequestValidator: WsRequestValidator;
+    protected readonly wsRequestValidator!: WsRequestValidator;
 
     @inject(MessagingListener)
-    protected readonly messagingListener: MessagingListener;
+    protected readonly messagingListener!: MessagingListener;
 
     @inject(HttpWebsocketAdapterFactory)
-    protected readonly httpWebsocketAdapterFactory: () => HttpWebsocketAdapter;
+    protected readonly httpWebsocketAdapterFactory!: () => HttpWebsocketAdapter;
 
     protected webSocketServer: ws.Server | undefined;
     protected readonly wsHandlers = new MessagingContribution.ConnectionHandlers<ws | HttpWebsocketAdapter>();

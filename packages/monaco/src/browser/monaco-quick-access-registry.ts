@@ -41,7 +41,7 @@ class TheiaQuickAccessDescriptor implements monaco.quickInput.IQuickAccessProvid
 @injectable()
 export class MonacoQuickAccessRegistry implements QuickAccessRegistry {
     @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry: KeybindingRegistry;
+    protected readonly keybindingRegistry!: KeybindingRegistry;
 
     private get monacoRegistry(): monaco.quickInput.IQuickAccessRegistry {
         return monaco.platform.Registry.as<monaco.quickInput.IQuickAccessRegistry>('workbench.contributions.quickaccess');

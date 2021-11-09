@@ -35,10 +35,10 @@ export class EditorContribution implements FrontendApplicationContribution, Comm
     @inject(LanguageService) protected readonly languages!: LanguageService;
 
     @inject(ContextKeyService)
-    protected readonly contextKeyService: ContextKeyService;
+    protected readonly contextKeyService!: ContextKeyService;
 
     @inject(QuickInputService) @optional()
-    protected readonly quickInputService: QuickInputService;
+    protected readonly quickInputService!: QuickInputService;
 
     onStart(): void {
         this.initEditorContextKeys();
