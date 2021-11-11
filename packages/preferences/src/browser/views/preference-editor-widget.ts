@@ -45,7 +45,7 @@ export class PreferencesEditorWidget extends BaseWidget implements StatefulWidge
 
     scrollOptions = DEFAULT_SCROLL_OPTIONS;
 
-    protected scrollContainer: HTMLDivElement;
+    protected scrollContainer!: HTMLDivElement;
     /**
      * Guards against scroll events and selection events looping into each other. Set before this widget initiates a selection.
      */

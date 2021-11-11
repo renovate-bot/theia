@@ -54,7 +54,7 @@ export class MonacoEditorProvider {
 
     @inject(ContributionProvider)
     @named(MonacoEditorFactory)
-    protected readonly factories: ContributionProvider<MonacoEditorFactory>;
+    protected readonly factories!: ContributionProvider<MonacoEditorFactory>;
 
     @inject(MonacoBulkEditService)
     protected readonly bulkEditService!: MonacoBulkEditService;

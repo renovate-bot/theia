@@ -32,7 +32,7 @@ export class TerminalLinkmatcherFiles extends AbstractCmdClickTerminalContributi
     @inject(OpenerService) protected openerService!: OpenerService;
     @inject(FileService) protected fileService!: FileService;
 
-    protected backendOs: Promise<OS.Type>;
+    protected backendOs!: Promise<OS.Type>;
 
     @postConstruct()
     protected init(): void {

@@ -539,13 +539,13 @@ export class GitQuickOpenService {
         });
     }
 
-    protected withProgress<In, Out>(fn: (...arg: In[]) => Promise<Out>): Promise<Out> {
+    protected withProgress<A extends unknown[], R>(fn: (...arg: A) => Promise<R>): Promise<R> {
         return this.progressService.withProgress('', 'scm', fn);
     }
 
-    protected readonly wrapWithProgress = <In, Out>(fn: (...args: In[]) => Promise<Out>) => this.doWrapWithProgress(fn);
-    protected doWrapWithProgress<In, Out>(fn: (...args: In[]) => Promise<Out>): (...args: In[]) => Promise<Out> {
-        return (...args: In[]) => this.withProgress(() => fn(...args));
+    protected readonly wrapWithProgress = <A extends unknown[], R>(fn: (...args: A) => Promise<R>) => this.doWrapWithProgress(fn);
+    protected doWrapWithProgress<A extends unknown[], R>(fn: (...args: A) => Promise<R>): (...args: A) => Promise<R> {
+        return (...args) => this.withProgress(() => fn(...args));
     }
 }
 
@@ -553,15 +553,14 @@ class GitQuickPickItem<T> implements QuickPickItem {
     readonly execute?: () => void;
     constructor(
         public label: string,
-        execute?: (item: QuickPickItem) => void,
+        execute?: (item: GitQuickPickItem<T>) => void,
         public readonly ref?: T,
         public description?: string,
         public alwaysShow = true,
-        public sortByLabel = false) {
-        this.execute = execute ? createExecFunction(execute, this) : undefined;
+        public sortByLabel = false
+    ) {
+        if (execute) {
+            this.execute = () => execute(this);
+        }
     }
-}
-
-function createExecFunction(f: (item: QuickPickItem) => void, item: QuickPickItem): () => void {
-    return () => { f(item); };
 }

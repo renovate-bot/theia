@@ -26,14 +26,14 @@ import { MonacoResolvedKeybinding } from './monaco-resolved-keybinding';
 @injectable()
 export class MonacoQuickInputImplementation implements monaco.quickInput.IQuickInputService {
 
-    controller: monaco.quickInput.QuickInputController;
+    controller!: monaco.quickInput.QuickInputController;
     quickAccess: monaco.quickInput.IQuickAccessController;
 
     @inject(monaco.contextKeyService.ContextKeyService)
     protected readonly contextKeyService!: monaco.contextKeyService.ContextKeyService;
 
-    protected container: HTMLElement;
-    private quickInputList: monaco.list.List<monaco.list.IListElement>;
+    protected container!: HTMLElement;
+    private quickInputList?: monaco.list.List<monaco.list.IListElement>;
 
     get backButton(): monaco.quickInput.IQuickInputButton { return this.controller.backButton; }
     get onShow(): Event<void> { return this.controller.onShow; }
@@ -62,7 +62,7 @@ export class MonacoQuickInputImplementation implements monaco.quickInput.IQuickI
     open(filter: string): void {
         this.quickAccess.show(filter);
         setTimeout(() => {
-            this.quickInputList.focusNth(0);
+            this.quickInputList?.focusNth(0);
         }, 300);
     }
 

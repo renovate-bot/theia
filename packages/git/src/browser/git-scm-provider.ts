@@ -36,14 +36,18 @@ import { ScmInput } from '@theia/scm/lib/browser/scm-input';
 import { nls } from '@theia/core/lib/common/nls';
 
 @injectable()
-export class GitScmProviderOptions {
-    repository: Repository;
+export abstract class GitScmProviderOptions {
+    abstract repository: Repository;
 }
 
 @injectable()
 export class GitScmProvider implements ScmProvider {
 
-    public input: ScmInput;
+    public input?: ScmInput;
+
+    protected state = GitScmProvider.initState();
+    protected _amendSupport!: GitAmendSupport;
+    protected _statusBarCommands?: ScmCommand[];
 
     protected readonly onDidChangeEmitter = new Emitter<void>();
     readonly onDidChange = this.onDidChangeEmitter.event;
@@ -103,7 +107,6 @@ export class GitScmProvider implements ScmProvider {
         return this.repository.localUri;
     }
 
-    protected _amendSupport: GitAmendSupport;
     get amendSupport(): GitAmendSupport {
         return this._amendSupport;
     }
@@ -116,7 +119,6 @@ export class GitScmProvider implements ScmProvider {
         };
     }
 
-    protected _statusBarCommands: ScmCommand[] | undefined;
     get statusBarCommands(): ScmCommand[] | undefined {
         return this._statusBarCommands;
     }
@@ -124,8 +126,6 @@ export class GitScmProvider implements ScmProvider {
         this._statusBarCommands = statusBarCommands;
         this.onDidChangeStatusBarCommandsEmitter.fire(statusBarCommands);
     }
-
-    protected state = GitScmProvider.initState();
 
     get groups(): ScmResourceGroup[] {
         return this.state.groups;
@@ -164,12 +164,13 @@ export class GitScmProvider implements ScmProvider {
         state.groups.push(this.createGroup('index', nls.localize('vscode.git/repository/staged changes', 'Staged changes'), state.stagedChanges, true));
         state.groups.push(this.createGroup('workingTree', nls.localize('vscode.git/repository/changes', 'Changes'), state.unstagedChanges, false));
         this.state = state;
-        if (status && status.branch) {
-            this.input.placeholder = nls.localize('vscode.git/repository/commitMessageWithHeadLabel', 'Message (press {0} to commit on {1})', '{0}', status.branch);
-        } else {
-            this.input.placeholder = nls.localize('vscode.git/repository/commitMessage', 'Message (press {0} to commit)');
+        if (this.input) {
+            if (status && status.branch) {
+                this.input.placeholder = nls.localize('vscode.git/repository/commitMessageWithHeadLabel', 'Message (press {0} to commit on {1})', '{0}', status.branch);
+            } else {
+                this.input.placeholder = nls.localize('vscode.git/repository/commitMessage', 'Message (press {0} to commit)');
+            }
         }
-
         this.fireDidChange();
     }
 

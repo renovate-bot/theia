@@ -45,7 +45,7 @@ export class GitDiffWidget extends BaseWidget implements StatefulWidget {
     @inject(ScmService) protected readonly scmService!: ScmService;
     @inject(ScmPreferences) protected readonly scmPreferences!: ScmPreferences;
 
-    protected panel: Panel;
+    protected panel!: Panel;
 
     constructor() {
         super();

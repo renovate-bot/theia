@@ -25,8 +25,8 @@ import { MiniBrowserProps, MiniBrowserContentFactory } from './mini-browser-cont
 export { MiniBrowserProps };
 
 @injectable()
-export class MiniBrowserOptions {
-    uri: URI;
+export abstract class MiniBrowserOptions {
+    abstract uri: URI;
 }
 
 @injectable()

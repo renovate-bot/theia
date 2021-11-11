@@ -84,10 +84,10 @@ export class TaskConfigurationManager {
     readonly onDidChangeTaskConfig: Event<TasksChange> = this.onDidChangeTaskConfigEmitter.event;
 
     protected readonly models = new Map<TaskConfigurationScope, TaskConfigurationModel>();
-    protected workspaceDelegate: PreferenceProvider;
+    protected workspaceDelegate?: PreferenceProvider;
 
     @postConstruct()
-    protected async init(): Promise<void> {
+    protected init(): void {
         this.createModels();
         this.folderPreferences.onDidPreferencesChanged(e => {
             if (e['tasks']) {

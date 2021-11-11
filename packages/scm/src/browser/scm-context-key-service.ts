@@ -23,12 +23,12 @@ export class ScmContextKeyService {
     @inject(ContextKeyService)
     protected readonly contextKeyService!: ContextKeyService;
 
-    protected _scmProvider: ContextKey<string | undefined>;
+    protected _scmProvider!: ContextKey<string | undefined>;
     get scmProvider(): ContextKey<string | undefined> {
         return this._scmProvider;
     }
 
-    protected _scmResourceGroup: ContextKey<string | undefined>;
+    protected _scmResourceGroup!: ContextKey<string | undefined>;
     get scmResourceGroup(): ContextKey<string | undefined> {
         return this._scmResourceGroup;
     }

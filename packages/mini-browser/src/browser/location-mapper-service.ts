@@ -49,7 +49,7 @@ export class LocationMapperService {
 
     @inject(ContributionProvider)
     @named(LocationMapper)
-    protected readonly contributions: ContributionProvider<LocationMapper>;
+    protected readonly contributions!: ContributionProvider<LocationMapper>;
 
     async map(location: string): Promise<string> {
         const contributions = await this.prioritize(location);

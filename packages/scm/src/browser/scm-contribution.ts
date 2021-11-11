@@ -97,7 +97,7 @@ export class ScmContribution extends AbstractViewContribution<ScmWidget> impleme
     @inject(ContextKeyService) protected readonly contextKeys!: ContextKeyService;
     @inject(ScmDecorationsService) protected readonly scmDecorationsService!: ScmDecorationsService;
 
-    protected scmFocus: ContextKey<boolean>;
+    protected scmFocus!: ContextKey<boolean>;
 
     constructor() {
         super({

@@ -60,7 +60,7 @@ export class OutlineBreadcrumbsContribution implements BreadcrumbsContribution {
     @inject(BreadcrumbPopupOutlineViewFactory)
     protected readonly outlineFactory!: BreadcrumbPopupOutlineViewFactory;
 
-    protected outlineView: BreadcrumbPopupOutlineView;
+    protected outlineView!: BreadcrumbPopupOutlineView;
 
     readonly type = OutlineBreadcrumbType;
     readonly priority: number = 200;

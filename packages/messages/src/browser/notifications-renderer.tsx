@@ -40,7 +40,7 @@ export class NotificationsRenderer {
         this.render();
     }
 
-    protected container: HTMLDivElement;
+    protected container!: HTMLDivElement;
     protected createOverlayContainer(): void {
         this.container = window.document.createElement('div');
         this.container.className = 'theia-notifications-overlay';

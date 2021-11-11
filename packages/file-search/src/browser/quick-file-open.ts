@@ -47,25 +47,25 @@ export class QuickFileOpenService implements QuickAccessProvider {
     static readonly PREFIX = '';
 
     @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!: KeybindingRegistry; @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!:    @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!: ce: WorkspaceSer    @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!:    @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!: rService; @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!:) @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!: ice: QuickInputS    @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!:    @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!: stry: QuickAccess    @inject(KeybindingRegistry)
-    protected readonly keybindingRegistry!:
-        protected readonly fileSearchService: FileSearchService;
+    protected readonly keybindingRegistry!: KeybindingRegistry;
+    @inject(WorkspaceService)
+    protected readonly workspaceService!: WorkspaceService;
+    @inject(OpenerService)
+    protected readonly openerService!: OpenerService;
+    @inject(QuickInputService) @optional()
+    protected readonly quickInputService!: QuickInputService;
+    @inject(QuickAccessRegistry)
+    protected readonly quickAccessRegistry!: QuickAccessRegistry;
+    @inject(FileSearchService)
+    protected readonly fileSearchService!: FileSearchService;
     @inject(LabelProvider)
-    protected readonly labelProvider: LabelProvider;
+    protected readonly labelProvider!: LabelProvider;
     @inject(NavigationLocationService)
-    protected readonly navigationLocationService: NavigationLocationService;
+    protected readonly navigationLocationService!: NavigationLocationService;
     @inject(MessageService)
-    protected readonly messageService: MessageService;
+    protected readonly messageService!: MessageService;
     @inject(FileSystemPreferences)
-    protected readonly fsPreferences: FileSystemPreferences;
+    protected readonly fsPreferences!: FileSystemPreferences;
 
     registerQuickAccessProvider(): void {
         this.quickAccessRegistry.registerQuickAccessProvider({

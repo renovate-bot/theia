@@ -65,7 +65,7 @@ export class NavigatorDiff {
         this._isFirstFileSelected = true;
     }
 
-    protected _isFirstFileSelected: boolean;
+    protected _isFirstFileSelected!: boolean;
     get isFirstFileSelected(): boolean {
         return this._isFirstFileSelected;
     }

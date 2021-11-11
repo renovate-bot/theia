@@ -24,8 +24,8 @@ export const GitRepositoryWatcherFactory = Symbol('GitRepositoryWatcherFactory')
 export type GitRepositoryWatcherFactory = (options: GitRepositoryWatcherOptions) => GitRepositoryWatcher;
 
 @injectable()
-export class GitRepositoryWatcherOptions {
-    readonly repository: Repository;
+export abstract class GitRepositoryWatcherOptions {
+    abstract readonly repository: Repository;
 }
 
 @injectable()

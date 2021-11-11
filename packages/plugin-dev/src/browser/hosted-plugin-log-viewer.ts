@@ -25,13 +25,13 @@ export class HostedPluginLogViewer {
     public static OUTPUT_CHANNEL_NAME = 'hosted-instance-log';
 
     @inject(HostedPluginWatcher)
-    protected readonly watcher!: HostedPluginWatcher; @inject(HostedPluginWatcher)
-    protected readonly watcher!:    @inject(HostedPluginWatcher)
-    protected readonly watcher!: r: OutputChannelManager;
+    protected readonly watcher!: HostedPluginWatcher;
+    @inject(OutputChannelManager)
+    protected readonly outputChannelManager!: OutputChannelManager;
     @inject(OutputContribution)
-    protected readonly outputContribution: OutputContribution;
+    protected readonly outputContribution!: OutputContribution;
 
-    protected channel: OutputChannel;
+    protected channel!: OutputChannel;
 
     showLogConsole(): void {
         this.outputContribution.openView({ reveal: true }).then(view => {

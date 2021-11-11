@@ -29,9 +29,12 @@ export class PluginMetricsContribution implements MetricsContribution {
     @inject(PluginMetricStringGenerator)
     protected readonly stringGenerator!: PluginMetricStringGenerator;
 
-    private metrics: string;
+    private metrics?: string;
 
     getMetrics(): string {
+        if (!this.metrics) {
+            throw new Error('PluginMetricsContribution.metrics is not set');
+        }
         return this.metrics;
     }
 

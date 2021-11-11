@@ -27,8 +27,8 @@ import { Path } from '@theia/core/lib/common';
 
 @injectable()
 export class QuickOpenWorkspace {
-    protected items: Array<QuickPickItem>;
-    protected opened: boolean;
+    protected items?: QuickPickItem[];
+    protected opened?: boolean;
 
     @inject(QuickInputService) @optional() protected readonly quickInputService!: QuickInputService;
     @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;

@@ -30,7 +30,7 @@ export class TerminalBackendContribution implements MessagingService.Contributio
     protected readonly logger!: ILogger;
 
     configure(service: MessagingService): void {
-        service.listen(`${terminalsPath}/:id`, (params: { id: string }, connection) => {
+        service.listen(`${terminalsPath}/:id`, (params, connection) => {
             const id = parseInt(params.id, 10);
             const termProcess = this.processManager.get(id);
             if (termProcess instanceof TerminalProcess) {

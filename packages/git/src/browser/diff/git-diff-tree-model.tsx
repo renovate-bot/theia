@@ -32,7 +32,7 @@ export class GitDiffTreeModel extends ScmTreeModel {
     @inject(ScmService) protected readonly scmService!: ScmService;
     @inject(GitResourceOpener) protected readonly resourceOpener!: GitResourceOpener;
 
-    protected diffOptions: Git.Options.Diff;
+    protected diffOptions: Git.Options.Diff = {};
 
     protected _groups: ScmResourceGroup[] = [];
 

@@ -132,7 +132,7 @@ export class DirtyDiffModel implements Disposable {
     protected toDispose = new DisposableCollection();
 
     protected enabled = true;
-    protected staged: boolean;
+    protected staged: boolean = false;
     protected previousContent: ContentLines | undefined;
     protected currentContent: ContentLines | undefined;
 

@@ -82,7 +82,7 @@ export class WorkspaceService implements FrontendApplicationContribution {
     @inject(WorkspaceSchemaUpdater)
     protected readonly schemaUpdater!: WorkspaceSchemaUpdater;
 
-    protected applicationName: string;
+    protected applicationName!: string;
 
     protected _ready = new Deferred<void>();
     get ready(): Promise<void> {

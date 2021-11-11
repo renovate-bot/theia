@@ -73,7 +73,8 @@ export class MonacoEditor extends MonacoEditorServices implements TextEditor {
     protected readonly autoSizing: boolean;
     protected readonly minHeight: number;
     protected readonly maxHeight: number;
-    protected editor: IStandaloneCodeEditor;
+    // Assigned in `create`.
+    protected editor!: IStandaloneCodeEditor;
 
     protected readonly onCursorPositionChangedEmitter = new Emitter<Position>();
     protected readonly onSelectionChangedEmitter = new Emitter<Range>();
@@ -95,7 +96,7 @@ export class MonacoEditor extends MonacoEditorServices implements TextEditor {
         readonly document: MonacoEditorModel,
         readonly node: HTMLElement,
         services: MonacoEditorServices,
-        options?: MonacoEditor.IOptions,
+        options: MonacoEditor.IOptions = {},
         override?: IEditorOverrideServices
     ) {
         super(services);

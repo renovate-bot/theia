@@ -63,7 +63,7 @@ export class Askpass implements Disposable {
     @inject(DugiteGitPromptServer)
     protected readonly promptServer!: DugiteGitPromptServer;
 
-    protected server: http.Server;
+    protected server!: http.Server;
     protected serverAddress: Address | undefined;
     protected ready = new Deferred<boolean>();
 

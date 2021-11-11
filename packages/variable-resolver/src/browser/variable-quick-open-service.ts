@@ -23,7 +23,7 @@ import { QuickPickItem, QuickInputService } from '@theia/core/lib/browser';
 @injectable()
 export class VariableQuickOpenService {
 
-    protected items: Array<QuickPickItem>;
+    protected items?: QuickPickItem[];
 
     @inject(MessageService)
     protected readonly messages!: MessageService;

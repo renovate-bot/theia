@@ -34,22 +34,29 @@ export class BulkEditTree extends TreeImpl {
     }
 
     private getChildren(edits: monaco.editor.ResourceEdit[], fileContentsMap: Map<string, string>): BulkEditInfoNode[] {
-        let bulkEditInfos: BulkEditInfoNode[] = [];
+        const bulkEditInfos: BulkEditInfoNode[] = [];
         if (edits) {
-            bulkEditInfos = edits
-                .map(edit => this.getResourcePath(edit))
-                .filter((path, index, arr) => path && arr.indexOf(path) === index)
-                .map((path: string) => this.createBulkEditInfo(path, new URI(path), fileContentsMap.get(path)))
-                .filter(Boolean);
-
+            const paths = new Set<string>();
+            for (const edit of edits) {
+                const path = this.getResourcePath(edit);
+                if (path) {
+                    paths.add(path);
+                }
+            }
+            for (const path of paths) {
+                const bulkEditInfo = this.createBulkEditInfo(path, new URI(path), fileContentsMap.get(path));
+                if (bulkEditInfo) {
+                    bulkEditInfos.push(bulkEditInfo);
+                }
+            }
             if (bulkEditInfos.length > 0) {
-                bulkEditInfos.forEach(editInfo => {
+                for (const editInfo of bulkEditInfos) {
                     editInfo.children = edits.filter(edit =>
                         ((('resource' in edit) && (edit as monaco.editor.ResourceTextEdit)?.resource?.path === editInfo.id)) ||
                         (('newResource' in edit) && (edit as monaco.editor.ResourceFileEdit)?.newResource?.path === editInfo.id))
                         .map((edit, index) => this.createBulkEditNode(('resource' in edit ? edit as monaco.editor.ResourceTextEdit :
                             edit as monaco.editor.ResourceFileEdit), index, editInfo));
-                });
+                }
             }
         }
         return bulkEditInfos;

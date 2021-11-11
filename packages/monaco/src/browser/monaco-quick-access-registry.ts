@@ -48,7 +48,7 @@ export class MonacoQuickAccessRegistry implements QuickAccessRegistry {
     }
 
     registerQuickAccessProvider(descriptor: QuickAccessProviderDescriptor): Disposable {
-        const toMonacoPick = (item: QuickPickItem): monaco.quickInput.Pick<monaco.quickInput.IAnythingQuickPickItem> => {
+        const toMonacoPick = (item: QuickPickItem | QuickPickSeparator): monaco.quickInput.Pick<monaco.quickInput.IAnythingQuickPickItem> => {
             if (QuickPickSeparator.is(item)) {
                 return item;
             } else {

@@ -83,8 +83,8 @@ export class ResourcePropertyViewTreeWidget extends TreeWidget implements Proper
         if (this.updateNeeded(selection)) {
             this.currentSelection = selection;
             if (propertyDataService) {
-                propertyDataService.providePropertyData(selection).then((fileStatObject?: FileStat) => {
-                    this.fillPropertiesTree(fileStatObject);
+                propertyDataService.providePropertyData(selection).then(fileStatObject => {
+                    this.fillPropertiesTree(fileStatObject as FileStat | undefined);
                 });
             }
         }

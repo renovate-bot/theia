@@ -53,13 +53,13 @@ export class TerminalWidgetImpl extends TerminalWidget implements StatefulWidget
     protected terminalKind = 'user';
     protected _terminalId = -1;
     protected readonly onTermDidClose = new Emitter<TerminalWidget>();
-    protected fitAddon: FitAddon;
-    protected term: Terminal;
-    protected searchBox: TerminalSearchWidget;
+    protected fitAddon!: FitAddon;
+    protected term!: Terminal;
+    protected searchBox!: TerminalSearchWidget;
     protected restored = false;
     protected closeOnDispose = true;
     protected waitForConnection: Deferred<MessageConnection> | undefined;
-    protected hoverMessage: HTMLDivElement;
+    protected hoverMessage!: HTMLDivElement;
     protected lastTouchEnd: TouchEvent | undefined;
     protected isAttachedCloseListener: boolean = false;
     lastCwd = new URI();

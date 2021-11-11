@@ -196,7 +196,7 @@ export class MiniBrowserContent extends BaseWidget {
     // XXX It is a hack. Instead of loading the PDF in an iframe we use `PDFObject` to render it in a div.
     protected readonly pdfContainer: HTMLElement;
 
-    protected frameLoadTimeout: number;
+    protected frameLoadTimeout?: number;
     protected readonly initialHistoryLength: number;
     protected readonly toDisposeOnGo = new DisposableCollection();
 

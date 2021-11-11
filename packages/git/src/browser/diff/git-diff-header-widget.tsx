@@ -33,12 +33,9 @@ export class GitDiffHeaderWidget extends ReactWidget implements StatefulWidget {
     @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
     @inject(ScmFileChangeLabelProvider) protected readonly scmLabelProvider!: ScmFileChangeLabelProvider;
 
-    protected options: Git.Options.Diff;
+    protected options?: Git.Options.Diff;
 
-    protected authorAvatar: string;
-
-    constructor(
-    ) {
+    constructor() {
         super();
         this.id = 'git-diff-header';
         this.title.closable = true;
@@ -96,7 +93,7 @@ export class GitDiffHeaderWidget extends ReactWidget implements StatefulWidget {
         });
     }
     protected renderPath(): React.ReactNode {
-        if (this.options.uri) {
+        if (this.options && this.options.uri) {
             const path = this.scmLabelProvider.relativePath(this.options.uri);
             if (path.length > 0) {
                 return '/' + path;
@@ -136,11 +133,11 @@ export class GitDiffHeaderWidget extends ReactWidget implements StatefulWidget {
     }
 
     protected get toRevision(): string | undefined {
-        return this.options.range && this.options.range.toRevision;
+        return this.options?.range?.toRevision;
     }
 
     protected get fromRevision(): string | number | undefined {
-        return this.options.range && this.options.range.fromRevision;
+        return this.options?.range?.fromRevision;
     }
 
     storeState(): object {

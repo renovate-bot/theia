@@ -68,7 +68,7 @@ export class HostedPluginController implements FrontendApplicationContribution {
 
     private pluginState: HostedInstanceState = HostedInstanceState.STOPPED;
     // used only for displaying Running instead of Watching in status bar if run of watcher fails
-    private watcherSuccess: boolean;
+    private watcherSuccess: boolean = false;
     private entry: StatusBarEntry | undefined;
 
     public initialize(): void {

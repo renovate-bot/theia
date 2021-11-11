@@ -80,8 +80,8 @@ export class NotificationManager extends MessageClient {
     protected readonly notifications = new Map<string, Notification>();
     protected readonly toasts = new Map<string, Notification>();
 
-    protected notificationToastsVisibleKey: ContextKey<boolean>;
-    protected notificationCenterVisibleKey: ContextKey<boolean>;
+    protected notificationToastsVisibleKey!: ContextKey<boolean>;
+    protected notificationCenterVisibleKey!: ContextKey<boolean>;
 
     @postConstruct()
     protected async init(): Promise<void> {

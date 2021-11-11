@@ -23,7 +23,7 @@ export class TimelineContextKeyService {
     @inject(ContextKeyService)
     protected readonly contextKeyService!: ContextKeyService;
 
-    protected _timelineItem: ContextKey<string | undefined>;
+    protected _timelineItem!: ContextKey<string | undefined>;
     get timelineItem(): ContextKey<string | undefined> {
         return this._timelineItem;
     }

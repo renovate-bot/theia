@@ -29,10 +29,10 @@ export type TerminalSearchWidgetFactory = (terminal: Terminal) => TerminalSearch
 @injectable()
 export class TerminalSearchWidget extends ReactWidget {
 
-    private searchInput: HTMLInputElement | null;
-    private searchBox: HTMLDivElement | null;
+    private searchInput?: HTMLInputElement | null;
+    private searchBox?: HTMLDivElement | null;
     private searchOptions: ISearchOptions = {};
-    private searchAddon: SearchAddon;
+    private searchAddon!: SearchAddon;
 
     @inject(Terminal)
     protected terminal!: Terminal;

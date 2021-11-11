@@ -30,8 +30,8 @@ import { FileNavigatorPreferences, FileNavigatorConfiguration } from './navigato
 export class FileNavigatorFilter {
     protected readonly emitter: Emitter<void> = new Emitter<void>();
 
-    protected filterPredicate: FileNavigatorFilter.Predicate;
-    protected showHiddenFiles: boolean;
+    protected filterPredicate!: FileNavigatorFilter.Predicate;
+    protected showHiddenFiles: boolean = false;
 
     @inject(FileSystemPreferences)
     protected readonly filesPreferences!: FileSystemPreferences;

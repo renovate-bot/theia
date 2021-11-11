@@ -35,7 +35,7 @@ import { URI as CodeURI } from '@theia/core/shared/vscode-uri';
 @injectable()
 export class TimelineWidget extends BaseWidget {
 
-    protected panel: Panel;
+    protected panel!: Panel;
     static ID = 'timeline-view';
 
     private readonly timelinesBySource = new Map<string, TimelineAggregate>();

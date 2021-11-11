@@ -193,6 +193,8 @@ export interface DidCreateNewResourceEvent {
 @injectable()
 export class WorkspaceCommandContribution implements CommandContribution {
 
+    openers: OpenHandler[] = [];
+
     @inject(LabelProvider) protected readonly labelProvider!: LabelProvider;
     @inject(FileService) protected readonly fileService!: FileService;
     @inject(WorkspaceService) protected readonly workspaceService!: WorkspaceService;
@@ -210,7 +212,7 @@ export class WorkspaceCommandContribution implements CommandContribution {
     private readonly onDidCreateNewFileEmitter = new Emitter<DidCreateNewResourceEvent>();
     private readonly onDidCreateNewFolderEmitter = new Emitter<DidCreateNewResourceEvent>();
 
-    protected backendOS: Promise<OS.Type>;
+    protected backendOS!: Promise<OS.Type>;
 
     @postConstruct()
     async init(): Promise<void> {
@@ -355,7 +357,6 @@ export class WorkspaceCommandContribution implements CommandContribution {
         });
     }
 
-    openers: OpenHandler[];
     protected async registerOpenWith(registry: CommandRegistry): Promise<void> {
         if (this.openerService.onDidChangeOpeners) {
             this.openerService.onDidChangeOpeners(async e => {

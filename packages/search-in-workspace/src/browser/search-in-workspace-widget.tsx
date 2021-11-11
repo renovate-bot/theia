@@ -42,10 +42,10 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
     static ID = 'search-in-workspace';
     static LABEL = nls.localizeByDefault('Search');
 
-    protected matchCaseState: SearchFieldState;
-    protected wholeWordState: SearchFieldState;
-    protected regExpState: SearchFieldState;
-    protected includeIgnoredState: SearchFieldState;
+    protected matchCaseState!: SearchFieldState;
+    protected wholeWordState!: SearchFieldState;
+    protected regExpState!: SearchFieldState;
+    protected includeIgnoredState!: SearchFieldState;
 
     protected showSearchDetails = false;
     protected _hasResults = false;
@@ -60,7 +60,7 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
 
     protected searchFieldContainerIsFocused = false;
 
-    protected searchInWorkspaceOptions: SearchInWorkspaceOptions;
+    protected searchInWorkspaceOptions!: SearchInWorkspaceOptions;
 
     protected searchTerm = '';
     protected replaceTerm = '';
@@ -79,9 +79,8 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
         this._showReplaceField = showReplaceField;
     }
 
-    protected contentNode: HTMLElement;
-    protected searchFormContainer: HTMLElement;
-    protected resultContainer: HTMLElement;
+    protected contentNode!: HTMLElement;
+    protected searchFormContainer!: HTMLElement;
 
     protected readonly onDidUpdateEmitter = new Emitter<void>();
     readonly onDidUpdate: Event<void> = this.onDidUpdateEmitter.event;
@@ -419,7 +418,7 @@ export class SearchInWorkspaceWidget extends BaseWidget implements StatefulWidge
         this.doBlurSearchFieldContainer();
     }
 
-    private _searchTimeout: number;
+    private _searchTimeout?: number;
     protected readonly search = (e: React.KeyboardEvent) => {
         e.persist();
         const searchOnType = this.searchInWorkspacePreferences['search.searchOnType'];

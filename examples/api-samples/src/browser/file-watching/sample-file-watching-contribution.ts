@@ -50,7 +50,7 @@ const FileWatchingPreferencesSchema: PreferenceSchema = {
 @injectable()
 class SampleFileWatchingContribution implements FrontendApplicationContribution {
 
-    protected verbose: boolean;
+    protected verbose: boolean = true;
 
     @inject(FileService)
     protected readonly fileService!: FileService;

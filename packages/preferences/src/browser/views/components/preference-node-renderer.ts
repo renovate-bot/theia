@@ -54,10 +54,10 @@ export abstract class PreferenceNodeRenderer implements Disposable, GeneralPrefe
 
     protected attached = false;
 
-    _id: string;
-    _group: string;
-    _subgroup: string;
-    protected domNode: HTMLElement;
+    _id!: string;
+    _group!: string;
+    _subgroup!: string;
+    protected domNode!: HTMLElement;
 
     get node(): HTMLElement {
         return this.domNode;
@@ -152,9 +152,9 @@ export abstract class PreferenceLeafNodeRenderer<ValueType extends JSONValue, In
     @inject(PreferenceTreeModel) protected readonly model!: PreferenceTreeModel;
     @inject(PreferencesSearchbarWidget) protected readonly searchbar!: PreferencesSearchbarWidget;
 
-    protected headlineWrapper: HTMLDivElement;
-    protected gutter: HTMLDivElement;
-    protected interactable: InteractableType;
+    protected headlineWrapper!: HTMLDivElement;
+    protected gutter!: HTMLDivElement;
+    protected interactable!: InteractableType;
     protected inspection: PreferenceInspection<ValueType> | undefined;
     protected isModifiedFromDefault = false;
 

@@ -23,24 +23,24 @@ export class NavigatorContextKeyService {
     @inject(ContextKeyService)
     protected readonly contextKeyService!: ContextKeyService;
 
-    protected _explorerViewletVisible: ContextKey<boolean>;
+    protected _explorerViewletVisible!: ContextKey<boolean>;
     get explorerViewletVisible(): ContextKey<boolean> {
         return this._explorerViewletVisible;
     }
 
-    protected _explorerViewletFocus: ContextKey<boolean>;
+    protected _explorerViewletFocus!: ContextKey<boolean>;
     /** True if Explorer view has keyboard focus. */
     get explorerViewletFocus(): ContextKey<boolean> {
         return this._explorerViewletFocus;
     }
 
-    protected _filesExplorerFocus: ContextKey<boolean>;
+    protected _filesExplorerFocus!: ContextKey<boolean>;
     /** True if File Explorer section has keyboard focus. */
     get filesExplorerFocus(): ContextKey<boolean> {
         return this._filesExplorerFocus;
     }
 
-    protected _explorerResourceIsFolder: ContextKey<boolean>;
+    protected _explorerResourceIsFolder!: ContextKey<boolean>;
     get explorerResourceIsFolder(): ContextKey<boolean> {
         return this._explorerResourceIsFolder;
     }

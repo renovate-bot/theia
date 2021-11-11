@@ -65,7 +65,7 @@ export class MonacoTextModelService implements monaco.editor.ITextModelService {
 
     @inject(ContributionProvider)
     @named(MonacoEditorModelFactory)
-    protected readonly factories: ContributionProvider<MonacoEditorModelFactory>;
+    protected readonly factories!: ContributionProvider<MonacoEditorModelFactory>;
 
     @inject(ILogger)
     protected readonly logger!: ILogger;

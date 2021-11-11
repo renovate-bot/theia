@@ -77,7 +77,7 @@ export interface WorkspaceFolder {
 @injectable()
 export class MonacoWorkspace {
 
-    protected resolveReady: () => void;
+    protected resolveReady!: () => void;
     readonly ready = new Promise<void>(resolve => {
         this.resolveReady = resolve;
     });

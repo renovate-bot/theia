@@ -21,8 +21,8 @@ import { WorkspaceService, WorkspaceData } from '@theia/workspace/lib/browser/wo
 import { AbstractResourcePreferenceProvider } from './abstract-resource-preference-provider';
 
 @injectable()
-export class WorkspaceFilePreferenceProviderOptions {
-    workspaceUri: URI;
+export abstract class WorkspaceFilePreferenceProviderOptions {
+    abstract workspaceUri: URI;
 }
 
 export const WorkspaceFilePreferenceProviderFactory = Symbol('WorkspaceFilePreferenceProviderFactory');

@@ -37,7 +37,7 @@ export class MonacoTextmateService implements FrontendApplicationContribution {
 
     protected readonly _activatedLanguages = new Set<string>();
 
-    protected grammarRegistry: Registry;
+    protected _grammarRegistry?: Registry;
 
     @inject(ContributionProvider) @named(LanguageGrammarDefinitionContribution)
     protected readonly grammarProviders!: ContributionProvider<LanguageGrammarDefinitionContribution>;
@@ -60,6 +60,13 @@ export class MonacoTextmateService implements FrontendApplicationContribution {
     @inject(EditorPreferences)
     protected readonly preferences!: EditorPreferences;
 
+    get grammarRegistry(): Registry {
+        if (!this._grammarRegistry) {
+            throw new Error('MonacoTextmateService._grammarRegistry is not set');
+        }
+        return this._grammarRegistry;
+    }
+
     initialize(): void {
         if (!isBasicWasmSupported) {
             console.log('Textmate support deactivated because WebAssembly is not detected.');
@@ -74,7 +81,7 @@ export class MonacoTextmateService implements FrontendApplicationContribution {
             }
         }
 
-        this.grammarRegistry = new Registry({
+        this._grammarRegistry = new Registry({
             getOnigLib: () => this.onigasmPromise,
             theme: this.monacoThemeRegistry.getThemeData(this.currentEditorTheme),
             loadGrammar: async (scopeName: string) => {

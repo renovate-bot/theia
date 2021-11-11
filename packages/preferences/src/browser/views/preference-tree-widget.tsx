@@ -31,7 +31,6 @@ export class PreferencesTreeWidget extends TreeWidget {
     static ID = 'preferences.tree';
 
     protected shouldFireSelectionEvents: boolean = true;
-    protected firstVisibleLeafNodeID: string;
 
     @inject(PreferenceTreeModel) readonly model!: PreferenceTreeModel;
     @inject(TreeProps) protected readonly treeProps!: TreeProps;

@@ -163,18 +163,14 @@ export class QuickOpenTask implements QuickAccessProvider {
         if (groupedTasks.has(TaskScope.Global.toString())) {
             const configs = groupedTasks.get(TaskScope.Global.toString())!;
             this.items.push(
-                ...configs.map(taskConfig => {
-                    const item = new TaskConfigureQuickOpenItem(
-                        token,
-                        taskConfig,
-                        this.taskService,
-                        this.taskNameResolver,
-                        this.workspaceService,
-                        isMulti
-                    );
-                    item['taskDefinitionRegistry'] = this.taskDefinitionRegistry;
-                    return item;
-                })
+                ...configs.map(taskConfig => new TaskConfigureQuickOpenItem(
+                    token,
+                    taskConfig,
+                    this.taskService,
+                    this.taskNameResolver,
+                    this.workspaceService,
+                    isMulti
+                ))
             );
         }
 
@@ -184,19 +180,14 @@ export class QuickOpenTask implements QuickAccessProvider {
             if (groupedTasks.has(rootFolder)) {
                 const configs = groupedTasks.get(rootFolder.toString())!;
                 this.items.push(
-                    ...configs.map((taskConfig, index) => {
-                        const item = new TaskConfigureQuickOpenItem(
-                            token,
-                            taskConfig,
-                            this.taskService,
-                            this.taskNameResolver,
-                            this.workspaceService,
-                            isMulti,
-
-                        );
-                        item['taskDefinitionRegistry'] = this.taskDefinitionRegistry;
-                        return item;
-                    })
+                    ...configs.map(taskConfig => new TaskConfigureQuickOpenItem(
+                        token,
+                        taskConfig,
+                        this.taskService,
+                        this.taskNameResolver,
+                        this.workspaceService,
+                        isMulti,
+                    ))
                 );
             } else {
                 const { configUri } = this.preferences.resolve('tasks', [], rootFolder);
@@ -238,11 +229,11 @@ export class QuickOpenTask implements QuickAccessProvider {
         const taskItems = this.getTaskItems();
 
         if (taskItems.length > 0) { // the item in `this.items` is not 'No tasks found'
-            const buildOrTestTasks = taskItems.filter((t: TaskRunQuickOpenItem) =>
+            const buildOrTestTasks = (taskItems as TaskRunQuickOpenItem[]).filter(t =>
                 shouldRunBuildTask ? TaskCustomization.isBuildTask(t.task) : TaskCustomization.isTestTask(t.task)
             );
             if (buildOrTestTasks.length > 0) { // build / test tasks are defined in the workspace
-                const defaultBuildOrTestTasks = buildOrTestTasks.filter((t: TaskRunQuickOpenItem) =>
+                const defaultBuildOrTestTasks = buildOrTestTasks.filter(t =>
                     shouldRunBuildTask ? TaskCustomization.isDefaultBuildTask(t.task) : TaskCustomization.isDefaultTestTask(t.task)
                 );
                 if (defaultBuildOrTestTasks.length === 1) { // run the default build / test task
@@ -266,7 +257,7 @@ export class QuickOpenTask implements QuickAccessProvider {
                     execute: () => {
                         this.doInit(token).then(() => {
                             // update the `tasks.json` file, instead of running the task itself
-                            this.items = this.getTaskItems().map((item: TaskRunQuickOpenItem) => new ConfigureBuildOrTestTaskQuickOpenItem(
+                            this.items = (this.getTaskItems() as TaskRunQuickOpenItem[]).map(item => new ConfigureBuildOrTestTaskQuickOpenItem(
                                 token,
                                 item.task,
                                 this.taskService,
@@ -459,8 +450,6 @@ function renderScope(scope: TaskConfigurationScope, isMulti: boolean): string {
 }
 
 export class TaskConfigureQuickOpenItem implements QuickPickItem {
-
-    protected taskDefinitionRegistry: TaskDefinitionRegistry;
 
     constructor(
         protected readonly token: number,

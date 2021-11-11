@@ -29,7 +29,7 @@ export class GitCommitDetailHeaderWidget extends ReactWidget {
 
     protected options: Git.Options.Diff;
 
-    protected authorAvatar: string;
+    protected authorAvatar?: string;
 
     constructor(
         @inject(GitCommitDetailWidgetOptions) protected readonly commitDetailOptions: GitCommitDetailWidgetOptions

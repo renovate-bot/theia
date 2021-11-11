@@ -28,7 +28,7 @@ export class PreferenceTreeGenerator {
     @inject(PreferenceSchemaProvider) protected readonly schemaProvider!: PreferenceSchemaProvider;
     @inject(PreferenceConfigurations) protected readonly preferenceConfigs!: PreferenceConfigurations;
 
-    protected _root: CompositeTreeNode;
+    protected _root?: CompositeTreeNode;
 
     protected readonly onSchemaChangedEmitter = new Emitter<CompositeTreeNode>();
     readonly onSchemaChanged = this.onSchemaChangedEmitter.event;
