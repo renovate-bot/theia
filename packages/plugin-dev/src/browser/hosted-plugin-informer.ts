@@ -37,7 +37,7 @@ export class HostedPluginInformer implements FrontendApplicationContribution {
 
     public static readonly DEVELOPMENT_HOST_OFFLINE = 'development-host-offline';
 
-    private entry: StatusBarEntry;
+    private entry?: StatusBarEntry;
 
     @inject(StatusBar)
     protected readonly statusBar!: StatusBar;
@@ -79,6 +79,9 @@ export class HostedPluginInformer implements FrontendApplicationContribution {
     }
 
     private updateStatusBarElement(): void {
+        if (!this.entry) {
+            throw new Error('HostedPluginInformer.entry is not set');
+        }
         if (this.connectionStatusService.currentStatus === ConnectionStatus.OFFLINE) {
             this.entry.className = HostedPluginInformer.DEVELOPMENT_HOST_OFFLINE;
         } else {

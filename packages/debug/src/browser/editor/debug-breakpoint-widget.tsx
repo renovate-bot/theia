@@ -44,9 +44,9 @@ export class DebugBreakpointWidget implements Disposable {
     @inject(MonacoEditorProvider)
     protected readonly editorProvider!: MonacoEditorProvider;
 
-    protected selectNode: HTMLDivElement;
+    protected selectNode!: HTMLDivElement;
 
-    protected zone: MonacoEditorZoneWidget;
+    protected zone!: MonacoEditorZoneWidget;
 
     protected readonly toDispose = new DisposableCollection();
 

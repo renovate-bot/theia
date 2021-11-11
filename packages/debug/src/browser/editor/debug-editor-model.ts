@@ -53,7 +53,7 @@ export class DebugEditorModel implements Disposable {
     protected readonly toDispose = new DisposableCollection();
     protected readonly toDisposeOnUpdate = new DisposableCollection();
 
-    protected uri: URI;
+    protected uri!: URI;
 
     protected breakpointDecorations: string[] = [];
     protected breakpointRanges = new Map<string, monaco.Range>();

@@ -26,9 +26,9 @@ import { DescriptionWidget } from '@theia/core/lib/browser/view-container';
 import { Emitter } from '@theia/core/lib/common';
 
 @injectable()
-export class PluginViewWidgetIdentifier {
-    id: string;
-    viewId: string;
+export abstract class PluginViewWidgetIdentifier {
+    abstract id: string;
+    abstract viewId: string;
 }
 
 @injectable()

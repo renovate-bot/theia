@@ -30,7 +30,7 @@ export interface IPCConnectionOptions {
 @injectable()
 export class HostedPluginSupport {
     private isPluginProcessRunning = false;
-    private client: HostedPluginClient;
+    private client?: HostedPluginClient;
 
     @inject(ILogger)
     protected readonly logger!: ILogger;
@@ -43,7 +43,7 @@ export class HostedPluginSupport {
      */
     @optional()
     @multiInject(ServerPluginRunner)
-    private readonly pluginRunners: ServerPluginRunner[];
+    private readonly pluginRunners!: ServerPluginRunner[];
 
     @postConstruct()
     protected init(): void {
@@ -96,18 +96,20 @@ export class HostedPluginSupport {
      * Provides additional plugin ids.
      */
     async getExtraDeployedPluginIds(): Promise<string[]> {
-        return [].concat.apply([], await Promise.all(this.pluginRunners.map(runner => runner.getExtraDeployedPluginIds())));
+        const runnerIds: string[][] = await Promise.all(this.pluginRunners.map(runner => runner.getExtraDeployedPluginIds()));
+        return Array.prototype.concat(...runnerIds);
     }
 
     /**
      * Provides additional deployed plugins.
      */
     async getExtraDeployedPlugins(): Promise<DeployedPlugin[]> {
-        return [].concat.apply([], await Promise.all(this.pluginRunners.map(runner => runner.getExtraDeployedPlugins())));
+        const deployedPlugins: DeployedPlugin[][] = await Promise.all(this.pluginRunners.map(runner => runner.getExtraDeployedPlugins()));
+        return Array.prototype.concat(...deployedPlugins);
     }
 
     sendLog(logPart: LogPart): void {
-        this.client.log(logPart);
+        this.client?.log(logPart);
     }
 
     private terminatePluginServer(): void {

@@ -38,11 +38,11 @@ export class HostedPluginServerImpl implements HostedPluginServer {
 
     @inject(ContributionProvider)
     @named(Symbol.for(ExtPluginApiProvider))
-    protected readonly extPluginAPIContributions: ContributionProvider<ExtPluginApiProvider>;
+    protected readonly extPluginAPIContributions!: ContributionProvider<ExtPluginApiProvider>;
 
     protected client: HostedPluginClient | undefined;
 
-    protected deployedListener: Disposable;
+    protected deployedListener!: Disposable;
 
     constructor(
         @inject(HostedPluginSupport) private readonly hostedPlugin: HostedPluginSupport) {

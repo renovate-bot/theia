@@ -144,8 +144,8 @@ export class DebugSessionManager {
     @inject(ApplicationShell)
     protected readonly shell!: ApplicationShell;
 
-    protected debugTypeKey: ContextKey<string>;
-    protected inDebugModeKey: ContextKey<boolean>;
+    protected debugTypeKey!: ContextKey<string>;
+    protected inDebugModeKey!: ContextKey<boolean>;
 
     @postConstruct()
     protected init(): void {

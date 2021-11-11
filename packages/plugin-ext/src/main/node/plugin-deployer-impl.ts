@@ -54,19 +54,19 @@ export class PluginDeployerImpl implements PluginDeployer {
      * Inject all plugin resolvers found at runtime.
      */
     @optional() @multiInject(PluginDeployerResolver)
-    private pluginResolvers: PluginDeployerResolver[];
+    private pluginResolvers!: PluginDeployerResolver[];
 
     /**
      * Inject all file handler for local resolved plugins.
      */
     @optional() @multiInject(PluginDeployerFileHandler)
-    private pluginDeployerFileHandlers: PluginDeployerFileHandler[];
+    private pluginDeployerFileHandlers!: PluginDeployerFileHandler[];
 
     /**
      * Inject all directory handler for local resolved plugins.
      */
     @optional() @multiInject(PluginDeployerDirectoryHandler)
-    private pluginDeployerDirectoryHandlers: PluginDeployerDirectoryHandler[];
+    private pluginDeployerDirectoryHandlers!: PluginDeployerDirectoryHandler[];
 
     @inject(ContributionProvider) @named(PluginDeployerParticipant)
     protected readonly participants!: ContributionProvider<PluginDeployerParticipant>;

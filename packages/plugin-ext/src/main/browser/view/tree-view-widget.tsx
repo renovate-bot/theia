@@ -81,8 +81,8 @@ export namespace CompositeTreeViewNode {
 }
 
 @injectable()
-export class TreeViewWidgetIdentifier {
-    id: string;
+export abstract class TreeViewWidgetIdentifier {
+    abstract id: string;
 }
 
 @injectable()
@@ -102,7 +102,7 @@ export class PluginTree extends TreeImpl {
 
     private _proxy: TreeViewsExt | undefined;
     private _viewInfo: View | undefined;
-    private _isEmpty: boolean;
+    private _isEmpty: boolean = false;
 
     set proxy(proxy: TreeViewsExt | undefined) {
         this._proxy = proxy;

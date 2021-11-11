@@ -64,7 +64,7 @@ export function getDarkIconUri(iconPath: URI | { light: URI; dark: URI; }): URI 
 export class QuickOpenExtImpl implements QuickOpenExt {
     private proxy: QuickOpenMain;
     private onDidSelectItem: undefined | ((handle: number) => void);
-    private validateInputHandler: (input: string) => Promise<string | null | undefined> | undefined;
+    private validateInputHandler?: (input: string) => Promise<string | null | undefined>;
     private _sessions = new Map<number, QuickInputExt>(); // Each quickinput will have a number so that we know where to fire events
     private _instances = 0;
 
@@ -235,13 +235,13 @@ export class QuickInputExt implements QuickInput {
     private static _nextId = 1;
     _id = QuickInputExt._nextId++;
 
-    private _busy: boolean;
-    private _enabled: boolean;
-    private _ignoreFocusOut: boolean;
+    private _busy: boolean = false;
+    private _enabled: boolean = false;
+    private _ignoreFocusOut: boolean = false;
     private _step: number | undefined;
     private _title: string | undefined;
     private _totalSteps: number | undefined;
-    private _value: string;
+    private _value?: string;
     private _placeholder: string | undefined;
     private _buttons: theia.QuickInputButton[] = [];
     private _handlesToButtons = new Map<number, theia.QuickInputButton>();
@@ -334,6 +334,9 @@ export class QuickInputExt implements QuickInput {
     }
 
     get value(): string {
+        if (this._value === undefined) {
+            throw new Error('QuickInputExt._value is not set');
+        }
         return this._value;
     }
 
@@ -491,7 +494,7 @@ export class QuickInputExt implements QuickInput {
  */
 export class InputBoxExt extends QuickInputExt implements InputBox {
 
-    private _password: boolean;
+    private _password: boolean = false;
     private _prompt: string | undefined;
     private _validationMessage: string | undefined;
 

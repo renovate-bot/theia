@@ -83,14 +83,14 @@ export const PluginIconThemeFactory = Symbol('PluginIconThemeFactory');
 export type PluginIconThemeFactory = (definition: PluginIconThemeDefinition) => PluginIconTheme;
 
 @injectable()
-export class PluginIconThemeDefinition implements IconThemeDefinition, IconThemeContribution {
-    id: string;
-    label: string;
+export abstract class PluginIconThemeDefinition implements IconThemeDefinition, IconThemeContribution {
+    abstract id: string;
+    abstract label: string;
     description?: string;
-    uri: string;
+    abstract uri: string;
     uiTheme?: UiTheme;
-    pluginId: string;
-    packageUri: string;
+    abstract pluginId: string;
+    abstract packageUri: string;
     hasFileIcons?: boolean;
     hasFolderIcons?: boolean;
     hidesExplorerArrows?: boolean;
@@ -98,6 +98,13 @@ export class PluginIconThemeDefinition implements IconThemeDefinition, IconTheme
 
 @injectable()
 export class PluginIconTheme extends PluginIconThemeDefinition implements IconTheme, Disposable {
+
+    // The following fields should be set in the `postConstruct` method.
+    id!: string;
+    label!: string;
+    uri!: string;
+    pluginId!: string;
+    packageUri!: string;
 
     @inject(FileService)
     protected readonly fileService!: FileService;
@@ -121,8 +128,8 @@ export class PluginIconTheme extends PluginIconThemeDefinition implements IconTh
         this.toDeactivate, this.toDisposeStyleElement, this.toUnload, this.onDidChangeEmitter
     );
 
-    protected packageRootUri: URI;
-    protected locationUri: URI;
+    protected packageRootUri!: URI;
+    protected locationUri!: URI;
 
     protected styleSheetContent: string | undefined;
     protected readonly icons = new Set<string>();

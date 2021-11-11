@@ -73,7 +73,7 @@ export class HostedPluginSupport {
 
     protected readonly clientId = UUID.uuid4();
 
-    protected container: interfaces.Container;
+    protected container!: interfaces.Container;
 
     @inject(ILogger)
     protected readonly logger!: ILogger;
@@ -89,7 +89,7 @@ export class HostedPluginSupport {
 
     @inject(ContributionProvider)
     @named(MainPluginApiProvider)
-    protected readonly mainPluginApiProviders: ContributionProvider<MainPluginApiProvider>;
+    protected readonly mainPluginApiProviders!: ContributionProvider<MainPluginApiProvider>;
 
     @inject(PluginServer)
     protected readonly pluginServer!: PluginServer;
@@ -154,7 +154,7 @@ export class HostedPluginSupport {
     @inject(PluginCustomEditorRegistry)
     protected readonly customEditorRegistry!: PluginCustomEditorRegistry;
 
-    private theiaReadyPromise: Promise<any>;
+    private theiaReadyPromise!: Promise<any>;
 
     protected readonly managers = new Map<string, PluginManagerExt>();
 
@@ -209,10 +209,11 @@ export class HostedPluginSupport {
                 const storeState = widget.storeState.bind(widget);
                 const restoreState = widget.restoreState.bind(widget);
 
-                widget.storeState = () => {
+                widget.storeState = (): WebviewWidget.State => {
                     if (this.webviewRevivers.has(widget.viewType)) {
                         return storeState();
                     }
+                    // @ts-expect-error TS2322
                     return undefined;
                 };
 

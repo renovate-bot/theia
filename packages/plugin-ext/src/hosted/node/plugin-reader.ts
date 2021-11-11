@@ -34,7 +34,8 @@ export class HostedPluginReader implements BackendApplicationContribution {
     protected readonly scanner!: MetadataScanner;
 
     @optional()
-    @multiInject(MetadataProcessor) private readonly metadataProcessors: MetadataProcessor[];
+    @multiInject(MetadataProcessor)
+    private readonly metadataProcessors!: MetadataProcessor[];
 
     /**
      * Map between a plugin id and its local storage

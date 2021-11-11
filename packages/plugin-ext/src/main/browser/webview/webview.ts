@@ -77,8 +77,8 @@ export interface WebviewContentOptions {
 }
 
 @injectable()
-export class WebviewWidgetIdentifier {
-    id: string;
+export abstract class WebviewWidgetIdentifier {
+    abstract id: string;
 }
 
 export const WebviewWidgetExternalEndpoint = Symbol('WebviewWidgetExternalEndpoint');
@@ -100,7 +100,7 @@ export class WebviewWidget extends BaseWidget implements StatefulWidget {
     // eslint-disable-next-line max-len
     // XXX This is a hack to be able to tack the mouse events when drag and dropping the widgets.
     // On `mousedown` we put a transparent div over the `iframe` to avoid losing the mouse tacking.
-    protected transparentOverlay: HTMLElement;
+    protected transparentOverlay!: HTMLElement;
 
     @inject(WebviewWidgetIdentifier)
     readonly identifier!: WebviewWidgetIdentifier;
@@ -159,8 +159,20 @@ export class WebviewWidget extends BaseWidget implements StatefulWidget {
         return this._state;
     }
 
-    viewType: string;
-    viewColumn: ViewColumn;
+    protected _viewType?: string;
+
+    get viewType(): string {
+        if (this._viewType === undefined) {
+            throw new Error('WebviewWidget._viewType is not set');
+        }
+        return this._viewType;
+    }
+
+    set viewType(value) {
+        this._viewType = value;
+    }
+
+    viewColumn?: ViewColumn;
     options: WebviewPanelOptions = {};
 
     protected ready = new Deferred<void>();
@@ -537,7 +549,7 @@ export class WebviewWidget extends BaseWidget implements StatefulWidget {
 
     restoreState(oldState: WebviewWidget.State): void {
         const { viewType, title, iconUrl, options, contentOptions, state } = oldState;
-        this.viewType = viewType;
+        this._viewType = viewType;
         this.title.label = title;
         this.setIconUrl(iconUrl);
         this.options = options;

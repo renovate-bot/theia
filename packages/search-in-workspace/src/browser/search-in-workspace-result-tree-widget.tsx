@@ -111,7 +111,7 @@ export class SearchInWorkspaceResultTreeWidget extends TreeWidget {
     protected _showReplaceButtons = false;
     protected _replaceTerm = '';
     protected searchTerm = '';
-    protected searchOptions: SearchInWorkspaceOptions;
+    protected searchOptions: SearchInWorkspaceOptions = {};
 
     protected readonly startSearchOnModification = (activeEditor: EditorWidget) => debounce(
         () => this.searchActiveEditor(activeEditor, this.searchTerm, this.searchOptions),

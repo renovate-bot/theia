@@ -51,7 +51,7 @@ export class HostedPluginProcess implements ServerPluginRunner {
 
     @inject(ContributionProvider)
     @named(PluginHostEnvironmentVariable)
-    protected readonly pluginHostEnvironmentVariables: ContributionProvider<PluginHostEnvironmentVariable>;
+    protected readonly pluginHostEnvironmentVariables!: ContributionProvider<PluginHostEnvironmentVariable>;
 
     @inject(MessageService)
     protected readonly messageService!: MessageService;
@@ -60,7 +60,7 @@ export class HostedPluginProcess implements ServerPluginRunner {
     protected readonly localizationService!: HostedPluginLocalizationService;
 
     private childProcess: cp.ChildProcess | undefined;
-    private client: HostedPluginClient;
+    private client?: HostedPluginClient;
 
     private terminatingPluginServer = false;
 

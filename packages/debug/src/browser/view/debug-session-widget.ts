@@ -55,7 +55,7 @@ export class DebugSessionWidget extends BaseWidget implements StatefulWidget, Ap
         return DebugSessionWidget.createContainer(parent, options).get(DebugSessionWidget);
     }
 
-    protected viewContainer: ViewContainer;
+    protected viewContainer!: ViewContainer;
 
     @inject(ViewContainer.Factory)
     protected readonly viewContainerFactory!: ViewContainer.Factory;

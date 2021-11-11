@@ -45,13 +45,13 @@ export interface WillProvideDebugConfiguration extends WaitUntilEvent {
 export class DebugConfigurationManager {
 
     @inject(WorkspaceService)
-    protected readonly workspaceService!: WorkspaceService; @inject(WorkspaceService)
-    protected readonly workspaceService!:    @inject(WorkspaceService)
-    protected readonly workspaceService!: Manager: Editor    @inject(WorkspaceService)
-    protected readonly workspaceService!:
-        protected readonly debug: DebugService;
+    protected readonly workspaceService!: WorkspaceService;
+    @inject(EditorManager)
+    protected readonly editorManager!: EditorManager;
+    @inject(DebugService)
+    protected readonly debug!: DebugService;
     @inject(QuickPickService)
-    protected readonly quickPickService: QuickPickService;
+    protected readonly quickPickService!: QuickPickService;
 
     @inject(ContextKeyService)
     protected readonly contextKeyService!: ContextKeyService;
@@ -68,6 +68,9 @@ export class DebugConfigurationManager {
     @inject(WorkspaceVariableContribution)
     protected readonly workspaceVariables!: WorkspaceVariableContribution;
 
+    @inject(StorageService)
+    protected readonly storage!: StorageService;
+
     protected readonly onDidChangeEmitter = new Emitter<void>();
     readonly onDidChange: Event<void> = this.onDidChangeEmitter.event;
 
@@ -79,9 +82,9 @@ export class DebugConfigurationManager {
         return this.onWillProvideDynamicDebugConfigurationEmitter.event;
     }
 
-    protected debugConfigurationTypeKey: ContextKey<string>;
+    protected debugConfigurationTypeKey!: ContextKey<string>;
 
-    protected initialized: Promise<void>;
+    protected initialized!: Promise<void>;
 
     @postConstruct()
     protected async init(): Promise<void> {
@@ -345,9 +348,6 @@ export class DebugConfigurationManager {
         const selectedItem = await this.quickPickService.show(items, { placeholder: 'Select Environment' });
         return selectedItem?.value;
     }
-
-    @inject(StorageService)
-    protected readonly storage!: StorageService;
 
     async load(): Promise<void> {
         await this.initialized;
